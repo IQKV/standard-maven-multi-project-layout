@@ -1,0 +1,46 @@
+{
+  "name": "@iqkv/multimoduleservice",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Provide an optional Git commit hooks.",
+  "license": "Apache-2.0",
+  "author": "Dima Denisenko",
+  "scripts": {
+    "lint": "npm run lint:stylelint",
+    "lint:stylelint": "stylelint \"**/*.css\" --cache",
+    "prepare": "husky",
+    "prettier:check": "prettier . --check",
+    "prettier:write": "prettier . --write"
+  },
+  "lint-staged": {
+    "**/*.{js}": [
+      "npm run lint",
+      "prettier . --check --ignore-unknown"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@semantic-release/git": "^10.0.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "glob": "^11.0.2",
+    "husky": "9.1.7",
+    "lerna": "^8.2.2",
+    "lint-staged": "^16.0.0",
+    "prettier": "3.5.3",
+    "prettier-plugin-java": "2.6.7",
+    "prettier-plugin-packagejson": "2.5.14",
+    "semantic-release": "^24.2.3",
+    "sort-package-json": "^3.1.0",
+    "stylelint": "^16.19.1",
+    "stylelint-config-standard-scss": "^15.0.0"
+  },
+  "engines": {
+    "node": ">=22.15.0"
+  }
+}
