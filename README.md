@@ -10,10 +10,10 @@
 
 ---
 
-<a name="Applications"></a>
-# 🚀 Applications
+<a name="description"></a>
+# 🚀 Description
 
-...
+Provided structure shows you how to create a multi-module project with Spring Boot.
 
 > ##### 🛠️ Technology stack
 >
