@@ -46,7 +46,8 @@ npm install
 # Start local dev services dependencies
 docker compose -f compose.yaml up -d
 
-#  Run the application in dev mode
+#  Run the servicename instance in dev mode
+cd servicename
 mvn spring-boot:run -Dspring-boot.run.profiles=local -P dev
 
 ```
