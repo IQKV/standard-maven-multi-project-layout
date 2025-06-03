@@ -11,6 +11,7 @@
 ---
 
 <a name="description"></a>
+
 # 🚀 Description
 
 Provided structure shows you how to create a multi-module project with Spring Boot.
@@ -49,6 +50,12 @@ docker compose -f compose.yaml up -d
 mvn spring-boot:run -Dspring-boot.run.profiles=local -P dev
 
 ```
+
+### ⚙️ Environment Variables
+
+| Variable             | Description               | Default |
+| -------------------- | ------------------------- | ------- |
+| `LOGGING_LEVEL_ROOT` | Set default logging level | `INFO`  |
 
 ### 🔺 Tests
 
