@@ -8,10 +8,10 @@
   "scripts": {
     "lint": "npm run lint:stylelint",
     "lint:stylelint": "stylelint \"**/*.css\" --cache",
+    "node_modules:clear": "rm -rf node_modules",
     "prepare": "husky",
     "prettier:check": "prettier . --check",
     "prettier:write": "prettier . --write",
-    "node_modules:clear": "rm -rf node_modules",
     "release": "release-it --ci"
   },
   "lint-staged": {
@@ -42,6 +42,9 @@
     "stylelint": "^16.21.1",
     "stylelint-config-standard-scss": "^15.0.0"
   },
+  "engines": {
+    "node": ">=22.15.0"
+  },
   "release-it": {
     "npm": {
       "publish": false
@@ -56,8 +59,5 @@
     "hooks": {
       "after:bump": "npx auto-changelog -p"
     }
-  },
-  "engines": {
-    "node": ">=22.15.0"
   }
 }
