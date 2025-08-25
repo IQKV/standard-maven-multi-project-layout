@@ -124,21 +124,25 @@ This project is licensed under the Apache License. See the [LICENSE](LICENSE) fi
 ## GitHub Project Tooling, Scripts & Workflow Checks
 
 ### 🛠️ **Build & Package Management**
+
 - **Java**: OpenJDK 21 LTS
 - **Maven**: Multi-module project with Maven wrapper (`mvnw`)
 - **Node.js**: LTS version (≥22.15.0) with **pnpm** package manager
 - **Docker**: Container support with Docker Compose
 
 ### 📦 **Development Dependencies**
+
 #### Code Quality & Formatting
+
 - **Prettier**: Code formatting (v3.6.2)
-    - Java plugin (v2.7.4)
-    - Package.json plugin (v2.5.19)
+  - Java plugin (v2.7.4)
+  - Package.json plugin (v2.5.19)
 - **Stylelint**: CSS/SCSS linting (v16.23.1)
 - **ESLint**: JavaScript linting
 - **EditorConfig**: Consistent coding styles
 
 #### Git Workflow & Versioning
+
 - **Husky**: Git hooks management (v9.1.7)
 - **lint-staged**: Run linters on staged files (v16.1.5)
 - **Commitlint**: Conventional commit message validation
@@ -147,6 +151,7 @@ This project is licensed under the Apache License. See the [LICENSE](LICENSE) fi
 - **Conventional Changelog**: Automated changelog generation
 
 ### 🔄 **Available Scripts**
+
 ```shell script
 # Code Quality
 npm run lint                # Run stylelint
@@ -165,14 +170,15 @@ mvn clean verify -P use-testcontainers  # Run integration tests
 mvn spring-boot:run        # Start application
 ```
 
-
 ### ⚙️ **GitHub Workflows**
+
 - **Build Node.js Project**: Automated CI/CD pipeline
 - **Check PR Title**: Validates pull request titles
 - **Check Commit Message**: Validates conventional commits
 - **Use Template**: Repository template setup
 
 ### 🔍 **Quality Gates**
+
 - **Code Coverage**: Minimum 80% required
 - **Pre-commit Hooks**: Automatic linting and formatting
 - **Conventional Commits**: Enforced commit message format
@@ -180,6 +186,7 @@ mvn spring-boot:run        # Start application
 - **Test Pyramid**: Unit tests + Integration tests (Testcontainers)
 
 ### 📋 **Project Structure Features**
+
 - **7 Issue Templates**: Standardized issue reporting
 - **20 Issue Labels**: Organized issue management
 - **Community Files**: Code of conduct, contributing guide, security policy
