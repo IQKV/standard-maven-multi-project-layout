@@ -99,13 +99,13 @@ Conventional changelog located [here](CHANGELOG.md).
 
 ## 🙏 Community & Contributions
 
-Please, follow [Contributing](.github/CONTRIBUTING.md) page.
+Please follow [Contributing](.github/CONTRIBUTING.md) page.
 
 <a name="codeofconduct"></a>
 
 ## 📙 Code of Conduct
 
-Please, follow [Code of Conduct](.github/CODE_OF_CONDUCT.md) page.
+Please follow [Code of Conduct](.github/CODE_OF_CONDUCT.md) page.
 
 <a name="troubleshooting"></a>
 
@@ -118,3 +118,69 @@ Please, follow [Code of Conduct](.github/CODE_OF_CONDUCT.md) page.
 ## 📑 License
 
 This project is licensed under the Apache License. See the [LICENSE](LICENSE) file for more details.
+
+---
+
+## GitHub Project Tooling, Scripts & Workflow Checks
+
+### 🛠️ **Build & Package Management**
+- **Java**: OpenJDK 21 LTS
+- **Maven**: Multi-module project with Maven wrapper (`mvnw`)
+- **Node.js**: LTS version (≥22.15.0) with **pnpm** package manager
+- **Docker**: Container support with Docker Compose
+
+### 📦 **Development Dependencies**
+#### Code Quality & Formatting
+- **Prettier**: Code formatting (v3.6.2)
+    - Java plugin (v2.7.4)
+    - Package.json plugin (v2.5.19)
+- **Stylelint**: CSS/SCSS linting (v16.23.1)
+- **ESLint**: JavaScript linting
+- **EditorConfig**: Consistent coding styles
+
+#### Git Workflow & Versioning
+- **Husky**: Git hooks management (v9.1.7)
+- **lint-staged**: Run linters on staged files (v16.1.5)
+- **Commitlint**: Conventional commit message validation
+- **Commitizen**: Interactive commit message creation
+- **release-it**: Automated versioning and releases (v19.0.4)
+- **Conventional Changelog**: Automated changelog generation
+
+### 🔄 **Available Scripts**
+```shell script
+# Code Quality
+npm run lint                # Run stylelint
+npm run lint:stylelint      # Run CSS/SCSS linting
+npm run prettier:check      # Check code formatting
+npm run prettier:write      # Format code
+
+# Project Management
+npm run node_modules:clear  # Clean node modules
+npm run release            # Create automated release
+npm run prepare            # Set up husky hooks
+
+# Maven Commands
+mvn clean test             # Run unit tests
+mvn clean verify -P use-testcontainers  # Run integration tests
+mvn spring-boot:run        # Start application
+```
+
+
+### ⚙️ **GitHub Workflows**
+- **Build Node.js Project**: Automated CI/CD pipeline
+- **Check PR Title**: Validates pull request titles
+- **Check Commit Message**: Validates conventional commits
+- **Use Template**: Repository template setup
+
+### 🔍 **Quality Gates**
+- **Code Coverage**: Minimum 80% required
+- **Pre-commit Hooks**: Automatic linting and formatting
+- **Conventional Commits**: Enforced commit message format
+- **Dependabot**: Automated dependency updates
+- **Test Pyramid**: Unit tests + Integration tests (Testcontainers)
+
+### 📋 **Project Structure Features**
+- **7 Issue Templates**: Standardized issue reporting
+- **20 Issue Labels**: Organized issue management
+- **Community Files**: Code of conduct, contributing guide, security policy
+- **Dev Container**: Consistent development environment
