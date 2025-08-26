@@ -33,7 +33,7 @@ Provided structure shows you how to create a multi-module project with Spring Bo
 
 ### 🔺 Local development
 
-```bash
+```shell script
 # Clone the repository
 git clone https://github.com/dimdnk/standard-maven-multi-project-layout.git multi-module-project
 
@@ -66,7 +66,7 @@ Unit tests are the base of the pyramid. They should make up the biggest part of 
 
 To run JUnit tests, use:
 
-```bash
+```shell script
 mvn clean test
 ```
 
@@ -75,7 +75,7 @@ Application Service's REST API, Repositories, or calling third-party services ar
 
 Run this to enable integration tests, powered by testcontainers:
 
-```bash
+```shell script
 mvn clean verify -P use-testcontainers
 ```
 
@@ -121,7 +121,7 @@ This project is licensed under the Apache License. See the [LICENSE](LICENSE) fi
 
 ---
 
-## GitHub Project Tooling, Scripts & Workflow Checks
+## _GitHub Project Tooling Overview_
 
 ### 🛠️ **Build & Package Management**
 
