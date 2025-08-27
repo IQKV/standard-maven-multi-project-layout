@@ -154,15 +154,15 @@ This project is licensed under the Apache License. See the [LICENSE](LICENSE) fi
 
 ```shell script
 # Code Quality
-npm run lint                # Run stylelint
-npm run lint:stylelint      # Run CSS/SCSS linting
-npm run prettier:check      # Check code formatting
-npm run prettier:write      # Format code
+pnpm lint                # Run stylelint
+pnpm lint:stylelint      # Run CSS/SCSS linting
+pnpm prettier:check      # Check code formatting
+pnpm prettier:write      # Format code
 
 # Project Management
-npm run node_modules:clear  # Clean node modules
-npm run release            # Create automated release
-npm run prepare            # Set up husky hooks
+pnpm node_modules:clear  # Clean node modules
+pnpm release            # Create automated release
+pnpm prepare            # Set up husky hooks
 
 # Maven Commands
 mvn clean test             # Run unit tests
