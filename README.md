@@ -134,12 +134,20 @@ This project is licensed under the Apache License. See the [LICENSE](LICENSE) fi
 
 #### Code Quality & Formatting
 
-- **Prettier**: Code formatting (v3.6.2)
-  - Java plugin (v2.7.4)
-  - Package.json plugin (v2.5.19)
-- **Stylelint**: CSS/SCSS linting (v16.23.1)
+- **Prettier**: Code formatting
+  - Java plugin
+  - Package.json plugin
+- **Stylelint**: CSS/SCSS linting
 - **ESLint**: JavaScript linting
 - **EditorConfig**: Consistent coding styles
+- **Cursor Rules**: Predefined code quality rules for Java development covering:
+  - Maven best practices
+  - Object-oriented design
+  - Spring framework
+  - Security guidelines
+  - Performance optimization
+  - Functional programming
+  - Testing standards
 
 #### Git Workflow & Versioning
 
