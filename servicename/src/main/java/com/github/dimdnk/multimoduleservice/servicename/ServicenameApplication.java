@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 IQKV Foundation Team.
+ * Copyright 2025 KnowHowToDev Team.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,19 @@
  * limitations under the License.
  */
 
-package com.iqkv.multimoduleservice.servicename;
+package com.github.dimdnk.multimoduleservice.servicename;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import java.util.TimeZone;
 
-@SpringBootTest
-class ServicenameApplicationTests {
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-  @Test
-  void contextLoads() {
+@SpringBootApplication
+public class ServicenameApplication {
+
+  public static void main(String[] args) {
+    TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+    SpringApplication.run(ServicenameApplication.class, args);
   }
 
 }

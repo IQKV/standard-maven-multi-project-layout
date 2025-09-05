@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 IQKV Foundation Team.
+ * Copyright 2025 KnowHowToDev Team.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +14,8 @@
  * limitations under the License.
  */
 
-package com.iqkv.multimoduleservice.servicename;
+/**
+ * Application root.
+ */
 
-import java.util.TimeZone;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
-public class ServicenameApplication {
-
-  public static void main(String[] args) {
-    TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-    SpringApplication.run(ServicenameApplication.class, args);
-  }
-
-}
+package com.github.dimdnk.multimoduleservice.servicename;
