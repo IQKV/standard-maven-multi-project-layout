@@ -20,6 +20,39 @@ Provided structure shows you how to create a multi-module project with Spring Bo
 >
 > Java 21, Maven, Spring Boot
 
+<a name="customization"></a>
+
+## 🔧 GitHub Template Customization
+
+Follow these steps to customize this template for your project:
+
+1. **Repository Setup**:
+   - Click the **[Use this template](https://github.com/dimdnk/standard-maven-multi-project-layout/generate)** button
+   - Name your repository and provide a description
+   - Choose public or private visibility
+
+2. **Project Renaming**:
+   - Update `groupId`, `artifactId`, and `name` in the root `pom.xml`
+   - Rename the `servicename` directory to match your service name
+   - Update module references in the root `pom.xml`
+
+3. **GitHub Configuration**:
+   - Edit `.github/CODEOWNERS` to set code ownership
+   - Update `.github/FUNDING.yml` with your sponsorship information
+   - Customize issue templates in `.github/ISSUE_TEMPLATE/` as needed
+   - Review and adjust GitHub Actions workflows in `.github/workflows/`
+
+4. **Documentation**:
+   - Update this README.md with your project details
+   - Review and customize documentation in the `docs/` directory
+   - Update LICENSE file if needed
+
+5. **Development Setup**:
+   - Customize Docker configuration in `compose.yaml`
+   - Adjust `.devcontainer` settings if using dev containers
+
+For more detailed customization instructions, see the [documentation](./docs/template/README.md).
+
 <a name="instructions"></a>
 
 ## 📒 Instructions
