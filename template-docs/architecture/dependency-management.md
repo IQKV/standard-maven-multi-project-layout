@@ -15,6 +15,7 @@ The project uses a parent POM structure for centralized dependency management:
 ```
 
 This parent POM provides:
+
 - Common dependency versions
 - Plugin configurations
 - Build profiles

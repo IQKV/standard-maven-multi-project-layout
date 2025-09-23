@@ -29,6 +29,7 @@ docker compose -f compose.yaml up -d
    - Update the `description` field
 
 2. Rename the `servicename` module to match your service name:
+
    ```bash
    mv servicename your-service-name
    ```
@@ -54,6 +55,7 @@ cd your-service-name
 ## 5. Access Your Application
 
 Once running, your application will be available at:
+
 - http://localhost:8080
 
 ## 6. Next Steps

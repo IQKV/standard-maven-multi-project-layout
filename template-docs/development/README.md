@@ -5,6 +5,7 @@ This section documents the recommended development workflow for this Spring Boot
 ## Overview
 
 This template is designed to support a modern development workflow with:
+
 - Local development environment setup
 - Testing strategies
 - CI/CD integration

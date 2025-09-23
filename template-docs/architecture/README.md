@@ -35,6 +35,7 @@ module-name/
 ```
 
 For more details, see:
+
 - [Module Structure](./module-structure.md)
 - [Dependency Management](./dependency-management.md)
 - [Spring Modulith](./spring-modulith.md)

@@ -37,6 +37,7 @@ The following issue templates are available in the `.github/ISSUE_TEMPLATE` dire
 ## Configuration
 
 The issue templates are configured in `.github/ISSUE_TEMPLATE/config.yml`, which defines:
+
 - Template selection screen
 - External links for additional resources
 - Default labels for each template type
