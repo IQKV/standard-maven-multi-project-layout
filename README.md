@@ -51,7 +51,7 @@ Follow these steps to customize this template for your project:
    - Customize Docker configuration in `compose.yaml`
    - Adjust `.devcontainer` settings if using dev containers
 
-For more detailed customization instructions, see the [documentation](./docs/template/README.md).
+For more detailed customization instructions, see the [documentation](./template-docs/template/README.md).
 
 <a name="instructions"></a>
 
