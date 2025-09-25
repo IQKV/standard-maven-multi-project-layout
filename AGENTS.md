@@ -7,6 +7,7 @@ This document provides comprehensive guidelines for repository management, devel
 ## 🏛️ Repository Structure & Organization
 
 ### Multi-Module Maven Layout
+
 ```
 multimoduleservice/
 ├── .github/                   # GitHub workflows, templates, and policies
@@ -28,6 +29,7 @@ multimoduleservice/
 ```
 
 ### Module Dependencies
+
 ```mxml
 <!-- Parent POM manages versions -->
 <parent>
@@ -46,8 +48,10 @@ api → application → domain ← infrastructure
 ### Agent Roles & Responsibilities
 
 #### 1. Java Pro Agent (`java-pro.md`)
+
 **Purpose**: Expert Java 21+ development with Spring Boot 3.x
 **Responsibilities**:
+
 - Code generation and refactoring
 - Performance optimization
 - Modern Java feature adoption
@@ -55,6 +59,7 @@ api → application → domain ← infrastructure
 - Testing strategy development
 
 **Activation Triggers**:
+
 - Java code modifications
 - Performance issues
 - Architecture reviews
@@ -62,8 +67,10 @@ api → application → domain ← infrastructure
 - Spring Boot upgrades
 
 #### 2. Repository Manager Agent
+
 **Purpose**: Repository maintenance and workflow management
 **Responsibilities**:
+
 - Branch management strategies
 - PR review guidelines
 - Release management
@@ -71,8 +78,10 @@ api → application → domain ← infrastructure
 - Dependency management
 
 #### 3. Security Agent
+
 **Purpose**: Security best practices and vulnerability management
 **Responsibilities**:
+
 - Security code reviews
 - Vulnerability scanning
 - Authentication/authorization implementation
@@ -80,8 +89,10 @@ api → application → domain ← infrastructure
 - Compliance validation
 
 #### 4. DevOps Agent
+
 **Purpose**: CI/CD pipeline and deployment automation
 **Responsibilities**:
+
 - Pipeline configuration
 - Container orchestration
 - Environment management
@@ -91,12 +102,13 @@ api → application → domain ← infrastructure
 ### Agent Interaction Protocols
 
 #### Code Review Process
+
 ```yaml
 agent_review_workflow:
   triggers:
     - pull_request_opened
     - pull_request_synchronized
-  
+
   review_checklist:
     - code_quality: "Java Pro Agent validates code standards"
     - security: "Security Agent checks for vulnerabilities"
@@ -106,13 +118,14 @@ agent_review_workflow:
 ```
 
 #### Automated Tasks
+
 ```yaml
 automated_tasks:
   daily:
     - dependency_updates: "Check for security updates"
     - code_quality_metrics: "Generate quality reports"
     - performance_benchmarks: "Run performance tests"
-  
+
   weekly:
     - architecture_review: "Assess architectural debt"
     - security_scan: "Comprehensive security analysis"
@@ -122,6 +135,7 @@ automated_tasks:
 ## 📋 Development Standards
 
 ### Branch Strategy (GitFlow)
+
 ```
 main (production)
 ├── develop (integration)
@@ -134,6 +148,7 @@ main (production)
 ```
 
 ### Branch Naming Conventions
+
 ```bash
 # Feature branches
 feature/TICKET-123-short-description
@@ -157,6 +172,7 @@ support/v1.1.x
 ```
 
 ### Commit Message Format
+
 ```
 type(scope): subject
 
@@ -189,34 +205,32 @@ Closes #123
 ### Code Quality Standards
 
 #### Java Code Standards
+
 ```java
 // Use modern Java features
-public record UserCreateRequest(
-    @NotBlank @Size(max = 100) String username,
-    @Email String email,
-    @Valid AddressDto address
-) {}
+public record UserCreateRequest(@NotBlank @Size(max = 100) String username, @Email String email, @Valid AddressDto address) {}
 
 // Prefer immutable objects
 @Value
 @Builder
 public class User {
-    String id;
-    String username;
-    String email;
-    Instant createdAt;
-    List<String> roles;
+
+  String id;
+  String username;
+  String email;
+  Instant createdAt;
+  List<String> roles;
 }
 
 // Use descriptive method names
 public Optional<User> findActiveUserByEmail(String email) {
-    return userRepository.findByEmailAndActiveTrue(email);
+  return userRepository.findByEmailAndActiveTrue(email);
 }
 
 // Document complex business logic
 /**
  * Calculates user subscription cost based on plan and usage.
- * 
+ *
  * @param user the user requesting calculation
  * @param plan the subscription plan
  * @param usageMetrics current usage data
@@ -224,54 +238,50 @@ public Optional<User> findActiveUserByEmail(String email) {
  * @throws InvalidPlanException if plan is not valid for user
  */
 public Money calculateSubscriptionCost(User user, Plan plan, UsageMetrics usageMetrics) {
-    // Implementation
+  // Implementation
 }
 ```
 
 #### Testing Standards
+
 ```java
 // Unit Tests - AAA Pattern
 @Test
 @DisplayName("Should calculate subscription cost for premium plan")
 void shouldCalculateSubscriptionCostForPremiumPlan() {
-    // Arrange
-    var user = createTestUser();
-    var plan = Plan.PREMIUM;
-    var usageMetrics = UsageMetrics.builder()
-        .apiCalls(1000)
-        .storageGB(50)
-        .build();
-    
-    // Act
-    var cost = subscriptionService.calculateSubscriptionCost(user, plan, usageMetrics);
-    
-    // Assert
-    assertThat(cost.getAmount()).isEqualByComparingTo("99.99");
-    assertThat(cost.getCurrency()).isEqualTo("USD");
+  // Arrange
+  var user = createTestUser();
+  var plan = Plan.PREMIUM;
+  var usageMetrics = UsageMetrics.builder().apiCalls(1000).storageGB(50).build();
+
+  // Act
+  var cost = subscriptionService.calculateSubscriptionCost(user, plan, usageMetrics);
+
+  // Assert
+  assertThat(cost.getAmount()).isEqualByComparingTo("99.99");
+  assertThat(cost.getCurrency()).isEqualTo("USD");
 }
 
 // Integration Tests with Testcontainers
 @SpringBootTest
 @Testcontainers
 class UserServiceIntegrationTest {
-    
-    @Container
-    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15");
-    
-    @Test
-    void shouldCreateUserWithValidData() {
-        // Test implementation
-    }
+
+  @Container
+  static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15");
+
+  @Test
+  void shouldCreateUserWithValidData() {
+    // Test implementation
+  }
 }
 
 // Architecture Tests
 @AnalyzeClasses(packages = "com.github.dimdnk")
 class ArchitectureTest {
-    
-    @ArchTest
-    static final ArchRule servicesOnlyAccessedByControllers =
-        classes().that().resideInAPackage("..service..")
-            .should().onlyBeAccessed().byAnyPackage("..controller..", "..service..");
+
+  @ArchTest
+  static final ArchRule servicesOnlyAccessedByControllers = classes().that().resideInAPackage("..service..").should().onlyBeAccessed().byAnyPackage("..controller..", "..service..");
 }
 ```
 
@@ -280,11 +290,14 @@ class ArchitectureTest {
 ### Pull Request Guidelines
 
 #### PR Template
+
 ```markdown
 ## Description
+
 Brief description of changes and motivation.
 
 ## Type of Change
+
 - [ ] Bug fix (non-breaking change that fixes an issue)
 - [ ] New feature (non-breaking change that adds functionality)
 - [ ] Breaking change (fix or feature that causes existing functionality to change)
@@ -293,12 +306,14 @@ Brief description of changes and motivation.
 - [ ] Refactoring
 
 ## How Has This Been Tested?
+
 - [ ] Unit tests added/updated
 - [ ] Integration tests added/updated
 - [ ] Manual testing performed
 - [ ] Performance testing completed
 
 ## Checklist
+
 - [ ] Code follows project style guidelines
 - [ ] Self-review completed
 - [ ] Code is documented (complex logic)
@@ -313,6 +328,7 @@ Brief description of changes and motivation.
 ```
 
 #### Review Criteria
+
 ```yaml
 review_requirements:
   mandatory_reviews: 2
@@ -320,7 +336,7 @@ review_requirements:
     - code_owner: "Module maintainer approval"
     - security_review: "For security-related changes"
     - architecture_review: "For significant architectural changes"
-  
+
   blocking_conditions:
     - failing_tests: "All tests must pass"
     - merge_conflicts: "Must be up to date with target branch"
@@ -332,6 +348,7 @@ review_requirements:
 ### Release Management
 
 #### Versioning Strategy (Semantic Versioning)
+
 ```
 MAJOR.MINOR.PATCH[-PRERELEASE][+BUILD]
 
@@ -345,6 +362,7 @@ Examples:
 ```
 
 #### Release Process
+
 ```yaml
 release_workflow:
   preparation:
@@ -353,14 +371,14 @@ release_workflow:
     - run_full_test_suite: "All tests must pass"
     - generate_changelog: "Document all changes"
     - security_scan: "Vulnerability assessment"
-  
+
   release:
     - merge_to_main: "Create release commit"
     - create_git_tag: "Tag with version number"
     - build_artifacts: "Create deployable artifacts"
     - deploy_to_staging: "Staging environment validation"
     - deploy_to_production: "Production deployment"
-  
+
   post_release:
     - merge_back_to_develop: "Include any release fixes"
     - update_documentation: "Release notes and docs"
@@ -370,6 +388,7 @@ release_workflow:
 ## 🔒 Security Guidelines
 
 ### Security Checklist
+
 ```yaml
 security_requirements:
   code_review:
@@ -378,12 +397,12 @@ security_requirements:
     - authentication: "Proper authentication checks"
     - authorization: "Access control validation"
     - data_protection: "Sensitive data handling"
-  
+
   dependencies:
     - vulnerability_scanning: "Regular dependency scans"
     - license_compliance: "License compatibility check"
     - update_policy: "Security update procedures"
-  
+
   infrastructure:
     - secrets_management: "No hardcoded secrets"
     - network_security: "Secure communication protocols"
@@ -391,6 +410,7 @@ security_requirements:
 ```
 
 ### Secrets Management
+
 ```bash
 # Environment variables for secrets
 export DATABASE_PASSWORD="${DB_PASSWORD}"
@@ -405,24 +425,25 @@ export API_KEY="${EXTERNAL_API_KEY}"
 ## 📊 Quality Assurance
 
 ### Code Quality Metrics
+
 ```yaml
 quality_gates:
   coverage:
     line_coverage: ">= 90%"
     branch_coverage: ">= 85%"
     mutation_coverage: ">= 80%"
-  
+
   complexity:
     cyclomatic_complexity: "<= 10"
     cognitive_complexity: "<= 15"
     class_size: "<= 500 lines"
     method_length: "<= 50 lines"
-  
+
   maintainability:
     duplication: "<= 3%"
     technical_debt_ratio: "<= 5%"
     maintainability_rating: "A"
-  
+
   reliability:
     bug_density: "<= 0.1%"
     vulnerability_density: "0"
@@ -430,6 +451,7 @@ quality_gates:
 ```
 
 ### Automated Quality Checks
+
 ```xml
 <!-- Maven configuration for quality gates -->
 <plugin>
@@ -465,14 +487,15 @@ quality_gates:
 ## 🚀 CI/CD Pipeline
 
 ### GitHub Actions Workflow
+
 ```yaml
 name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main, develop ]
+    branches: [main, develop]
 
 jobs:
   test:
@@ -482,24 +505,24 @@ jobs:
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
-          distribution: 'temurin'
-      
+          java-version: "21"
+          distribution: "temurin"
+
       - name: Cache Maven dependencies
         uses: actions/cache@v3
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-      
+
       - name: Run tests
         run: ./mvnw clean verify
-      
+
       - name: Upload coverage reports
         uses: codecov/codecov-action@v3
-      
+
       - name: Security scan
         run: ./mvnw org.owasp:dependency-check-maven:check
-  
+
   build:
     needs: test
     runs-on: ubuntu-latest
@@ -507,10 +530,10 @@ jobs:
     steps:
       - name: Build Docker image
         run: docker build -t app:${{ github.sha }} .
-      
+
       - name: Push to registry
         run: docker push app:${{ github.sha }}
-  
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -522,6 +545,7 @@ jobs:
 ```
 
 ### Environment Management
+
 ```yaml
 environments:
   local:
@@ -529,19 +553,19 @@ environments:
     database: "H2 in-memory"
     external_services: "Mocked"
     logging: "DEBUG level"
-  
+
   development:
     description: "Shared development environment"
     database: "PostgreSQL (dev instance)"
     external_services: "Development APIs"
     logging: "INFO level"
-  
+
   staging:
     description: "Production-like testing"
     database: "PostgreSQL (staging)"
     external_services: "Production APIs (test mode)"
     logging: "WARN level"
-  
+
   production:
     description: "Live production environment"
     database: "PostgreSQL (production cluster)"
@@ -552,69 +576,79 @@ environments:
 ## 📚 Documentation Standards
 
 ### README Structure
+
 ```markdown
 # Project Title
 
 ## Overview
+
 Brief description of the project and its purpose.
 
 ## Quick Start
+
 Instructions to get the project running locally.
 
 ## Architecture
+
 High-level architecture overview and design decisions.
 
 ## Development
+
 Development setup, coding standards, and contribution guidelines.
 
 ## Deployment
+
 Deployment procedures and environment configurations.
 
 ## API Documentation
+
 Link to API documentation (Swagger/OpenAPI).
 
 ## Monitoring
+
 Observability and monitoring setup.
 
 ## Troubleshooting
+
 Common issues and solutions.
 
 ## Contributing
+
 How to contribute to the project.
 
 ## License
+
 License information.
 ```
 
 ### API Documentation
+
 ```java
 @RestController
 @RequestMapping("/api/v1/users")
 @Tag(name = "User Management", description = "User CRUD operations")
 public class UserController {
-    
-    @GetMapping("/{id}")
-    @Operation(
-        summary = "Get user by ID",
-        description = "Retrieves a user by their unique identifier",
-        responses = {
-            @ApiResponse(responseCode = "200", description = "User found"),
-            @ApiResponse(responseCode = "404", description = "User not found"),
-            @ApiResponse(responseCode = "403", description = "Access denied")
-        }
-    )
-    public ResponseEntity<UserResponse> getUser(
-        @Parameter(description = "User ID", example = "123")
-        @PathVariable Long id
-    ) {
-        // Implementation
+
+  @GetMapping("/{id}")
+  @Operation(
+    summary = "Get user by ID",
+    description = "Retrieves a user by their unique identifier",
+    responses = {
+      @ApiResponse(responseCode = "200", description = "User found"),
+      @ApiResponse(responseCode = "404", description = "User not found"),
+      @ApiResponse(responseCode = "403", description = "Access denied"),
     }
+  )
+  public ResponseEntity<UserResponse> getUser(@Parameter(description = "User ID", example = "123") @PathVariable Long id) {
+    // Implementation
+  }
 }
 ```
 
 ## 🎯 Agent Decision Framework
 
 ### When to Intervene
+
 ```yaml
 intervention_triggers:
   high_priority:
@@ -622,13 +656,13 @@ intervention_triggers:
     - build_failure: "Blocks development progress"
     - production_issue: "Service disruption"
     - data_corruption: "Risk of data loss"
-  
+
   medium_priority:
     - code_quality_degradation: "Technical debt accumulation"
     - performance_regression: "User experience impact"
     - test_failure: "Reliability concerns"
     - dependency_update: "Security or feature updates"
-  
+
   low_priority:
     - documentation_gap: "Improved maintainability"
     - code_optimization: "Performance improvement"
@@ -636,18 +670,19 @@ intervention_triggers:
 ```
 
 ### Decision Matrix
+
 ```yaml
 decision_criteria:
   impact_assessment:
     - user_impact: "How many users affected?"
     - business_impact: "Revenue or operation impact?"
     - technical_impact: "System stability and performance?"
-  
+
   effort_estimation:
     - development_effort: "Time required for implementation"
     - testing_effort: "Validation and quality assurance"
     - deployment_effort: "Release and rollout complexity"
-  
+
   risk_evaluation:
     - implementation_risk: "Likelihood of issues during development"
     - deployment_risk: "Risk of production problems"

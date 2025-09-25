@@ -22,7 +22,6 @@ jobs:
           mv README.md README.boilerplate.md
           mv README.template.md README.md
 
-
       - name: "Update commit"
         uses: "stefanzweifel/git-auto-commit-action@v4"
         with:
