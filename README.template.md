@@ -99,5 +99,3 @@ Write about setting up the working environment for your project.
 - **GitHub Integration**: Issue templates, labels, and workflows
 - **Quality Tools**: Code formatting, linting, and testing setup
 - **Documentation**: Community guidelines and contribution process
-
-
