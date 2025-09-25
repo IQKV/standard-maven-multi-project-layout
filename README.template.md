@@ -86,24 +86,18 @@ Write about setting up the working environment for your project.
 
 ## 📚 Template Usage
 
-- [Documentation Index](template-docs/index.md)
-- [Getting Started](template-docs/getting-started.md)
-- [Project Overview](template-docs/project-overview.md)
-- [FSD Architecture](template-docs/fsd-architecture.md)
-- [Public API Enforcement](template-docs/public-api-enforcement.md)
-- [Development Guide](template-docs/development-guide.md)
-- [Validation Guide](template-docs/validation-guide.md)
-- [Template Features](template-docs/template-features.md)
-- [Zustand Integration](template-docs/zustand-integration.md)
-- [Deployment](template-docs/deployment.md)
-- [Changelog](template-docs/changelog.md)
+- [Getting Started](template-docs/getting-started/README.md)
+- [Project Architecture](template-docs/architecture/README.md)
+- [Development Workflow](template-docs/development/README.md)
+- [GitHub Template Features](template-docs/template/README.md)
+- [API Documentation](template-docs/api/README.md)
+- [Customization Guide](template-docs/customization/README.md)
 
 ## 🧩 Boilerplate Architecture
 
-- FSD boundaries with public API barrels
-- Typed forms, notifications, and devtools
-- Vite, ESLint/Prettier, Vitest/Playwright, Storybook, Lingui
-- Processes: Auth session state via `useAuthSession` (alias of `useAuthIntegration`) and `useAuthEffects`; TanStack Query client integration
-- Features: React Hook Form + Zod for forms; feature state via Zustand form store (`useFormStore`) and feature-level validation
-- Entities: Pure API methods (e.g., `authApi`) and mutations (`useAuthLogin`, `useAuthRegister`, etc.)
-- Shared: UI components (ThemeToggle, NotificationBadge), utilities, Query Client, notifications
+- **Project Structure**: Standard Maven multi-module layout
+- **GitHub Integration**: Issue templates, labels, and workflows
+- **Quality Tools**: Code formatting, linting, and testing setup
+- **Documentation**: Community guidelines and contribution process
+
+
