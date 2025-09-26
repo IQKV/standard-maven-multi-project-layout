@@ -27,22 +27,26 @@ Provided structure shows you how to create a multi-module project with Spring Bo
 Follow these steps to customize this template for your project:
 
 1. **Repository Setup**:
+
    - Click the **[Use this template](https://github.com/IQKV/standard-maven-multi-project-layout/generate)** button
    - Name your repository and provide a description
    - Choose public or private visibility
 
 2. **Project Renaming**:
+
    - Update `groupId`, `artifactId`, and `name` in the root `pom.xml`
    - Rename the `servicename` directory to match your service name
    - Update module references in the root `pom.xml`
 
 3. **GitHub Configuration**:
+
    - Edit `.github/CODEOWNERS` to set code ownership
    - Update `.github/FUNDING.yml` with your sponsorship information
    - Customize issue templates in `.github/ISSUE_TEMPLATE/` as needed
    - Review and adjust GitHub Actions workflows in `.github/workflows/`
 
 4. **Documentation**:
+
    - Update this README.md with your project details
    - Review and customize documentation in the `docs/` directory
    - Update LICENSE file if needed
