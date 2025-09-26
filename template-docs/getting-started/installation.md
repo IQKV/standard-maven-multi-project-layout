@@ -6,7 +6,7 @@ This guide will walk you through the process of setting up the Spring Boot Multi
 
 ```bash
 # Clone the repository
-git clone https://github.com/dimdnk/standard-maven-multi-project-layout.git my-project
+git clone https://github.com/IQKV/standard-maven-multi-project-layout.git my-project
 
 # Navigate to project directory
 cd my-project

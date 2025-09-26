@@ -6,7 +6,7 @@
 > - Manage issues with **20 issue labels**.
 > - Make _community healthier_ with all the guides like code of conduct, contributing, support, security...
 > - Learn more with the [official GitHub guide on creating repositories from a template](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
-> - To start using it, click **[Use this template](https://github.com/dimdnk/standard-maven-multi-project-layout/generate)** to create your new repository.
+> - To start using it, click **[Use this template](https://github.com/IQKV/standard-maven-multi-project-layout/generate)** to create your new repository.
 
 ---
 
@@ -27,7 +27,7 @@ Provided structure shows you how to create a multi-module project with Spring Bo
 Follow these steps to customize this template for your project:
 
 1. **Repository Setup**:
-   - Click the **[Use this template](https://github.com/dimdnk/standard-maven-multi-project-layout/generate)** button
+   - Click the **[Use this template](https://github.com/IQKV/standard-maven-multi-project-layout/generate)** button
    - Name your repository and provide a description
    - Choose public or private visibility
 
@@ -68,7 +68,7 @@ For more detailed customization instructions, see the [documentation](./template
 
 ```shell script
 # Clone the repository
-git clone https://github.com/dimdnk/standard-maven-multi-project-layout.git multi-module-project
+git clone https://github.com/IQKV/standard-maven-multi-project-layout.git multi-module-project
 
 # Navigate to project directory
 cd multi-module-project
