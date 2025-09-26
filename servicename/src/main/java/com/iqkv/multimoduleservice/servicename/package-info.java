@@ -14,21 +14,8 @@
  * limitations under the License.
  */
 
-package com.github.dimdnk.multimoduleservice.servicename;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-import com.github.dimdnk.boot.mvc.rest.JacksonConfiguration;
-import org.springframework.boot.test.context.SpringBootTest;
-
 /**
- * Base composite annotation for integration tests.
+ * Application root.
  */
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@SpringBootTest(classes = {ServicenameApplication.class, JacksonConfiguration.class})
-public @interface IntegrationTest {
-}
+
+package com.iqkv.multimoduleservice.servicename;

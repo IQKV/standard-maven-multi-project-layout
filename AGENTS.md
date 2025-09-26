@@ -33,9 +33,9 @@ multimoduleservice/
 ```mxml
 <!-- Parent POM manages versions -->
 <parent>
-    <groupId>com.github.dimdnk</groupId>
+    <groupId>com.iqkv</groupId>
     <artifactId>boot-parent-pom</artifactId>
-    <version>25.0.0-SNAPSHOT</version>
+    <version>0.25.0-SNAPSHOT</version>
 </parent>
 
 <!-- Module dependency hierarchy -->
@@ -49,7 +49,7 @@ api → application → domain ← infrastructure
 
 #### 1. Java Pro Agent (`java-pro.md`)
 
-**Purpose**: Expert Java 21+ development with Spring Boot 3.x
+**Purpose**: Expert Java 25+ development with Spring Boot 3.x
 **Responsibilities**:
 
 - Code generation and refactoring
@@ -277,7 +277,7 @@ class UserServiceIntegrationTest {
 }
 
 // Architecture Tests
-@AnalyzeClasses(packages = "com.github.dimdnk")
+@AnalyzeClasses(packages = "com.iqkv")
 class ArchitectureTest {
 
   @ArchTest

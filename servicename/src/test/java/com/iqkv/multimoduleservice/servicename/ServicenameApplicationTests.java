@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dimdnk.multimoduleservice.servicename;
+package com.iqkv.multimoduleservice.servicename;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -49,7 +49,7 @@ module-name/
 
 The Java package structure follows the standard Java package naming convention:
 
-- `com.github.dimdnk.modulename`: Base package for the module
+- `com.iqkv.modulename`: Base package for the module
 - `config`: Spring configuration classes
 - `controller`: REST API controllers
 - `domain`: Domain model classes

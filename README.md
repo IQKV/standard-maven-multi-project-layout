@@ -18,7 +18,7 @@ Provided structure shows you how to create a multi-module project with Spring Bo
 
 > ##### 🛠️ Technology stack
 >
-> Java 21, Maven, Spring Boot
+> Java 25, Maven, Spring Boot
 
 <a name="customization"></a>
 

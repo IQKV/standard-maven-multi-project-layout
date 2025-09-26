@@ -8,9 +8,9 @@ The project uses a parent POM structure for centralized dependency management:
 
 ```xml
 <parent>
-    <groupId>com.github.dimdnk</groupId>
+    <groupId>com.iqkv</groupId>
     <artifactId>boot-parent-pom</artifactId>
-    <version>25.0.0-SNAPSHOT</version>
+    <version>0.25.0-SNAPSHOT</version>
 </parent>
 ```
 
