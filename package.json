@@ -15,11 +15,13 @@
     "release": "release-it --ci"
   },
   "lint-staged": {
-    "*": [
-      "pnpm lint",
-      "pnpm prettier:check",
-      "sort-package-json"
-    ]
+      "*": [
+        "pnpm lint",
+        "pnpm prettier:check"
+      ],
+      "package.json": [
+        "sort-package-json"
+      ]
   },
   "config": {
     "commitizen": {
