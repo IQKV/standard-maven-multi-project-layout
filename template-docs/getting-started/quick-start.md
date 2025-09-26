@@ -10,7 +10,7 @@ Click the "Use this template" button on the GitHub repository to create your own
 
 ```bash
 # Clone your new repository
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/IQKV/your-repo-name.git
 
 # Navigate to the project directory
 cd your-repo-name

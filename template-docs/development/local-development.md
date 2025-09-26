@@ -7,7 +7,7 @@ This guide covers the local development workflow for this Spring Boot Multi-Modu
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/IQKV/your-repo-name.git
    cd your-repo-name
    ```
 
