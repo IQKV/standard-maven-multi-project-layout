@@ -7,7 +7,7 @@
   "author": "Dima Denisenko",
   "scripts": {
     "lint": "pnpm lint:stylelint",
-    "lint:stylelint": "stylelint \"**/*.css\" --cache",
+    "lint:stylelint": "stylelint \"**/*.css\" --aei",
     "node_modules:clear": "rm -rf node_modules",
     "prepare": "husky",
     "prettier:check": "prettier . --check --ignore-unknown",
@@ -45,6 +45,7 @@
     "stylelint": "^16.24.0",
     "stylelint-config-standard-scss": "^16.0.0"
   },
+  "packageManager": "pnpm@10.17.1",
   "engines": {
     "node": ">=22.15.0"
   }

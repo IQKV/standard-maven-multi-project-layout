@@ -25,7 +25,6 @@ docker compose -f compose.yaml up -d
 ## 3. Customize the Project
 
 1. Update the project information in the root `pom.xml`:
-
    - Change `groupId`, `artifactId`, and `name` to match your project
    - Update the `description` field
 
