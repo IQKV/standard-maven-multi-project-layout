@@ -92,7 +92,7 @@ Options:
 
 Options:
 
-- Java 17 (LTS - recommended for new projects)
+- Java 25 (LTS - recommended for new projects)
 - Java 25 (LTS - latest LTS version)
 - Java 24 (latest features)
 - Other (specify version)
