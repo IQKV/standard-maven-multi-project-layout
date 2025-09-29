@@ -91,7 +91,6 @@ Write about setting up the working environment for your project.
 - [Development Workflow](template-docs/development/README.md)
 - [GitHub Template Features](template-docs/template/README.md)
 - [API Documentation](template-docs/api/README.md)
-- [Customization Guide](template-docs/customization/README.md)
 
 ## 🧩 Boilerplate Architecture
 
