@@ -49,22 +49,59 @@ api → application → domain ← infrastructure
 
 #### 1. Java Pro Agent (`java-pro.md`)
 
-**Purpose**: Expert Java 25+ development with Spring Boot 3.x
+**Purpose**: Expert Java 25+ development with Spring Boot 3.x and modern JVM features
 **Responsibilities**:
 
-- Code generation and refactoring
-- Performance optimization
-- Modern Java feature adoption
-- Architecture pattern implementation
-- Testing strategy development
+- Modern Java feature implementation (virtual threads, pattern matching, records)
+- Spring Boot 3.x architecture and best practices
+- Performance optimization and JVM tuning
+- Code generation and refactoring with modern patterns
+- Testing strategy development and implementation
+- Cloud-native application development
 
 **Activation Triggers**:
 
-- Java code modifications
-- Performance issues
-- Architecture reviews
-- Testing implementation
-- Spring Boot upgrades
+- `*.java`, `pom.xml`, `application.yml`, `Dockerfile` file modifications
+- Performance optimization requests
+- Architecture reviews and modernization
+- Testing implementation and coverage improvement
+- Spring Boot upgrades and migration
+
+#### 2. Spring Security Expert (`spring-security-expert.md`)
+
+**Purpose**: Specialized Spring Security 6+ authentication and authorization expert
+**Responsibilities**:
+
+- OAuth2, OIDC, and JWT implementation
+- Method-level security and custom security expressions
+- Enterprise authentication integration (LDAP, SAML)
+- Security configuration and best practices
+- Audit logging and compliance requirements
+
+**Activation Triggers**:
+
+- `*Security*.java`, `*Auth*.java` file modifications
+- Security configuration changes
+- Authentication and authorization implementation
+- Security vulnerability assessments
+
+#### 3. Performance Optimizer (`performance-optimizer.md`)
+
+**Purpose**: JVM performance tuning and application optimization specialist
+**Responsibilities**:
+
+- Virtual thread implementation and optimization
+- JVM tuning (GC, memory management, native compilation)
+- Caching strategies and database optimization
+- Performance monitoring and profiling
+- Load testing and benchmarking
+
+**Activation Triggers**:
+
+- Performance-related keywords (slow, memory, cpu, cache)
+- Performance testing and optimization requests
+- JVM tuning and configuration
+- Monitoring and observability setup
 
 #### 2. Repository Manager Agent
 
@@ -122,14 +159,21 @@ agent_review_workflow:
 ```yaml
 automated_tasks:
   daily:
-    - dependency_updates: "Check for security updates"
-    - code_quality_metrics: "Generate quality reports"
-    - performance_benchmarks: "Run performance tests"
+    - dependency_updates: "Check for security updates and CVE scanning"
+    - code_quality_metrics: "Generate quality reports with SonarQube"
+    - performance_benchmarks: "Run JMH benchmarks and load tests"
+    - virtual_thread_analysis: "Monitor virtual thread performance"
 
   weekly:
-    - architecture_review: "Assess architectural debt"
-    - security_scan: "Comprehensive security analysis"
-    - documentation_audit: "Update documentation gaps"
+    - architecture_review: "Assess architectural debt and modernization opportunities"
+    - security_scan: "Comprehensive security analysis with OWASP tools"
+    - documentation_audit: "Update documentation gaps and API docs"
+    - jvm_optimization: "Analyze GC logs and memory usage patterns"
+
+  monthly:
+    - spring_boot_updates: "Evaluate Spring Boot version upgrades"
+    - java_feature_adoption: "Assess new Java feature adoption opportunities"
+    - performance_baseline: "Establish performance baselines and trends"
 ```
 
 ## 📋 Development Standards
