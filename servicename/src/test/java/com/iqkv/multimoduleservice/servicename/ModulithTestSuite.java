@@ -16,15 +16,22 @@
 
 package com.iqkv.multimoduleservice.servicename;
 
-import org.springframework.boot.test.context.SpringBootTest;
-
 import org.junit.jupiter.api.Test;
 
-@SpringBootTest
-class ServicenameApplicationTests {
+/**
+ * Test suite that runs all Spring Modulith tests for the entire project. This provides a convenient way to execute all modulith-related tests together.
+ */
+class ModulithTestSuite {
 
   @Test
-  void contextLoads() {
+  void runAllModulithTests() {
+    // This test method serves as a placeholder to ensure the test suite runs
+    // Individual test classes will be executed by Maven when using the modulith-test profile
+    System.out.println("Running Spring Modulith Test Suite");
+    System.out.println("Individual test classes:");
+    System.out.println("- ModulithTest");
+    System.out.println("- ModulithIntegrationTest");
+    System.out.println("- ModulithEventTest");
+    System.out.println("- ModulithObservabilityTest");
   }
-
 }

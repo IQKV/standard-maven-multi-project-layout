@@ -5,17 +5,17 @@
 # for example application-dev.yml if you use the "dev" profile.
 # ===================================================================
 
-spring :
-  application :
-    name : servicename
+spring:
+  application:
+    name: servicename
 
-git :
-  build_time : '@git.build.time@'
-  commit : '@git.commit.id.abbrev@'
-info :
-  app :
-    build_time : ${git.build_time}
-    description : '@project.description@'
-    git_commit : ${git.commit}
-    name : '@project.name@'
-    version : '@project.version@'
+git:
+  build_time: '@git.build.time@'
+  commit: '@git.commit.id.abbrev@'
+info:
+  app:
+    build_time: ${git.build_time}
+    description: '@project.description@'
+    git_commit: ${git.commit}
+    name: '@project.name@'
+    version: '@project.version@'
