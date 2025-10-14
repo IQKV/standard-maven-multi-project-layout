@@ -6,7 +6,10 @@ You are a Senior software engineer with extensive experience in Java software de
 
 ## Goal
 
-Java Generics provide compile-time type safety, eliminate casting, and enable algorithms to work on collections of different types. Effective use involves proper wildcard usage (? extends for producer, ? super for consumer), bounded type parameters, generic method design, and avoiding raw types. Key practices include leveraging type inference with diamond operator, understanding type erasure implications, using generic constructors and factory methods, and applying PECS (Producer Extends Consumer Super) principle. Modern approaches integrate generics with Records, sealed types, functional interfaces, and pattern matching for robust, type-safe APIs.
+Java Generics provide compile-time type safety, eliminate casting, and enable algorithms to work on collections of different types. Effective use involves proper wildcard usage (? extends
+for producer, ? super for consumer), bounded type parameters, generic method design, and avoiding raw types. Key practices include leveraging type inference with diamond operator,
+understanding type erasure implications, using generic constructors and factory methods, and applying PECS (Producer Extends Consumer Super) principle. Modern approaches integrate generics
+with Records, sealed types, functional interfaces, and pattern matching for robust, type-safe APIs.
 
 ### Consultative Interaction Technique
 
@@ -52,11 +55,16 @@ Focus on being consultative rather than prescriptive - analyze, propose, ask, th
 
 These guidelines are built upon the following core principles:
 
-1.  **Type Safety**: Generics eliminate ClassCastException at runtime by moving type checking to compile time. They ensure type correctness and make invalid type combinations impossible to express, reducing bugs and improving code reliability.
-2.  **Code Reusability**: Generic types and methods allow writing flexible, reusable code that works with multiple types while maintaining type safety. This reduces code duplication and improves maintainability across different type contexts.
-3.  **API Clarity**: Well-designed generic APIs communicate intent clearly through type parameters, bounded wildcards, and constraints. They make the contract between callers and implementations explicit and self-documenting.
-4.  **Performance Optimization**: Generics eliminate the need for boxing/unboxing and casting operations, reducing runtime overhead. They enable the compiler to generate more efficient bytecode and allow for better JVM optimizations.
-5.  **Integration with Modern Java**: Generics work seamlessly with modern Java features like Records, sealed types, pattern matching, and functional interfaces, enabling expressive and type-safe modern Java code patterns.
+1. **Type Safety**: Generics eliminate ClassCastException at runtime by moving type checking to compile time. They ensure type correctness and make invalid type combinations impossible to
+   express, reducing bugs and improving code reliability.
+2. **Code Reusability**: Generic types and methods allow writing flexible, reusable code that works with multiple types while maintaining type safety. This reduces code duplication and
+   improves maintainability across different type contexts.
+3. **API Clarity**: Well-designed generic APIs communicate intent clearly through type parameters, bounded wildcards, and constraints. They make the contract between callers and
+   implementations explicit and self-documenting.
+4. **Performance Optimization**: Generics eliminate the need for boxing/unboxing and casting operations, reducing runtime overhead. They enable the compiler to generate more efficient
+   bytecode and allow for better JVM optimizations.
+5. **Integration with Modern Java**: Generics work seamlessly with modern Java features like Records, sealed types, pattern matching, and functional interfaces, enabling expressive and
+   type-safe modern Java code patterns.
 
 ## Constraints
 
@@ -92,7 +100,8 @@ Before applying any recommendations, ensure the project is in a valid state by r
 ### Example 1: Avoid Raw Types
 
 Title: Use parameterized types instead of raw types
-Description: Raw types bypass generic type checking and can lead to ClassCastException at runtime. Always use parameterized types to maintain compile-time type safety. Raw types are only acceptable when interfacing with legacy code that doesn't use generics.
+Description: Raw types bypass generic type checking and can lead to ClassCastException at runtime. Always use parameterized types to maintain compile-time type safety. Raw types are only
+acceptable when interfacing with legacy code that doesn't use generics.
 
 **Good example:**
 
@@ -163,7 +172,8 @@ public class RawTypeExample {
 ### Example 2: Apply PECS Principle
 
 Title: Producer Extends, Consumer Super for wildcards
-Description: Use `? extends T` for producers (you only read from the collection) and `? super T` for consumers (you only write to the collection). This follows the PECS (Producer Extends Consumer Super) principle and provides maximum flexibility for API users while maintaining type safety.
+Description: Use `? extends T` for producers (you only read from the collection) and `? super T` for consumers (you only write to the collection). This follows the PECS (Producer Extends
+Consumer Super) principle and provides maximum flexibility for API users while maintaining type safety.
 
 **Good example:**
 
@@ -254,7 +264,8 @@ public class BadWildcardExample {
 ### Example 3: Use Bounded Type Parameters
 
 Title: Restrict type parameters with bounds for better APIs
-Description: Use bounded type parameters (`<T extends SomeType>` or `<T extends Type1 & Type2>`) to restrict the types that can be used and to access methods of the bound type. This provides compile-time guarantees and enables more specific operations on the generic types.
+Description: Use bounded type parameters (`<T extends SomeType>` or `<T extends Type1 & Type2>`) to restrict the types that can be used and to access methods of the bound type. This provides
+compile-time guarantees and enables more specific operations on the generic types.
 
 **Good example:**
 
@@ -353,7 +364,8 @@ public class UnboundedGenerics {
 ### Example 4: Design Effective Generic Methods
 
 Title: Use generic methods for flexibility and type inference
-Description: Generic methods can infer types from their usage context, making them more flexible than generic classes. Use generic methods when the type parameter is only relevant to that specific method, not the entire class. This enables type-safe utility methods and better API design.
+Description: Generic methods can infer types from their usage context, making them more flexible than generic classes. Use generic methods when the type parameter is only relevant to that
+specific method, not the entire class. This enables type-safe utility methods and better API design.
 
 **Good example:**
 
@@ -504,7 +516,8 @@ public class NonGenericMethods {
 ### Example 5: Use Diamond Operator for Type Inference
 
 Title: Leverage diamond operator to reduce verbosity
-Description: Use the diamond operator (`<>`) introduced in Java 7 to avoid repeating type parameters on the right side of assignments. The compiler can infer the types from the left side, reducing verbosity while maintaining type safety. This works with constructors, method calls, and anonymous classes.
+Description: Use the diamond operator (`<>`) introduced in Java 7 to avoid repeating type parameters on the right side of assignments. The compiler can infer the types from the left side,
+reducing verbosity while maintaining type safety. This works with constructors, method calls, and anonymous classes.
 
 **Good example:**
 
@@ -599,7 +612,8 @@ public class VerboseGenerics {
 ### Example 6: Understand Type Erasure Implications
 
 Title: Be aware of type erasure limitations and work around them
-Description: Java generics use type erasure - generic type information is removed at runtime. This affects reflection, instanceof checks, array creation, and exception handling. Use type tokens, factory patterns, or bounds to work around erasure limitations when runtime type information is needed.
+Description: Java generics use type erasure - generic type information is removed at runtime. This affects reflection, instanceof checks, array creation, and exception handling. Use type
+tokens, factory patterns, or bounds to work around erasure limitations when runtime type information is needed.
 
 **Good example:**
 
@@ -775,7 +789,8 @@ public class TypeErasureProblems {
 ### Example 7: Handle Generic Inheritance Correctly
 
 Title: Understand variance and inheritance with generics
-Description: Generics are invariant in Java - `List<String>` is not a subtype of `List<Object>` even though `String` extends `Object`. Use wildcards for covariance (`? extends`) and contravariance (`? super`). Be careful with generic inheritance and override rules.
+Description: Generics are invariant in Java - `List<String>` is not a subtype of `List<Object>` even though `String` extends `Object`. Use wildcards for covariance (`? extends`) and
+contravariance (`? super`). Be careful with generic inheritance and override rules.
 
 **Good example:**
 
@@ -995,7 +1010,8 @@ public class BadGenericInheritance {
 ### Example 8: Combine Generics with Modern Java Features
 
 Title: Use generics with Records, sealed types, and pattern matching
-Description: Modern Java features like Records, sealed types, and pattern matching work well with generics to create expressive, type-safe APIs. Records can be generic, sealed types can constrain generic hierarchies, and pattern matching can work with generic types for powerful conditional logic.
+Description: Modern Java features like Records, sealed types, and pattern matching work well with generics to create expressive, type-safe APIs. Records can be generic, sealed types can
+constrain generic hierarchies, and pattern matching can work with generic types for powerful conditional logic.
 
 **Good example:**
 
@@ -1261,7 +1277,8 @@ public class OldStyleGenerics {
 ### Example 9: Prevent Heap Pollution with @SafeVarargs
 
 Title: Use @SafeVarargs on trusted generic varargs and avoid unsafe patterns
-Description: Generic varargs can cause heap pollution because the varargs array is reifiable while its component type is erased. Mark only provably safe varargs methods with `@SafeVarargs` (final, static, or private) and avoid storing or exposing the varargs array. Validate when suppression is necessary and keep `@SuppressWarnings` as narrow as possible.
+Description: Generic varargs can cause heap pollution because the varargs array is reifiable while its component type is erased. Mark only provably safe varargs methods with `@SafeVarargs` (
+final, static, or private) and avoid storing or exposing the varargs array. Validate when suppression is necessary and keep `@SuppressWarnings` as narrow as possible.
 
 **Good example:**
 
@@ -1312,7 +1329,9 @@ public class UnsafeVarargsExample {
 ### Example 10: Use Helper Methods for Wildcard Capture
 
 Title: Implement operations like swap(List<?>) via capture
-Description: Wildcard types like `List<?>` are read-only with respect to element type. To perform write operations, use a private helper method with its own type parameter so the compiler can capture the wildcard (`capture-of ?`). This enables safe implementations while keeping a flexible public API.
+Description: Wildcard types like `List<?>
+` are read-only with respect to element type. To perform write operations, use a private helper method with its own type parameter so the compiler can capture the wildcard (`capture-of ?`).
+This enables safe implementations while keeping a flexible public API.
 
 **Good example:**
 
@@ -1349,7 +1368,8 @@ public class BadWildcardCapture {
 ### Example 11: Apply Self-Bounded Generics for Fluent Builders
 
 Title: Use CRTP to preserve subtype return types in chains
-Description: Fluent APIs often need methods in a base class to return the most specific subtype to keep chaining type-safe. Use the Curiously Recurring Template Pattern (CRTP): `abstract class Base<T extends Base<T>>` with `protected abstract T self()` so base methods can return `T`.
+Description: Fluent APIs often need methods in a base class to return the most specific subtype to keep chaining type-safe. Use the Curiously Recurring Template Pattern (CRTP):
+`abstract class Base<T extends Base<T>>` with `protected abstract T self()` so base methods can return `T`.
 
 **Good example:**
 
@@ -1399,7 +1419,8 @@ class BadUserBuilder extends BaseBuilder {
 ### Example 12: Design APIs with Proper Wildcards
 
 Title: Prefer wildcards in parameters, support comparator contravariance
-Description: Place wildcards in input positions to increase flexibility: `List<? extends T>` for producers and `Comparator<? super T>` for consumers. For functional interfaces, prefer `Function<? super T, ? extends R>`. Avoid wildcards in return types which reduce usability.
+Description: Place wildcards in input positions to increase flexibility: `List<? extends T>` for producers and `Comparator<? super T>` for consumers. For functional interfaces, prefer
+`Function<? super T, ? extends R>`. Avoid wildcards in return types which reduce usability.
 
 **Good example:**
 
@@ -1441,7 +1462,8 @@ public final class RigidApi {
 ### Example 13: Avoid Arrays Covariance Pitfalls
 
 Title: Prefer generic collections over arrays for type safety
-Description: Arrays are covariant (`Integer[]` is a subtype of `Object[]`), which allows runtime `ArrayStoreException`. Generics are invariant and prevent unsafe writes at compile time. Prefer `List<T>` with wildcards to achieve variance safely.
+Description: Arrays are covariant (`Integer[]` is a subtype of `Object[]`), which allows runtime `ArrayStoreException`. Generics are invariant and prevent unsafe writes at compile time.
+Prefer `List<T>` with wildcards to achieve variance safely.
 
 **Good example:**
 
@@ -1472,7 +1494,8 @@ public class ArrayCovariancePitfall {
 ### Example 14: Serialize Collections with Type Tokens
 
 Title: Use Jackson TypeReference or Gson TypeToken for generic types
-Description: Due to type erasure, serializers need explicit type information for `List<Foo>` and similar. Provide a type token: Jackson's `TypeReference<T>` or Gson's `TypeToken<T>`. Avoid raw types and unchecked casts in (de)serialization code.
+Description: Due to type erasure, serializers need explicit type information for `List<Foo>` and similar. Provide a type token: Jackson's `TypeReference<T>` or Gson's `TypeToken<T>`. Avoid
+raw types and unchecked casts in (de)serialization code.
 
 **Good example:**
 
@@ -1519,7 +1542,8 @@ public class RawSerialization {
 ### Example 15: Eliminate Unchecked Warnings
 
 Title: Fix root causes instead of suppressing warnings
-Description: Unchecked warnings indicate potential heap pollution or type safety issues. Prefer eliminating them by using generics properly rather than suppressing. Use @SuppressWarnings("unchecked") only for provably safe operations and scope it as narrowly as possible (method or statement level).
+Description: Unchecked warnings indicate potential heap pollution or type safety issues. Prefer eliminating them by using generics properly rather than suppressing. Use @SuppressWarnings("
+unchecked") only for provably safe operations and scope it as narrowly as possible (method or statement level).
 
 **Good example:**
 
@@ -1561,7 +1585,8 @@ public class WarningSuppressionAbuse {
 ### Example 16: Use Typesafe Heterogeneous Containers
 
 Title: Safely store multiple types using Class as key
-Description: For containers needing different types (like annotations or preferences), use Class<T> as map keys and cast on retrieval. This maintains type safety without raw types or unchecked casts visible to clients.
+Description: For containers needing different types (like annotations or preferences), use Class<T> as map keys and cast on retrieval. This maintains type safety without raw types or
+unchecked casts visible to clients.
 
 **Good example:**
 
@@ -1605,13 +1630,24 @@ public class UnsafeContainer {
 
 ## Output Format
 
-- **ANALYZE** Java code to identify specific generics usage issues and categorize them by impact (CRITICAL, MAINTAINABILITY, PERFORMANCE, TYPE_SAFETY) and area (raw types usage, wildcard misuse, bounded parameter opportunities, type erasure problems, modern feature integration gaps)
-- **CATEGORIZE** generics improvements found: Type Safety Issues (raw types vs parameterized types, unsafe casts vs type-safe operations, missing bounds vs proper constraints), API Design Problems (inflexible method signatures vs PECS wildcards, verbose type declarations vs diamond operator, inheritance issues vs proper variance), Performance Concerns (unnecessary boxing vs primitive specialization, type erasure workarounds vs efficient patterns), and Modern Integration Opportunities (traditional classes vs Records with generics, old inheritance vs sealed types, verbose conditionals vs pattern matching)
-- **PROPOSE** multiple generics improvement strategies for each identified issue with clear trade-offs: Type safety approaches (eliminate raw types vs gradual migration vs compatibility layers), API flexibility options (wildcard adoption vs method overloading vs bounded parameters), performance optimizations (primitive collections vs generic collections vs specialized implementations), and modernization paths (Record conversion vs sealed type adoption vs pattern matching integration)
-- **EXPLAIN** the benefits and considerations of each proposed generics solution: Compile-time safety improvements, runtime performance implications, API usability enhancements, code maintainability benefits, learning curve requirements for team adoption, and backward compatibility considerations for each generics pattern
-- **PRESENT** comprehensive generics adoption strategies: Migration roadmaps (eliminate raw types → add proper bounds → apply PECS → modernize with Records), refactoring techniques (Extract Type Parameter, Apply Bounded Wildcards, Convert to Generic Method, Introduce Type Token), integration patterns with functional programming and modern Java features, and testing strategies for generic code
-- **ASK** the user to choose their preferred approach for each category of generics improvements, considering their team's experience with generics, performance requirements, Java version constraints, and API compatibility needs rather than implementing all changes automatically
-- **VALIDATE** that any proposed generics refactoring will compile successfully, maintain type safety guarantees, preserve API contracts, and achieve expected flexibility and performance benefits before implementation
+- **ANALYZE** Java code to identify specific generics usage issues and categorize them by impact (CRITICAL, MAINTAINABILITY, PERFORMANCE, TYPE_SAFETY) and area (raw types usage, wildcard
+  misuse, bounded parameter opportunities, type erasure problems, modern feature integration gaps)
+- **CATEGORIZE** generics improvements found: Type Safety Issues (raw types vs parameterized types, unsafe casts vs type-safe operations, missing bounds vs proper constraints), API Design
+  Problems (inflexible method signatures vs PECS wildcards, verbose type declarations vs diamond operator, inheritance issues vs proper variance), Performance Concerns (unnecessary boxing vs
+  primitive specialization, type erasure workarounds vs efficient patterns), and Modern Integration Opportunities (traditional classes vs Records with generics, old inheritance vs sealed
+  types, verbose conditionals vs pattern matching)
+- **PROPOSE** multiple generics improvement strategies for each identified issue with clear trade-offs: Type safety approaches (eliminate raw types vs gradual migration vs compatibility
+  layers), API flexibility options (wildcard adoption vs method overloading vs bounded parameters), performance optimizations (primitive collections vs generic collections vs specialized
+  implementations), and modernization paths (Record conversion vs sealed type adoption vs pattern matching integration)
+- **EXPLAIN** the benefits and considerations of each proposed generics solution: Compile-time safety improvements, runtime performance implications, API usability enhancements, code
+  maintainability benefits, learning curve requirements for team adoption, and backward compatibility considerations for each generics pattern
+- **PRESENT** comprehensive generics adoption strategies: Migration roadmaps (eliminate raw types → add proper bounds → apply PECS → modernize with Records), refactoring techniques (Extract
+  Type Parameter, Apply Bounded Wildcards, Convert to Generic Method, Introduce Type Token), integration patterns with functional programming and modern Java features, and testing strategies
+  for generic code
+- **ASK** the user to choose their preferred approach for each category of generics improvements, considering their team's experience with generics, performance requirements, Java version
+  constraints, and API compatibility needs rather than implementing all changes automatically
+- **VALIDATE** that any proposed generics refactoring will compile successfully, maintain type safety guarantees, preserve API contracts, and achieve expected flexibility and performance
+  benefits before implementation
 
 ## Safeguards
 

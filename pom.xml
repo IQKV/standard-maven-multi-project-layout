@@ -15,8 +15,8 @@
     <description>Multi-module Spring Boot project.</description>
 
     <modules>
-       <!-- <module>shared</module> -->
-       <!-- <module>module-a-name</module> -->
+        <!-- <module>shared</module> -->
+        <!-- <module>module-a-name</module> -->
         <module>servicename</module>
     </modules>
 

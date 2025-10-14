@@ -6,7 +6,10 @@ You are a Senior software engineer with extensive experience in Java software de
 
 ## Goal
 
-This document provides essential Java secure coding guidelines, focusing on five key areas: validating all untrusted inputs to prevent attacks like injection and path traversal; protecting against injection attacks (e.g., SQL injection) by using parameterized queries or prepared statements; minimizing the attack surface by adhering to the principle of least privilege and reducing exposure; employing strong, current cryptographic algorithms for hashing, encryption, and digital signatures while avoiding deprecated ones; and handling exceptions securely by avoiding the exposure of sensitive information in error messages to users and logging detailed, non-sensitive diagnostic information for developers.
+This document provides essential Java secure coding guidelines, focusing on five key areas: validating all untrusted inputs to prevent attacks like injection and path traversal; protecting
+against injection attacks (e.g., SQL injection) by using parameterized queries or prepared statements; minimizing the attack surface by adhering to the principle of least privilege and
+reducing exposure; employing strong, current cryptographic algorithms for hashing, encryption, and digital signatures while avoiding deprecated ones; and handling exceptions securely by
+avoiding the exposure of sensitive information in error messages to users and logging detailed, non-sensitive diagnostic information for developers.
 
 ### Consultative Interaction Technique
 
@@ -52,11 +55,18 @@ Focus on being consultative rather than prescriptive - analyze, propose, ask, th
 
 These guidelines are built upon the following core principles:
 
-1.  **Comprehensive Input Validation**: Treat all external input as untrusted. Rigorously validate and sanitize data for type, length, format, and range before processing to prevent common vulnerabilities like injection attacks, path traversal, and buffer overflows.
-2.  **Defense Against Injection**: Actively protect against all forms of injection attacks (e.g., SQL, OS Command, LDAP, XPath). Primarily achieve this by using safe APIs like parameterized queries (e.g., `PreparedStatement` in JDBC) or dedicated libraries that correctly handle data escaping, and by never directly concatenating untrusted input into executable commands or queries.
-3.  **Attack Surface Minimization**: Adhere to the principle of least privilege for users, processes, and code. Reduce the exposure of system components by running with minimal necessary permissions, exposing only essential functionalities and network ports, and regularly reviewing and removing unused features, libraries, and accounts.
-4.  **Strong Cryptographic Practices**: Employ current, robust, and industry-standard cryptographic algorithms and libraries for all sensitive operations, including hashing (especially for passwords), encryption, and digital signatures. Avoid deprecated or weak algorithms. Ensure cryptographic keys are generated securely, stored safely, and managed properly throughout their lifecycle.
-5.  **Secure Exception Handling**: Manage exceptions in a way that does not expose sensitive information to users or attackers. Log detailed, non-sensitive diagnostic information for developers to aid in debugging, but provide generic, non-revealing error messages to clients. Avoid direct exposure of stack traces or internal system details in error outputs.
+1. **Comprehensive Input Validation**: Treat all external input as untrusted. Rigorously validate and sanitize data for type, length, format, and range before processing to prevent common
+   vulnerabilities like injection attacks, path traversal, and buffer overflows.
+2. **Defense Against Injection**: Actively protect against all forms of injection attacks (e.g., SQL, OS Command, LDAP, XPath). Primarily achieve this by using safe APIs like parameterized
+   queries (e.g., `PreparedStatement` in JDBC) or dedicated libraries that correctly handle data escaping, and by never directly concatenating untrusted input into executable commands or
+   queries.
+3. **Attack Surface Minimization**: Adhere to the principle of least privilege for users, processes, and code. Reduce the exposure of system components by running with minimal necessary
+   permissions, exposing only essential functionalities and network ports, and regularly reviewing and removing unused features, libraries, and accounts.
+4. **Strong Cryptographic Practices**: Employ current, robust, and industry-standard cryptographic algorithms and libraries for all sensitive operations, including hashing (especially for
+   passwords), encryption, and digital signatures. Avoid deprecated or weak algorithms. Ensure cryptographic keys are generated securely, stored safely, and managed properly throughout their
+   lifecycle.
+5. **Secure Exception Handling**: Manage exceptions in a way that does not expose sensitive information to users or attackers. Log detailed, non-sensitive diagnostic information for
+   developers to aid in debugging, but provide generic, non-revealing error messages to clients. Avoid direct exposure of stack traces or internal system details in error outputs.
 
 ## Constraints
 
@@ -81,7 +91,8 @@ Before applying any recommendations, ensure the project is in a valid state by r
 ### Example 1: Input Validation
 
 Title: Validate All Untrusted Inputs
-Description: Always validate and sanitize data received from untrusted sources (users, network, files, etc.) before processing. This helps prevent various attacks like injection, path traversal, and buffer overflows. Validation should check for type, length, format, and range.
+Description: Always validate and sanitize data received from untrusted sources (users, network, files, etc.) before processing. This helps prevent various attacks like injection, path
+traversal, and buffer overflows. Validation should check for type, length, format, and range.
 
 **Good example:**
 
@@ -160,7 +171,8 @@ public class UnsafeInputProcessor {
 ### Example 2: Protect Against Injection Attacks
 
 Title: Use Parameterized Queries and Safe APIs
-Description: To prevent SQL Injection and other injection attacks, always use parameterized queries (PreparedStatements in JDBC) or an ORM that handles this automatically. Never concatenate user input directly into SQL queries, OS commands, or other executable statements.
+Description: To prevent SQL Injection and other injection attacks, always use parameterized queries (PreparedStatements in JDBC) or an ORM that handles this automatically. Never concatenate
+user input directly into SQL queries, OS commands, or other executable statements.
 
 **Good example:**
 
@@ -259,7 +271,8 @@ public class VulnerableDataAccess {
 ### Example 3: Minimize Attack Surface
 
 Title: Apply Principle of Least Privilege
-Description: Grant only necessary permissions to code and users. Avoid running processes with excessive privileges. Expose only essential functionality and network ports. Regularly review and remove unused features, libraries, and accounts.
+Description: Grant only necessary permissions to code and users. Avoid running processes with excessive privileges. Expose only essential functionality and network ports. Regularly review
+and remove unused features, libraries, and accounts.
 
 **Good example:**
 
@@ -367,7 +380,8 @@ public class UnsafeFileManager {
 ### Example 4: Use Strong Cryptography
 
 Title: Employ Current and Robust Cryptographic Algorithms
-Description: Use well-vetted, industry-standard cryptographic libraries and algorithms for hashing, encryption, and digital signatures. Avoid deprecated or weak algorithms (e.g., MD5, SHA1 for passwords, DES). Keep cryptographic keys secure and manage them properly.
+Description: Use well-vetted, industry-standard cryptographic libraries and algorithms for hashing, encryption, and digital signatures. Avoid deprecated or weak algorithms (e.g., MD5, SHA1
+for passwords, DES). Keep cryptographic keys secure and manage them properly.
 
 **Good example:**
 
@@ -540,7 +554,8 @@ public class WeakCryptoUtils {
 ### Example 5: Handle Exceptions Securely
 
 Title: Avoid Exposing Sensitive Information
-Description: Catch exceptions appropriately, but do not reveal sensitive system details or stack traces to users in production. Log detailed error information server-side for debugging, but provide generic error messages to the client.
+Description: Catch exceptions appropriately, but do not reveal sensitive system details or stack traces to users in production. Log detailed error information server-side for debugging, but
+provide generic error messages to the client.
 
 **Good example:**
 
@@ -678,13 +693,22 @@ public class InsecureExceptionHandler {
 
 ## Output Format
 
-- **ANALYZE** the current codebase to identify specific security vulnerabilities and categorize them by severity (CRITICAL, HIGH, MEDIUM, LOW) and vulnerability type (injection, authentication, authorization, cryptography, etc.)
-- **CATEGORIZE** security issues found: Input Validation Gaps (missing validation, insufficient sanitization), Injection Vulnerabilities (SQL, command, XSS), Authentication/Authorization Flaws (weak permissions, excessive privileges), Cryptographic Weaknesses (deprecated algorithms, weak key management), and Exception Handling Issues (information disclosure, sensitive data exposure)
-- **PROPOSE** multiple remediation options for each identified vulnerability with clear trade-offs: Input validation strategies (whitelisting vs blacklisting vs sanitization), injection protection approaches (parameterized queries vs ORM vs input encoding), privilege management options (RBAC vs ABAC vs minimal permissions), cryptographic upgrade paths (algorithm migration strategies), and secure error handling techniques
-- **EXPLAIN** the security benefits and implementation considerations of each proposed solution: Risk reduction impact, performance implications, compatibility concerns, implementation complexity, and maintenance requirements for different security approaches
-- **PRESENT** comprehensive security improvement strategies: Defense-in-depth approaches, security configuration options, secure coding standard implementations, compliance framework alignments, and security testing methodologies
-- **ASK** the user to choose their preferred approach for each category of security improvements, considering their risk tolerance, compliance requirements, and implementation constraints rather than applying all changes automatically
-- **VALIDATE** that any proposed security changes will compile successfully, maintain existing functionality, not introduce new vulnerabilities, and align with security best practices before implementation
+- **ANALYZE** the current codebase to identify specific security vulnerabilities and categorize them by severity (CRITICAL, HIGH, MEDIUM, LOW) and vulnerability type (injection,
+  authentication, authorization, cryptography, etc.)
+- **CATEGORIZE** security issues found: Input Validation Gaps (missing validation, insufficient sanitization), Injection Vulnerabilities (SQL, command, XSS), Authentication/Authorization
+  Flaws (weak permissions, excessive privileges), Cryptographic Weaknesses (deprecated algorithms, weak key management), and Exception Handling Issues (information disclosure, sensitive data
+  exposure)
+- **PROPOSE** multiple remediation options for each identified vulnerability with clear trade-offs: Input validation strategies (whitelisting vs blacklisting vs sanitization), injection
+  protection approaches (parameterized queries vs ORM vs input encoding), privilege management options (RBAC vs ABAC vs minimal permissions), cryptographic upgrade paths (algorithm migration
+  strategies), and secure error handling techniques
+- **EXPLAIN** the security benefits and implementation considerations of each proposed solution: Risk reduction impact, performance implications, compatibility concerns, implementation
+  complexity, and maintenance requirements for different security approaches
+- **PRESENT** comprehensive security improvement strategies: Defense-in-depth approaches, security configuration options, secure coding standard implementations, compliance framework
+  alignments, and security testing methodologies
+- **ASK** the user to choose their preferred approach for each category of security improvements, considering their risk tolerance, compliance requirements, and implementation constraints
+  rather than applying all changes automatically
+- **VALIDATE** that any proposed security changes will compile successfully, maintain existing functionality, not introduce new vulnerabilities, and align with security best practices before
+  implementation
 
 ## Safeguards
 

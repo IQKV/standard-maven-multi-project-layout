@@ -15,14 +15,12 @@
       "NODE_VERSION": "22.18.0"
     }
   },
-
   "customizations": {
     "vscode": {
       // Set *default* container specific settings.json values on container create.
       "settings": {
         "java.jdt.ls.java.home": "/docker-java-home"
       },
-
       // Add the IDs of extensions you want installed when the container is created.
       "extensions": [
         "christian-kohler.npm-intellisense",
@@ -35,10 +33,8 @@
       ]
     }
   },
-
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [9060, 3001, 9000, 8080],
-
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": "java -version",
 

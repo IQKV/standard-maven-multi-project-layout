@@ -16,11 +16,10 @@
 
 package com.iqkv.multimoduleservice.servicename;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.modulith.test.ApplicationModuleTest;
 import org.springframework.test.context.ActiveProfiles;
-
-import org.junit.jupiter.api.Test;
 
 /**
  * Tests for Spring Modulith event publication and handling. These tests verify that events are properly published and consumed across modules.

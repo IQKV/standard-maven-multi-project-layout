@@ -6,7 +6,11 @@ You are a Senior software engineer with extensive experience in Java software de
 
 ## Goal
 
-Modern Java development (Java 8+) emphasizes leveraging lambda expressions and functional interfaces over anonymous classes, and using the Stream API for declarative collection processing. The `Optional` API should be used for handling potentially absent values gracefully, and the `java.time` API for all date/time operations. Default methods allow non-breaking interface evolution. Local Variable Type Inference (`var`) can improve readability when used judiciously. Unmodifiable collection factory methods (`List.of()`, etc.) provide concise immutable collections. `CompletableFuture` facilitates composable asynchronous programming. The Java Platform Module System (JPMS, Java 9+) enables strong encapsulation. Performance implications of new features should be considered and profiled. Testing strategies need to adapt to these modern features, and text blocks (Java 15+) offer improved readability for multi-line strings.
+Modern Java development (Java 8+) emphasizes leveraging lambda expressions and functional interfaces over anonymous classes, and using the Stream API for declarative collection processing.
+The `Optional` API should be used for handling potentially absent values gracefully, and the `java.time` API for all date/time operations. Default methods allow non-breaking interface
+evolution. Local Variable Type Inference (`var`) can improve readability when used judiciously. Unmodifiable collection factory methods (`List.of()`, etc.) provide concise immutable
+collections. `CompletableFuture` facilitates composable asynchronous programming. The Java Platform Module System (JPMS, Java 9+) enables strong encapsulation. Performance implications of
+new features should be considered and profiled. Testing strategies need to adapt to these modern features, and text blocks (Java 15+) offer improved readability for multi-line strings.
 
 ### Consultative Interaction Technique
 
@@ -86,7 +90,11 @@ Before applying any recommendations, ensure the project is in a valid state by r
 ### Example 1: Lambda Expressions and Functional Interfaces
 
 Title: Effectively Use Lambda Expressions and Functional Interfaces
-Description: - Prefer lambda expressions over anonymous inner classes for concise implementation of functional interfaces. - Keep lambda expressions short, readable, and focused on a single piece of logic. - Use method references (e.g., `System.out::println`, `String::isEmpty`) when they are clearer and more direct than an equivalent lambda. - Leverage the rich set of built-in functional interfaces from the `java.util.function` package (e.g., `Predicate`, `Function`, `Consumer`, `Supplier`). - Create custom functional interfaces only when a specific signature is needed that isn't covered by built-in ones. - Always annotate custom functional interfaces with `@FunctionalInterface` to ensure they meet the criteria (a single abstract method) and to clearly communicate their purpose.
+Description: - Prefer lambda expressions over anonymous inner classes for concise implementation of functional interfaces. - Keep lambda expressions short, readable, and focused on a single
+piece of logic. - Use method references (e.g., `System.out::println`, `String::isEmpty`) when they are clearer and more direct than an equivalent lambda. - Leverage the rich set of built-in
+functional interfaces from the `java.util.function` package (e.g., `Predicate`, `Function`, `Consumer`, `Supplier`). - Create custom functional interfaces only when a specific signature is
+needed that isn't covered by built-in ones. - Always annotate custom functional interfaces with `@FunctionalInterface` to ensure they meet the criteria (a single abstract method) and to
+clearly communicate their purpose.
 
 **Good example:**
 
@@ -164,7 +172,9 @@ public class OldStyleAnonymousClass {
 ### Example 2: Stream API
 
 Title: Leverage the Stream API for Collection Processing
-Description: Use streams for processing sequences of elements from collections or other sources in a functional style. Prefer a declarative approach (what to do) over an imperative one (how to do it) for stream operations. Chain stream operations effectively to create a readable processing pipeline. Use appropriate terminal operations to produce a result or side-effect. Be mindful of performance implications, especially with large datasets or complex operations.
+Description: Use streams for processing sequences of elements from collections or other sources in a functional style. Prefer a declarative approach (what to do) over an imperative one (how
+to do it) for stream operations. Chain stream operations effectively to create a readable processing pipeline. Use appropriate terminal operations to produce a result or side-effect. Be
+mindful of performance implications, especially with large datasets or complex operations.
 
 **Good example:**
 
@@ -235,7 +245,9 @@ public class StreamAntiPattern {
 ### Example 3: Optional API
 
 Title: Handle Potentially Absent Values Gracefully with Optional
-Description: Use `Optional<T>` to explicitly represent values that may be absent, making your API clearer about nullability. Avoid calling `Optional.get()` directly without first checking `isPresent()`. Prefer functional alternatives. Leverage `Optional`'s functional-style methods like `map()`, `flatMap()`, `filter()`, `orElse()`, `orElseGet()`, `orElseThrow()` to handle absent values in a fluent and safe manner.
+Description: Use `Optional<T>` to explicitly represent values that may be absent, making your API clearer about nullability. Avoid calling `Optional.get()` directly without first checking
+`isPresent()`. Prefer functional alternatives. Leverage `Optional`'s functional-style methods like `map()`, `flatMap()`, `filter()`, `orElse()`, `orElseGet()`, `orElseThrow()` to handle
+absent values in a fluent and safe manner.
 
 **Good example:**
 
@@ -323,7 +335,9 @@ public class OptionalAntiPattern {
 ### Example 4: Date/Time API (java.time)
 
 Title: Utilize the Modern java.time API for Dates and Times
-Description: Replace legacy `java.util.Date`, `java.util.Calendar`, and `java.text.SimpleDateFormat` with the classes from the `java.time` package (introduced in Java 8). Choose the appropriate `java.time` class for your specific needs: `Instant` for machine time, `LocalDate` for dates without time-zone, `LocalDateTime` for date-time without time-zone, `ZonedDateTime` for date-time with specific time-zone, `Duration` for time-based amounts, and `Period` for date-based amounts.
+Description: Replace legacy `java.util.Date`, `java.util.Calendar`, and `java.text.SimpleDateFormat` with the classes from the `java.time` package (introduced in Java 8). Choose the
+appropriate `java.time` class for your specific needs: `Instant` for machine time, `LocalDate` for dates without time-zone, `LocalDateTime` for date-time without time-zone, `ZonedDateTime`
+for date-time with specific time-zone, `Duration` for time-based amounts, and `Period` for date-based amounts.
 
 **Good example:**
 
@@ -404,7 +418,9 @@ public class LegacyDateTime {
 ### Example 5: Default Methods in Interfaces
 
 Title: Enhance Interfaces with Default Methods for Non-Breaking Evolution
-Description: Use default methods to add new functionality to existing interfaces without breaking implementing classes. Keep default method implementations simple and focused. Complex logic might be better suited for helper classes or abstract base classes. Clearly document the behavior of default methods, including any assumptions they make about the interface's contract. Avoid introducing state (fields) into interfaces, as default methods cannot access instance fields directly.
+Description: Use default methods to add new functionality to existing interfaces without breaking implementing classes. Keep default method implementations simple and focused. Complex logic
+might be better suited for helper classes or abstract base classes. Clearly document the behavior of default methods, including any assumptions they make about the interface's contract.
+Avoid introducing state (fields) into interfaces, as default methods cannot access instance fields directly.
 
 **Good example:**
 
@@ -483,7 +499,8 @@ interface BadInterface {
 ### Example 6: Local Variable Type Inference (var)
 
 Title: Use var judiciously to improve readability
-Description: Use the `var` keyword (introduced in Java 10) for local variable declarations when the type is obvious from the context and it improves readability. Avoid using `var` when it makes the code less clear or when the inferred type might not be what you expect. Use `var` with care in complex expressions or when the type provides important documentation value.
+Description: Use the `var` keyword (introduced in Java 10) for local variable declarations when the type is obvious from the context and it improves readability. Avoid using `var` when it
+makes the code less clear or when the inferred type might not be what you expect. Use `var` with care in complex expressions or when the type provides important documentation value.
 
 **Good example:**
 
@@ -558,7 +575,9 @@ public class VarAntiPattern {
 ### Example 7: Collection Factory Methods
 
 Title: Utilize Unmodifiable Collection Factory Methods
-Description: Use the static factory methods `List.of()`, `Set.of()`, and `Map.of()` (Java 9+) to create compact, unmodifiable (immutable) collections when the elements are known at compile time. For creating mutable collections, continue to use traditional constructors (e.g., `new ArrayList<>()`) or Stream API collectors. Be aware that these factory methods create unmodifiable collections, do not permit `null` elements, and `Map.of()` does not permit duplicate keys.
+Description: Use the static factory methods `List.of()`, `Set.of()`, and `Map.of()` (Java 9+) to create compact, unmodifiable (immutable) collections when the elements are known at compile
+time. For creating mutable collections, continue to use traditional constructors (e.g., `new ArrayList<>()`) or Stream API collectors. Be aware that these factory methods create unmodifiable
+collections, do not permit `null` elements, and `Map.of()` does not permit duplicate keys.
 
 **Good example:**
 
@@ -643,7 +662,9 @@ public class CollectionFactoryAntiPattern {
 ### Example 8: CompletableFuture for Asynchronous Programming
 
 Title: Employ CompletableFuture for Composable Asynchronous Operations
-Description: Use `CompletableFuture` (Java 8+) for managing sequences of asynchronous operations, avoiding callback hell and enabling a more functional, composable style. Chain asynchronous tasks using methods like `thenApplyAsync()`, `thenComposeAsync()`, `thenAcceptAsync()`, `thenRunAsync()`. Combine results from multiple `CompletableFuture` instances using `allOf()` or `anyOf()`. Handle exceptions gracefully using `exceptionally()` or `handle()`. Be mindful of the `Executor` used for each stage and consider timeout handling for asynchronous operations.
+Description: Use `CompletableFuture` (Java 8+) for managing sequences of asynchronous operations, avoiding callback hell and enabling a more functional, composable style. Chain asynchronous
+tasks using methods like `thenApplyAsync()`, `thenComposeAsync()`, `thenAcceptAsync()`, `thenRunAsync()`. Combine results from multiple `CompletableFuture` instances using `allOf()` or
+`anyOf()`. Handle exceptions gracefully using `exceptionally()` or `handle()`. Be mindful of the `Executor` used for each stage and consider timeout handling for asynchronous operations.
 
 **Good example:**
 
@@ -764,7 +785,9 @@ public class CompletableFutureAntiPattern {
 ### Example 9: Module System (Java 9+)
 
 Title: Leverage the Java Platform Module System (JPMS) for Strong Encapsulation
-Description: For applications built on Java 9 or later, consider designing them as modules to achieve strong encapsulation and reliable configuration. Create a `module-info.java` file at the root of your source code to declare your module. Use `requires` clauses to specify dependencies, `exports` clauses to make packages publicly available, `opens` clauses for reflection access, and `provides ... with ...` for service discovery. Carefully consider which packages to export to maintain good encapsulation.
+Description: For applications built on Java 9 or later, consider designing them as modules to achieve strong encapsulation and reliable configuration. Create a `module-info.java` file at the
+root of your source code to declare your module. Use `requires` clauses to specify dependencies, `exports` clauses to make packages publicly available, `opens` clauses for reflection access,
+and `provides ... with ...` for service discovery. Carefully consider which packages to export to maintain good encapsulation.
 
 **Good example:**
 
@@ -839,7 +862,9 @@ public class BadModuleExample {
 ### Example 10: Performance Considerations with Modern Features
 
 Title: Be Mindful of Performance Implications of Modern Java Features
-Description: Always profile your application before attempting optimizations. Avoid premature optimization. Choose appropriate data structures for the task. Streams can sometimes have overhead compared to simple loops for very small collections. Parallel streams can improve performance for CPU-bound tasks on large datasets but can degrade performance if misused. `Optional` can add object allocation overhead. Lazy initialization should be implemented correctly using double-checked locking or suppliers.
+Description: Always profile your application before attempting optimizations. Avoid premature optimization. Choose appropriate data structures for the task. Streams can sometimes have
+overhead compared to simple loops for very small collections. Parallel streams can improve performance for CPU-bound tasks on large datasets but can degrade performance if misused.
+`Optional` can add object allocation overhead. Lazy initialization should be implemented correctly using double-checked locking or suppliers.
 
 **Good example:**
 
@@ -945,7 +970,9 @@ public class PerformanceAntiPattern {
 ### Example 11: Testing Modern Java Code
 
 Title: Adapt Testing Strategies for Modern Java Features
-Description: Adapt testing strategies to properly test modern Java features. Focus on testing behavior rather than implementation when testing lambda expressions and functional code. Use appropriate mocking strategies for functional interfaces and streams. Test asynchronous code with CompletableFuture properly, including timeout scenarios and exception handling. Ensure proper testing coverage of Optional usage patterns and edge cases. Utilize modern testing frameworks and assertion libraries that integrate well with modern Java features.
+Description: Adapt testing strategies to properly test modern Java features. Focus on testing behavior rather than implementation when testing lambda expressions and functional code. Use
+appropriate mocking strategies for functional interfaces and streams. Test asynchronous code with CompletableFuture properly, including timeout scenarios and exception handling. Ensure
+proper testing coverage of Optional usage patterns and edge cases. Utilize modern testing frameworks and assertion libraries that integrate well with modern Java features.
 
 **Good example:**
 
@@ -1088,7 +1115,9 @@ public class InsufficientTesting {
 ### Example 12: Use Text Blocks for Readable Multi-line Strings
 
 Title: Employ Text Blocks for Clear and Maintainable Multi-line String Literals
-Description: Utilize text blocks (`"""..."""`) to represent multi-line string literals in a way that preserves indentation and formatting, making them easier to read and write, especially for embedded code snippets like JSON, XML, SQL, or HTML. Text blocks automatically handle newline characters and manage indentation. Incidental leading white space is automatically stripped from each line. You can control trailing white space and use escape sequences as needed.
+Description: Utilize text blocks (`"""..."""`) to represent multi-line string literals in a way that preserves indentation and formatting, making them easier to read and write, especially
+for embedded code snippets like JSON, XML, SQL, or HTML. Text blocks automatically handle newline characters and manage indentation. Incidental leading white space is automatically stripped
+from each line. You can control trailing white space and use escape sequences as needed.
 
 **Good example:**
 
@@ -1169,13 +1198,23 @@ public class OldMultiLineStringExample {
 
 ## Output Format
 
-- **ANALYZE** Java code to identify specific modern feature refactoring opportunities and categorize them by impact (CRITICAL, MAINTAINABILITY, PERFORMANCE, READABILITY) and area (lambda expressions, stream API, Optional usage, java.time API, collection factories, CompletableFuture, text blocks, pattern matching)
-- **CATEGORIZE** modern Java refactoring opportunities found: Legacy Code Issues (anonymous classes vs lambdas, Iterator loops vs streams, null checks vs Optional, Date/Calendar vs java.time), Performance Improvements (parallel stream opportunities, lazy initialization patterns, efficient collection creation), Readability Enhancements (method references vs lambdas, text blocks vs string concatenation, var type inference), and Modern API Adoption (CompletableFuture for async, module system benefits, pattern matching simplifications)
-- **PROPOSE** multiple modern Java refactoring options for each identified opportunity with clear trade-offs: Lambda conversion strategies (method references vs lambda expressions vs keeping anonymous classes), Stream API adoption approaches (sequential vs parallel vs traditional loops), Optional integration methods (return type changes vs internal usage vs gradual adoption), API modernization paths (java.time migration vs incremental adoption vs compatibility layers)
-- **EXPLAIN** the benefits and considerations of each proposed modern Java solution: Code readability improvements, performance implications and benchmarking needs, maintenance complexity changes, team learning curve requirements, backward compatibility concerns, and migration effort estimates for different modernization approaches
-- **PRESENT** comprehensive modern Java adoption strategies: Feature-by-feature modernization roadmaps (lambdas → streams → Optional → java.time → modules), refactoring techniques (Extract Lambda, Replace Loop with Stream, Introduce Optional), testing strategies for modern features, and performance validation approaches (before/after benchmarks, profiling modern vs legacy code)
-- **ASK** the user to choose their preferred approach for each category of modern Java improvements, considering their Java version constraints, team expertise level, performance requirements, and modernization timeline rather than implementing all changes automatically
-- **VALIDATE** that any proposed modern Java refactoring will compile successfully, maintain existing functionality, preserve business logic integrity, and achieve expected performance characteristics before implementation
+- **ANALYZE** Java code to identify specific modern feature refactoring opportunities and categorize them by impact (CRITICAL, MAINTAINABILITY, PERFORMANCE, READABILITY) and area (lambda
+  expressions, stream API, Optional usage, java.time API, collection factories, CompletableFuture, text blocks, pattern matching)
+- **CATEGORIZE** modern Java refactoring opportunities found: Legacy Code Issues (anonymous classes vs lambdas, Iterator loops vs streams, null checks vs Optional, Date/Calendar vs
+  java.time), Performance Improvements (parallel stream opportunities, lazy initialization patterns, efficient collection creation), Readability Enhancements (method references vs lambdas,
+  text blocks vs string concatenation, var type inference), and Modern API Adoption (CompletableFuture for async, module system benefits, pattern matching simplifications)
+- **PROPOSE** multiple modern Java refactoring options for each identified opportunity with clear trade-offs: Lambda conversion strategies (method references vs lambda expressions vs keeping
+  anonymous classes), Stream API adoption approaches (sequential vs parallel vs traditional loops), Optional integration methods (return type changes vs internal usage vs gradual adoption),
+  API modernization paths (java.time migration vs incremental adoption vs compatibility layers)
+- **EXPLAIN** the benefits and considerations of each proposed modern Java solution: Code readability improvements, performance implications and benchmarking needs, maintenance complexity
+  changes, team learning curve requirements, backward compatibility concerns, and migration effort estimates for different modernization approaches
+- **PRESENT** comprehensive modern Java adoption strategies: Feature-by-feature modernization roadmaps (lambdas → streams → Optional → java.time → modules), refactoring techniques (Extract
+  Lambda, Replace Loop with Stream, Introduce Optional), testing strategies for modern features, and performance validation approaches (before/after benchmarks, profiling modern vs legacy
+  code)
+- **ASK** the user to choose their preferred approach for each category of modern Java improvements, considering their Java version constraints, team expertise level, performance
+  requirements, and modernization timeline rather than implementing all changes automatically
+- **VALIDATE** that any proposed modern Java refactoring will compile successfully, maintain existing functionality, preserve business logic integrity, and achieve expected performance
+  characteristics before implementation
 
 ## Safeguards
 

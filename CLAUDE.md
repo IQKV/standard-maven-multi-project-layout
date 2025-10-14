@@ -7,6 +7,7 @@ This document outlines modern Spring Boot 3 best practices for enterprise-grade 
 ## 🏗️ Project Structure & Architecture
 
 ### Multi-Module Maven Structure
+
 ```
 multimoduleservice/
 ├── pom.xml (parent aggregator)
@@ -18,6 +19,7 @@ multimoduleservice/
 ```
 
 ### Spring Modulith Organization
+
 - Use `@ApplicationModule` for clear module boundaries
 - Define module APIs through package-private visibility
 - Leverage `@ModuleTest` for isolated module testing
@@ -26,6 +28,7 @@ multimoduleservice/
 ## ☕ Modern Java 25+ Features
 
 ### Virtual Threads (Project Loom)
+
 ```java
 // Enable virtual threads globally
 @Configuration
@@ -52,6 +55,7 @@ public class ProductController {
 ```
 
 ### Pattern Matching & Switch Expressions
+
 ```java
 // Modern switch expressions with pattern matching
 public ResponseEntity<String> handleException(Exception ex) {
@@ -69,6 +73,7 @@ public ResponseEntity<String> handleException(Exception ex) {
 ```
 
 ### Records for DTOs
+
 ```java
 // Immutable DTOs with validation
 public record CreateProductRequest(
@@ -98,6 +103,7 @@ public record ProductResponse(
 ## 🌐 Web Layer Best Practices
 
 ### RESTful API Design
+
 ```java
 @RestController
 @RequestMapping("/api/v1/products")
@@ -132,6 +138,7 @@ public class ProductController {
 ```
 
 ### Exception Handling
+
 ```java
 @RestControllerAdvice
 @Slf4j
@@ -172,6 +179,7 @@ public class GlobalExceptionHandler {
 ## 🗄️ Data Access Layer
 
 ### JPA Best Practices
+
 ```java
 @Entity
 @Table(name = "products")
@@ -215,6 +223,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 ```
 
 ### Transaction Management
+
 ```java
 @Service
 @Transactional(readOnly = true)
@@ -244,6 +253,7 @@ public class ProductService {
 ## 📊 Observability & Monitoring
 
 ### Metrics with Micrometer
+
 ```java
 @Component
 @Slf4j
@@ -273,6 +283,7 @@ public class ProductMetrics {
 ```
 
 ### Structured Logging
+
 ```java
 @RestController
 @Slf4j
@@ -302,6 +313,7 @@ public class ProductController {
 ## 🔒 Security Best Practices
 
 ### Method-Level Security
+
 ```java
 @Service
 @PreAuthorize("hasRole('USER')")
@@ -332,6 +344,7 @@ public class ProductSecurity {
 ```
 
 ### Input Validation
+
 ```java
 public record UpdateProductRequest(
     @NotBlank @Size(min = 1, max = 100) String name,
@@ -343,6 +356,7 @@ public record UpdateProductRequest(
 ## 🧪 Testing Strategies
 
 ### Integration Testing with Testcontainers
+
 ```java
 @SpringBootTest
 @Testcontainers
@@ -381,6 +395,7 @@ class ProductServiceIntegrationTest {
 ```
 
 ### Web Layer Testing
+
 ```java
 @WebMvcTest(ProductController.class)
 class ProductControllerTest {
@@ -410,6 +425,7 @@ class ProductControllerTest {
 ## 🚀 Performance Optimization
 
 ### Caching Strategy
+
 ```java
 @Service
 @CacheConfig(cacheNames = "products")
@@ -431,6 +447,7 @@ public class ProductService {
 ```
 
 ### Database Query Optimization
+
 ```java
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
@@ -452,6 +469,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 ## ☁️ Cloud-Native Patterns
 
 ### Configuration Management
+
 ```yaml
 # application.yml
 spring:
@@ -489,6 +507,7 @@ logging:
 ```
 
 ### Health Checks
+
 ```java
 @Component
 public class DatabaseHealthIndicator implements HealthIndicator {
@@ -519,6 +538,7 @@ public class DatabaseHealthIndicator implements HealthIndicator {
 ## 📦 Build & Deployment
 
 ### Maven Configuration Best Practices
+
 ```xml
 <properties>
     <!-- Use Java 25 LTS -->
@@ -566,6 +586,7 @@ public class DatabaseHealthIndicator implements HealthIndicator {
 ```
 
 ### Docker Best Practices
+
 ```dockerfile
 FROM eclipse-temurin:21-jre-alpine as runtime
 
@@ -591,6 +612,7 @@ ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS org.springframework.boot.loader.JarLaun
 ## 🔧 Development Workflow
 
 ### Local Development Setup
+
 ```yaml
 # docker-compose.yml for local development
 version: '3.8'
@@ -616,6 +638,7 @@ volumes:
 ```
 
 ### Profile-Based Configuration
+
 ```java
 @Configuration
 @Profile("!test")

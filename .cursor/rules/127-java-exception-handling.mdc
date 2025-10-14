@@ -6,7 +6,10 @@ You are a Senior software engineer with extensive experience in Java software de
 
 ## Goal
 
-This document provides comprehensive guidelines for robust Java exception handling practices. It covers fundamental principles including using specific exception types for different error scenarios, implementing proper resource management with try-with-resources, secure exception handling that prevents information leakage, proper exception chaining to preserve context, input validation with appropriate exceptions, thread interruption handling, and comprehensive exception documentation. The guidelines emphasize creating maintainable, secure, and debuggable error handling code that provides clear diagnostic information while protecting sensitive system details.
+This document provides comprehensive guidelines for robust Java exception handling practices. It covers fundamental principles including using specific exception types for different error
+scenarios, implementing proper resource management with try-with-resources, secure exception handling that prevents information leakage, proper exception chaining to preserve context, input
+validation with appropriate exceptions, thread interruption handling, and comprehensive exception documentation. The guidelines emphasize creating maintainable, secure, and debuggable error
+handling code that provides clear diagnostic information while protecting sensitive system details.
 
 ### Consultative Interaction Technique
 
@@ -52,7 +55,8 @@ Focus on being consultative rather than prescriptive - analyze, propose, ask, th
 
 These guidelines are built upon the following core principles:
 
-1. **Specific Exception Types**: Use specific exception types rather than generic `Exception` or `RuntimeException`. Create custom exceptions when needed to provide clear semantic meaning about what went wrong.
+1. **Specific Exception Types**: Use specific exception types rather than generic `Exception` or `RuntimeException`. Create custom exceptions when needed to provide clear semantic meaning
+   about what went wrong.
 2. **Resource Management**: Always use try-with-resources for automatic resource cleanup. Ensure resources are properly closed even in exception scenarios.
 3. **Input Validation**: Validate input parameters early and throw appropriate exceptions (`IllegalArgumentException`, `NullPointerException`) with descriptive messages.
 4. **Secure Exception Handling**: Never expose sensitive information in exception messages. Log detailed information for developers while providing generic messages to users.
@@ -91,7 +95,8 @@ Before applying any recommendations, ensure the project is in a valid state by r
 ### Example 1: Input Validation with Specific Exceptions
 
 Title: Validate Early and Fail Fast with Descriptive Exceptions
-Description: Validate input parameters at method entry points and throw specific, descriptive exceptions immediately when validation fails. This prevents invalid data from propagating through the system and makes debugging easier.
+Description: Validate input parameters at method entry points and throw specific, descriptive exceptions immediately when validation fails. This prevents invalid data from propagating
+through the system and makes debugging easier.
 
 **Good example:**
 
@@ -207,7 +212,8 @@ public class BadUserService {
 ### Example 2: Resource Management with Try-With-Resources
 
 Title: Ensure Proper Resource Cleanup in All Scenarios
-Description: Use try-with-resources for automatic resource management. This ensures resources are properly closed even when exceptions occur, preventing resource leaks and improving application reliability.
+Description: Use try-with-resources for automatic resource management. This ensures resources are properly closed even when exceptions occur, preventing resource leaks and improving
+application reliability.
 
 **Good example:**
 
@@ -370,7 +376,8 @@ public class BadResourceManager {
 ### Example 3: Secure Exception Handling
 
 Title: Protect Sensitive Information While Enabling Debugging
-Description: Handle exceptions securely by logging detailed diagnostic information for developers while providing only generic, safe error messages to users. Never expose sensitive system details, file paths, database schemas, or internal implementation details in user-facing error messages.
+Description: Handle exceptions securely by logging detailed diagnostic information for developers while providing only generic, safe error messages to users. Never expose sensitive system
+details, file paths, database schemas, or internal implementation details in user-facing error messages.
 
 **Good example:**
 
@@ -584,7 +591,8 @@ public class InsecureService {
 ### Example 4: Exception Chaining and Context Preservation
 
 Title: Maintain Full Error Context for Effective Debugging
-Description: Use exception chaining to preserve the original exception context while adding higher-level semantic meaning. This provides the full error context needed for debugging while allowing different layers of the application to handle errors appropriately.
+Description: Use exception chaining to preserve the original exception context while adding higher-level semantic meaning. This provides the full error context needed for debugging while
+allowing different layers of the application to handle errors appropriately.
 
 **Good example:**
 
@@ -818,7 +826,8 @@ public class BadLayeredService {
 ### Example 5: Thread Interruption and Concurrent Exception Handling
 
 Title: Handle InterruptedException and Concurrent Operations Properly
-Description: Handle InterruptedException correctly by restoring the interrupted status and taking appropriate action. In concurrent code, ensure exception handling doesn't break thread safety or leave threads in inconsistent states.
+Description: Handle InterruptedException correctly by restoring the interrupted status and taking appropriate action. In concurrent code, ensure exception handling doesn't break thread
+safety or leave threads in inconsistent states.
 
 **Good example:**
 
@@ -1133,7 +1142,8 @@ public class BadConcurrentProcessor {
 ### Example 6: Custom Exception Design and Documentation
 
 Title: Create Meaningful Exception Hierarchies with Proper Documentation
-Description: Design custom exception hierarchies that provide semantic meaning and enable appropriate handling at different application layers. Document exceptions thoroughly with @throws tags and provide clear guidance on when and why they are thrown.
+Description: Design custom exception hierarchies that provide semantic meaning and enable appropriate handling at different application layers. Document exceptions thoroughly with @throws
+tags and provide clear guidance on when and why they are thrown.
 
 **Good example:**
 
@@ -1551,7 +1561,8 @@ public class BadUserService {
 ### Example 7: Use Exceptions Only for Exceptional Conditions
 
 Title: Don't use exceptions for ordinary control flow
-Description: Exceptions should be used for exceptional conditions, not for normal program flow. They are expensive and make code harder to understand. Use regular control structures for predictable conditions.
+Description: Exceptions should be used for exceptional conditions, not for normal program flow. They are expensive and make code harder to understand. Use regular control structures for
+predictable conditions.
 
 **Good example:**
 
@@ -1604,7 +1615,8 @@ public class NumberProcessor {
 ### Example 8: Use Checked Exceptions for Recoverable Conditions and Runtime Exceptions for Programming Errors
 
 Title: Choose the right type of exception for the situation
-Description: Checked exceptions force the caller to handle recoverable conditions, while runtime exceptions indicate programming errors that should be fixed in code. Use checked exceptions for conditions the caller can reasonably recover from.
+Description: Checked exceptions force the caller to handle recoverable conditions, while runtime exceptions indicate programming errors that should be fixed in code. Use checked exceptions
+for conditions the caller can reasonably recover from.
 
 **Good example:**
 
@@ -1764,7 +1776,8 @@ class InvalidIndexException extends RuntimeException {
 ### Example 10: Include Failure-Capture Information in Detail Messages
 
 Title: Provide detailed, actionable information in exception messages
-Description: Exception messages should provide enough context to understand what went wrong and how to fix it. Include relevant parameter values, expected ranges, and specific failure conditions.
+Description: Exception messages should provide enough context to understand what went wrong and how to fix it. Include relevant parameter values, expected ranges, and specific failure
+conditions.
 
 **Good example:**
 
@@ -1865,7 +1878,8 @@ public class BankAccount {
 ### Example 11: Don't Ignore Exceptions
 
 Title: Always handle exceptions appropriately, never ignore them silently
-Description: Ignoring exceptions can hide bugs and make debugging extremely difficult. Always log exceptions appropriately, handle them meaningfully, or re-throw them with additional context.
+Description: Ignoring exceptions can hide bugs and make debugging extremely difficult. Always log exceptions appropriately, handle them meaningfully, or re-throw them with additional
+context.
 
 **Good example:**
 
@@ -1957,7 +1971,8 @@ public class FileManager {
 ### Example 12: Testing Exception Scenarios Effectively
 
 Title: Comprehensive patterns for testing exception handling
-Description: Test exception scenarios thoroughly using AssertJ's fluent API for clear, maintainable test code. Verify both that exceptions are thrown when expected and that they contain appropriate messages and context.
+Description: Test exception scenarios thoroughly using AssertJ's fluent API for clear, maintainable test code. Verify both that exceptions are thrown when expected and that they contain
+appropriate messages and context.
 
 **Good example:**
 
@@ -2100,13 +2115,22 @@ class CalculatorTestBad {
 
 ## Output Format
 
-- **ANALYZE** the current codebase to identify specific exception handling issues and categorize them by severity (CRITICAL, HIGH, MEDIUM, LOW) and type (validation, resource management, security, thread safety, documentation)
-- **CATEGORIZE** exception handling problems found: Input Validation Gaps (missing or inadequate parameter validation), Resource Management Issues (missing try-with-resources, resource leaks), Security Vulnerabilities (information disclosure, sensitive data exposure), Thread Safety Problems (improper InterruptedException handling, concurrent access issues), Exception Design Flaws (generic exceptions, poor hierarchy design), and Documentation Deficiencies (missing @throws tags, unclear exception descriptions)
-- **PROPOSE** multiple improvement options for each identified issue with clear trade-offs: Input validation strategies (early validation vs defensive programming), resource management approaches (try-with-resources vs manual cleanup), exception hierarchy designs (checked vs unchecked exceptions), security hardening techniques (generic error messages vs detailed logging), and thread safety solutions (proper interruption handling vs timeout strategies)
-- **EXPLAIN** the benefits and implementation considerations of each proposed solution: Reliability improvements, security enhancements, maintainability benefits, performance implications, debugging capabilities, and code clarity improvements for different exception handling approaches
-- **PRESENT** comprehensive exception handling improvement strategies: Exception hierarchy design, error handling pattern standardization, security-focused exception practices, resource management automation, thread-safe error handling, and comprehensive exception documentation approaches
-- **ASK** the user to choose their preferred approach for each category of exception handling improvements, considering their application requirements, security constraints, and team expertise rather than applying all changes automatically
-- **VALIDATE** that any proposed exception handling changes will compile successfully, maintain existing functionality, improve error handling robustness, and align with security best practices before implementation
+- **ANALYZE** the current codebase to identify specific exception handling issues and categorize them by severity (CRITICAL, HIGH, MEDIUM, LOW) and type (validation, resource management,
+  security, thread safety, documentation)
+- **CATEGORIZE** exception handling problems found: Input Validation Gaps (missing or inadequate parameter validation), Resource Management Issues (missing try-with-resources, resource
+  leaks), Security Vulnerabilities (information disclosure, sensitive data exposure), Thread Safety Problems (improper InterruptedException handling, concurrent access issues), Exception
+  Design Flaws (generic exceptions, poor hierarchy design), and Documentation Deficiencies (missing @throws tags, unclear exception descriptions)
+- **PROPOSE** multiple improvement options for each identified issue with clear trade-offs: Input validation strategies (early validation vs defensive programming), resource management
+  approaches (try-with-resources vs manual cleanup), exception hierarchy designs (checked vs unchecked exceptions), security hardening techniques (generic error messages vs detailed
+  logging), and thread safety solutions (proper interruption handling vs timeout strategies)
+- **EXPLAIN** the benefits and implementation considerations of each proposed solution: Reliability improvements, security enhancements, maintainability benefits, performance implications,
+  debugging capabilities, and code clarity improvements for different exception handling approaches
+- **PRESENT** comprehensive exception handling improvement strategies: Exception hierarchy design, error handling pattern standardization, security-focused exception practices, resource
+  management automation, thread-safe error handling, and comprehensive exception documentation approaches
+- **ASK** the user to choose their preferred approach for each category of exception handling improvements, considering their application requirements, security constraints, and team
+  expertise rather than applying all changes automatically
+- **VALIDATE** that any proposed exception handling changes will compile successfully, maintain existing functionality, improve error handling robustness, and align with security best
+  practices before implementation
 
 ## Safeguards
 

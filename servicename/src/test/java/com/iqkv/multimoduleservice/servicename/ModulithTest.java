@@ -16,10 +16,9 @@
 
 package com.iqkv.multimoduleservice.servicename;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.modulith.core.ApplicationModules;
 import org.springframework.modulith.docs.Documenter;
-
-import org.junit.jupiter.api.Test;
 
 /**
  * Comprehensive Spring Modulith tests for the entire application. These tests verify the modular structure and generate documentation.

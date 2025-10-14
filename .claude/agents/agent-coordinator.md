@@ -200,4 +200,5 @@ When coordinating multiple agents, I will:
 6. **Validate Integration**: Ensure all components work together properly
 7. **Provide Summary**: Deliver a comprehensive summary of the coordinated effort
 
-This coordination approach ensures that complex Spring Boot development tasks receive the appropriate expertise while maintaining consistency and integration across all aspects of the application.
+This coordination approach ensures that complex Spring Boot development tasks receive the appropriate expertise while maintaining consistency and integration across all aspects of the
+application.

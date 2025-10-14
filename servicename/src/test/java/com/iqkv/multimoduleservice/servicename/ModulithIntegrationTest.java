@@ -16,11 +16,10 @@
 
 package com.iqkv.multimoduleservice.servicename;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.modulith.test.ApplicationModuleTest;
 import org.springframework.test.context.ActiveProfiles;
-
-import org.junit.jupiter.api.Test;
 
 /**
  * Integration tests using Spring Modulith's testing capabilities. These tests verify module integration and bootstrap behavior.

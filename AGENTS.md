@@ -2,7 +2,8 @@
 
 ## Overview
 
-This document provides comprehensive guidelines for repository management, development workflows, and collaboration standards for multi-module Spring Boot projects. It serves as a reference for both human developers and AI agents working with this codebase.
+This document provides comprehensive guidelines for repository management, development workflows, and collaboration standards for multi-module Spring Boot projects. It serves as a reference
+for both human developers and AI agents working with this codebase.
 
 ## 🏛️ Repository Structure & Organization
 
@@ -733,4 +734,5 @@ decision_criteria:
     - rollback_capability: "Ability to revert changes"
 ```
 
-This repository guidelines document serves as a comprehensive reference for maintaining high-quality, secure, and well-organized codebases while facilitating effective collaboration between human developers and AI agents.
+This repository guidelines document serves as a comprehensive reference for maintaining high-quality, secure, and well-organized codebases while facilitating effective collaboration between
+human developers and AI agents.

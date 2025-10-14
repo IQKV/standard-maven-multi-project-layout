@@ -6,7 +6,8 @@ You are a Senior software engineer with extensive experience in Java software de
 
 ## Goal
 
-Type design thinking in Java applies typography principles to code structure and organization. Just as typography creates readable, accessible text, thoughtful type design in Java produces maintainable, comprehensible code.
+Type design thinking in Java applies typography principles to code structure and organization. Just as typography creates readable, accessible text, thoughtful type design in Java produces
+maintainable, comprehensible code.
 
 ### Consultative Interaction Technique
 
@@ -50,11 +51,11 @@ Focus on being consultative rather than prescriptive - analyze, propose, ask, th
 
 ### Implementing These Principles
 
-1.  **Start with domain modeling**: Sketch your type system before coding.
-2.  **Create a type style guide**: Document naming conventions and patterns.
-3.  **Review for type consistency**: Periodically check for style adherence.
-4.  **Refactor toward clearer type expressions**: Improve existing code.
-5.  **Use tools to enforce style**: Configure linters and static analyzers.
+1. **Start with domain modeling**: Sketch your type system before coding.
+2. **Create a type style guide**: Document naming conventions and patterns.
+3. **Review for type consistency**: Periodically check for style adherence.
+4. **Refactor toward clearer type expressions**: Improve existing code.
+5. **Use tools to enforce style**: Configure linters and static analyzers.
 
 Remember, good type design in Java is about communication - making your code's intent clear both to the compiler and to other developers.
 
@@ -88,7 +89,8 @@ Before applying any recommendations, ensure the project is in a valid state by r
 ### Example 1: Establish a Clear Type Hierarchy
 
 Title: Organize Classes and Interfaces into Logical Structure
-Description: This rule focuses on organizing classes and interfaces into a logical structure using inheritance and composition. A clear hierarchy makes the relationships between types explicit, improving code navigation and understanding. It often involves using nested static classes for closely related types.
+Description: This rule focuses on organizing classes and interfaces into a logical structure using inheritance and composition. A clear hierarchy makes the relationships between types
+explicit, improving code navigation and understanding. It often involves using nested static classes for closely related types.
 
 **Good example:**
 
@@ -161,7 +163,8 @@ public class User { // Too generic - could be any type of user
 ### Example 2: Use Consistent Naming Conventions
 
 Title: Apply Uniform Patterns for Naming (Your Type's "Font Family")
-Description: This rule emphasizes using uniform patterns for naming classes, interfaces, methods, and variables. Consistency in naming acts like a consistent font family in typography, making the code easier to read, predict, and maintain across the entire project.
+Description: This rule emphasizes using uniform patterns for naming classes, interfaces, methods, and variables. Consistency in naming acts like a consistent font family in typography,
+making the code easier to read, predict, and maintain across the entire project.
 
 **Good example:**
 
@@ -232,7 +235,8 @@ class ShippingCostCalculatorImpl implements ShipCalc { // Too verbose
 ### Example 3: Embrace Whitespace (Kerning and Leading)
 
 Title: Strategic Use of Spacing for Readability
-Description: This rule advocates for the strategic use of blank lines and spacing within code, analogous to kerning and leading in typography. Proper whitespace improves readability by visually separating logical blocks of code, making it easier to scan and comprehend.
+Description: This rule advocates for the strategic use of blank lines and spacing within code, analogous to kerning and leading in typography. Proper whitespace improves readability by
+visually separating logical blocks of code, making it easier to scan and comprehend.
 
 **Good example:**
 
@@ -273,7 +277,8 @@ public Order processOrder(Cart cart,Customer customer){
 ### Example 4: Create Type-Safe Wrappers
 
 Title: Use Types as Communication Tools
-Description: This rule encourages wrapping primitive types or general-purpose types (like String) in domain-specific types. These wrapper types enhance type safety by enforcing invariants at compile-time and clearly communicate the intended meaning and constraints of data.
+Description: This rule encourages wrapping primitive types or general-purpose types (like String) in domain-specific types. These wrapper types enhance type safety by enforcing invariants at
+compile-time and clearly communicate the intended meaning and constraints of data.
 
 **Good example:**
 
@@ -376,7 +381,8 @@ void processPayment(String email, double amount, String currency) {
 ### Example 5: Leverage Generic Type Parameters
 
 Title: Create Flexible and Reusable Types (Responsive Typography)
-Description: This rule promotes the use of generics to create flexible and reusable types and methods that can operate on objects of various types while maintaining type safety. This is akin to responsive typography that adapts to different screen sizes, as generics adapt to different data types.
+Description: This rule promotes the use of generics to create flexible and reusable types and methods that can operate on objects of various types while maintaining type safety. This is akin
+to responsive typography that adapts to different screen sizes, as generics adapt to different data types.
 
 **Good example:**
 
@@ -481,7 +487,8 @@ public class ProductRepository {
 ### Example 6: Create Domain-Specific Languages (Typography with Character)
 
 Title: Design Fluent Interfaces for Domain Expression
-Description: This rule suggests designing fluent interfaces or using builder patterns to create mini "languages" specific to a domain. This makes code more expressive and readable, similar to how typography with distinct character adds personality and clarity to text.
+Description: This rule suggests designing fluent interfaces or using builder patterns to create mini "languages" specific to a domain. This makes code more expressive and readable, similar
+to how typography with distinct character adds personality and clarity to text.
 
 **Good example:**
 
@@ -511,7 +518,8 @@ order.setDeliveryDate(LocalDate.now().plusDays(3));
 ### Example 7: Use Consistent Type "Weights" (Bold, Regular, Light)
 
 Title: Assign Conceptual Importance to Types
-Description: This rule advises assigning conceptual "weights" (like bold, regular, light in typography) to types based on their importance or role in the domain. Core domain objects might be "bold," supporting types "regular," and utility classes "light," helping to convey the architecture.
+Description: This rule advises assigning conceptual "weights" (like bold, regular, light in typography) to types based on their importance or role in the domain. Core domain objects might
+be "bold," supporting types "regular," and utility classes "light," helping to convey the architecture.
 
 **Good example:**
 
@@ -543,7 +551,8 @@ public class ProductManager { /* ... */ }
 ### Example 8: Apply Type Contrast Through Interfaces
 
 Title: Separate Contract from Implementation
-Description: This rule emphasizes defining clear contracts using interfaces and then providing concrete implementations. This creates "contrast" by separating the "what" (interface) from the "how" (implementation), promoting loose coupling and easier testing and maintenance.
+Description: This rule emphasizes defining clear contracts using interfaces and then providing concrete implementations. This creates "contrast" by separating the "what" (interface) from
+the "how" (implementation), promoting loose coupling and easier testing and maintenance.
 
 **Good example:**
 
@@ -597,7 +606,8 @@ public class StripePaymentProcessor {
 ### Example 9: Create Type Alignment Through Method Signatures
 
 Title: Consistent Signatures for Predictable APIs
-Description: This rule advocates for consistency in method signatures (names, parameter types, return types) across related classes or interfaces. Aligned signatures, like aligned text in typography, create a sense of order and predictability, making APIs easier to learn and use.
+Description: This rule advocates for consistency in method signatures (names, parameter types, return types) across related classes or interfaces. Aligned signatures, like aligned text in
+typography, create a sense of order and predictability, making APIs easier to learn and use.
 
 **Good example:**
 
@@ -652,7 +662,8 @@ public class SmsSender {
 ### Example 10: Design for Clear Type Readability and Comprehension
 
 Title: Self-Documenting Code with Clear Intent
-Description: This overarching rule encourages writing self-documenting code with clear, descriptive names for types, methods, and variables. The goal is to make the code's intent immediately obvious, minimizing the need for extensive comments or external documentation.
+Description: This overarching rule encourages writing self-documenting code with clear, descriptive names for types, methods, and variables. The goal is to make the code's intent immediately
+obvious, minimizing the need for extensive comments or external documentation.
 
 **Good example:**
 
@@ -702,7 +713,8 @@ public class OS {
 ### Example 11: Use BigDecimal for Precision-Sensitive Calculations
 
 Title: Ensure Accuracy in Financial and Mathematical Operations
-Description: This rule emphasizes using `java.math.BigDecimal` for calculations requiring high precision, especially with monetary values or any domain where rounding errors from binary floating-point arithmetic (like `float` or `double`) are unacceptable. Use consistent rounding modes and scale for predictable results.
+Description: This rule emphasizes using `java.math.BigDecimal` for calculations requiring high precision, especially with monetary values or any domain where rounding errors from binary
+floating-point arithmetic (like `float` or `double`) are unacceptable. Use consistent rounding modes and scale for predictable results.
 
 **Good example:**
 
@@ -810,7 +822,10 @@ public class InaccurateFinancialCalculator {
 ### Example 12: Strategic Type Selection for Methods and Algorithms
 
 Title: Choose Appropriate Types for Maximum Clarity and Safety
-Description: This rule emphasizes choosing the most appropriate Java types for method parameters, return values, and internal algorithm variables. Considerations include specificity (preferring the most precise type that still allows necessary flexibility), using interfaces over concrete classes for parameters and return types where appropriate, selecting suitable collection types (`List`, `Set`, `Map`, etc.) based on requirements (e.g., ordering, uniqueness, access patterns, performance characteristics), and leveraging types like `Optional` for results that may be absent. It also covers the deliberate choice between primitive types and their wrapper counterparts, especially concerning nullability and collection usage.
+Description: This rule emphasizes choosing the most appropriate Java types for method parameters, return values, and internal algorithm variables. Considerations include specificity (
+preferring the most precise type that still allows necessary flexibility), using interfaces over concrete classes for parameters and return types where appropriate, selecting suitable
+collection types (`List`, `Set`, `Map`, etc.) based on requirements (e.g., ordering, uniqueness, access patterns, performance characteristics), and leveraging types like `Optional` for
+results that may be absent. It also covers the deliberate choice between primitive types and their wrapper counterparts, especially concerning nullability and collection usage.
 
 **Good example:**
 
@@ -899,13 +914,22 @@ class BadProductService {
 
 ## Output Format
 
-- **ANALYZE** the current type design to identify specific issues and categorize them by impact (CRITICAL, MAINTAINABILITY, TYPE_SAFETY, READABILITY) and type design area (naming conventions, type hierarchies, generic usage, primitive obsession, type safety)
-- **CATEGORIZE** type design problems found: Naming Convention Issues (inconsistent patterns, unclear intent), Type Hierarchy Problems (poor organization, missing abstractions), Generic Type Deficiencies (missing type parameters, overly broad bounds), Primitive Obsession (String/int overuse instead of domain types), Type Safety Gaps (unsafe casts, missing validation), and Precision Issues (double/float for financial calculations)
-- **PROPOSE** multiple improvement options for each identified issue with clear trade-offs: Type wrapper creation strategies (value objects vs records), generic design approaches (bounded vs unbounded parameters), hierarchy organization methods (inheritance vs composition), naming standardization techniques (domain-driven vs technical naming), and precision type adoption paths (gradual vs complete BigDecimal migration)
-- **EXPLAIN** the benefits and considerations of each proposed solution: Type safety improvements, maintainability enhancements, readability benefits, performance implications, migration complexity, and team adoption considerations for different type design approaches
-- **PRESENT** comprehensive type design improvement strategies: Domain-driven type modeling approaches, fluent interface design patterns, type hierarchy organization principles, generic type parameter optimization, and precision-sensitive calculation refactoring methods
-- **ASK** the user to choose their preferred approach for each category of type design improvements, considering their domain requirements, team expertise, performance constraints, and migration timeline rather than implementing all changes automatically
-- **VALIDATE** that any proposed type design changes will compile successfully, maintain existing functionality, preserve type safety, and align with established architectural patterns before implementation
+- **ANALYZE** the current type design to identify specific issues and categorize them by impact (CRITICAL, MAINTAINABILITY, TYPE_SAFETY, READABILITY) and type design area (naming
+  conventions, type hierarchies, generic usage, primitive obsession, type safety)
+- **CATEGORIZE** type design problems found: Naming Convention Issues (inconsistent patterns, unclear intent), Type Hierarchy Problems (poor organization, missing abstractions), Generic Type
+  Deficiencies (missing type parameters, overly broad bounds), Primitive Obsession (String/int overuse instead of domain types), Type Safety Gaps (unsafe casts, missing validation), and
+  Precision Issues (double/float for financial calculations)
+- **PROPOSE** multiple improvement options for each identified issue with clear trade-offs: Type wrapper creation strategies (value objects vs records), generic design approaches (bounded vs
+  unbounded parameters), hierarchy organization methods (inheritance vs composition), naming standardization techniques (domain-driven vs technical naming), and precision type adoption
+  paths (gradual vs complete BigDecimal migration)
+- **EXPLAIN** the benefits and considerations of each proposed solution: Type safety improvements, maintainability enhancements, readability benefits, performance implications, migration
+  complexity, and team adoption considerations for different type design approaches
+- **PRESENT** comprehensive type design improvement strategies: Domain-driven type modeling approaches, fluent interface design patterns, type hierarchy organization principles, generic type
+  parameter optimization, and precision-sensitive calculation refactoring methods
+- **ASK** the user to choose their preferred approach for each category of type design improvements, considering their domain requirements, team expertise, performance constraints, and
+  migration timeline rather than implementing all changes automatically
+- **VALIDATE** that any proposed type design changes will compile successfully, maintain existing functionality, preserve type safety, and align with established architectural patterns
+  before implementation
 
 ## Safeguards
 

@@ -62,10 +62,14 @@ Focus on being consultative rather than prescriptive - analyze, propose, ask, th
 
 These guidelines are built upon the following core principles:
 
-1. **Minimize Exception Usage**: Reserve exceptions for truly exceptional circumstances. Use monads like `Optional<T>` for nullable values, VAVR's `Either<L,R>` for error handling, and `CompletableFuture<T>` for asynchronous operations instead of throwing exceptions for predictable failure cases.
-2. **Favor Functional Error Handling**: Prefer returning functional types that encapsulate success/failure states (e.g., `Optional.empty()`, `Either.left(error)`, `Either.right(value)`) over throwing exceptions for business logic errors or validation failures.
-3. **Use Specific Exception Types When Necessary**: When exceptions are unavoidable, differentiate between different types of errors by using specific exception classes (e.g., `IOException` for I/O errors, `SQLException` for database errors, `IllegalArgumentException` for invalid method arguments).
-4. **Checked vs. Unchecked Exceptions**: Use checked exceptions sparingly for truly recoverable errors that callers must handle, and unchecked exceptions for programming errors that indicate bugs in the code.
+1. **Minimize Exception Usage**: Reserve exceptions for truly exceptional circumstances. Use monads like `Optional<T>` for nullable values, VAVR's `Either<L,R>` for error handling, and
+   `CompletableFuture<T>` for asynchronous operations instead of throwing exceptions for predictable failure cases.
+2. **Favor Functional Error Handling**: Prefer returning functional types that encapsulate success/failure states (e.g., `Optional.empty()`, `Either.left(error)`, `Either.right(value)`) over
+   throwing exceptions for business logic errors or validation failures.
+3. **Use Specific Exception Types When Necessary**: When exceptions are unavoidable, differentiate between different types of errors by using specific exception classes (e.g., `IOException`
+   for I/O errors, `SQLException` for database errors, `IllegalArgumentException` for invalid method arguments).
+4. **Checked vs. Unchecked Exceptions**: Use checked exceptions sparingly for truly recoverable errors that callers must handle, and unchecked exceptions for programming errors that indicate
+   bugs in the code.
 5. **Exception Naming Conventions**: Follow a consistent naming convention for exception classes when they are necessary (e.g., `ResourceNotFoundException`, `InvalidInputException`).
 
 ## Constraints
@@ -90,7 +94,8 @@ Before applying these guidelines, ensure the project is in a valid state by runn
 ### Example 1: Functional Error Handling with Monads
 
 Title: Use Optional and VAVR Either types instead of exceptions for predictable failures
-Description: Prefer functional error handling using monads like Optional for nullable values and VAVR's Either<L,R> for operations that can fail. Reserve exceptions only for truly exceptional circumstances like system failures or programming errors.
+Description: Prefer functional error handling using monads like Optional for nullable values and VAVR's Either<L,R> for operations that can fail. Reserve exceptions only for truly
+exceptional circumstances like system failures or programming errors.
 
 **Good example:**
 
@@ -251,7 +256,8 @@ public class UserService {
 ### Example 2: When to Use Exceptions vs. Functional Error Handling
 
 Title: Reserve exceptions for truly exceptional circumstances, use functional approaches for business logic
-Description: Use exceptions only for truly exceptional circumstances like system failures, programming errors, or unrecoverable conditions. For business logic failures, validation errors, and recoverable conditions, prefer functional error handling with Optional or Either types.
+Description: Use exceptions only for truly exceptional circumstances like system failures, programming errors, or unrecoverable conditions. For business logic failures, validation errors,
+and recoverable conditions, prefer functional error handling with Optional or Either types.
 
 **Good example:**
 
@@ -407,7 +413,9 @@ public class DocumentProcessor {
 ### Example 3: Designing Error Types for Functional Error Handling
 
 Title: Create well-structured error types for Either patterns and minimal exception design
-Description: Design comprehensive error types for functional error handling using the appropriate approach based on complexity: - Use enums for simple error cases that don't require additional data or complex context - Use sealed classes and records for complex error hierarchies that need pattern matching and rich data - Use builder patterns for errors requiring extensive contextual information When exceptions are necessary, follow clear naming conventions and include rich contextual information.
+Description: Design comprehensive error types for functional error handling using the appropriate approach based on complexity: - Use enums for simple error cases that don't require
+additional data or complex context - Use sealed classes and records for complex error hierarchies that need pattern matching and rich data - Use builder patterns for errors requiring
+extensive contextual information When exceptions are necessary, follow clear naming conventions and include rich contextual information.
 
 **Good example:**
 
@@ -857,7 +865,8 @@ public class PaymentService {
 ### Example 4: Composable Error Handling with Monads
 
 Title: Chain operations safely using flatMap, map, and other monadic operations
-Description: Use monadic composition to chain operations that can fail without throwing exceptions. This approach makes error handling explicit and composable, leading to more maintainable code.
+Description: Use monadic composition to chain operations that can fail without throwing exceptions. This approach makes error handling explicit and composable, leading to more maintainable
+code.
 
 **Good example:**
 
@@ -1016,7 +1025,8 @@ public class FileProcessor {
 ### Example 5: Logging and Monitoring with Functional Error Handling
 
 Title: Implement comprehensive logging and monitoring without relying on exception stack traces
-Description: When using functional error handling, implement structured logging with error contexts and metrics. Log business logic failures as warnings or info, and reserve error logging for true system failures.
+Description: When using functional error handling, implement structured logging with error contexts and metrics. Log business logic failures as warnings or info, and reserve error logging
+for true system failures.
 
 **Good example:**
 
@@ -1157,7 +1167,8 @@ public class UserService {
 ### Example 6: Clear Error Communication in Functional Design
 
 Title: Design comprehensive error types and documentation for functional error handling
-Description: Error types in functional design should be self-documenting with clear error codes, messages, and context. Document return types that indicate possible failure states using comprehensive JavaDoc.
+Description: Error types in functional design should be self-documenting with clear error codes, messages, and context. Document return types that indicate possible failure states using
+comprehensive JavaDoc.
 
 **Good example:**
 
@@ -1300,7 +1311,8 @@ public class BankAccountService {
 ### Example 7: Functional Control Flow Patterns
 
 Title: Implement control flow using monadic patterns instead of exceptions
-Description: Use functional programming patterns like Optional and Either types for control flow. This approach makes code more predictable, testable, and eliminates the performance overhead of exception handling.
+Description: Use functional programming patterns like Optional and Either types for control flow. This approach makes code more predictable, testable, and eliminates the performance overhead
+of exception handling.
 
 **Good example:**
 

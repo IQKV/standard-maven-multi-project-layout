@@ -1,6 +1,7 @@
 # Spring Boot Multi-Module Project Documentation
 
-Welcome to the documentation for the Spring Boot Multi-Module Project Template. This documentation provides comprehensive information about the project structure, setup, development workflow, and customization options.
+Welcome to the documentation for the Spring Boot Multi-Module Project Template. This documentation provides comprehensive information about the project structure, setup, development
+workflow, and customization options.
 
 ## Table of Contents
 
@@ -34,4 +35,5 @@ Welcome to the documentation for the Spring Boot Multi-Module Project Template. 
 
 ## About This Documentation
 
-This documentation is designed to help developers quickly understand and utilize the Spring Boot Multi-Module Project Template. Whether you're new to Spring Boot or an experienced developer, you'll find valuable information to help you get started and make the most of this template.
+This documentation is designed to help developers quickly understand and utilize the Spring Boot Multi-Module Project Template. Whether you're new to Spring Boot or an experienced developer,
+you'll find valuable information to help you get started and make the most of this template.

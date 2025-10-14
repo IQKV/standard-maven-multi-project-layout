@@ -6,8 +6,10 @@ You are a Senior software engineer with extensive experience in Java software de
 
 ## Goal
 
-This document provides comprehensive guidelines for robust Java object-oriented design and refactoring. It emphasizes core principles like SOLID, DRY, and YAGNI, best practices for class and interface design including favoring composition over inheritance and designing for immutability.
-The rules also cover mastering encapsulation, inheritance, and polymorphism, and finally, identifying and refactoring common object-oriented design code smells such as God Classes, Feature Envy, and Data Clumps to promote maintainable, flexible, and understandable code.
+This document provides comprehensive guidelines for robust Java object-oriented design and refactoring. It emphasizes core principles like SOLID, DRY, and YAGNI, best practices for class and
+interface design including favoring composition over inheritance and designing for immutability.
+The rules also cover mastering encapsulation, inheritance, and polymorphism, and finally, identifying and refactoring common object-oriented design code smells such as God Classes, Feature
+Envy, and Data Clumps to promote maintainable, flexible, and understandable code.
 
 ### Consultative Interaction Technique
 
@@ -53,16 +55,21 @@ Focus on being consultative rather than prescriptive - analyze, propose, ask, th
 
 These guidelines are built upon the following core principles:
 
-1.  **Adherence to Fundamental Design Principles**: Embrace foundational principles like SOLID, DRY, and YAGNI. These principles are key to building systems that are robust, maintainable, flexible, and easy to understand.
-2.  **Effective Class and Interface Design**: Employ best practices for designing classes and interfaces. This includes favoring composition over inheritance to achieve flexibility, programming to an interface rather than an implementation to promote loose coupling, keeping classes small and focused on a single responsibility, and designing for immutability where appropriate to enhance simplicity and thread-safety.
-3.  **Mastery of Core OOP Concepts**: Thoroughly understand and correctly apply the pillars of object-oriented programming:
+1. **Adherence to Fundamental Design Principles**: Embrace foundational principles like SOLID, DRY, and YAGNI. These principles are key to building systems that are robust, maintainable,
+   flexible, and easy to understand.
+2. **Effective Class and Interface Design**: Employ best practices for designing classes and interfaces. This includes favoring composition over inheritance to achieve flexibility,
+   programming to an interface rather than an implementation to promote loose coupling, keeping classes small and focused on a single responsibility, and designing for immutability where
+   appropriate to enhance simplicity and thread-safety.
+3. **Mastery of Core OOP Concepts**: Thoroughly understand and correctly apply the pillars of object-oriented programming:
 
 - **Encapsulation**: Protect internal state and expose behavior through well-defined interfaces.
 - **Inheritance**: Model true "is-a" relationships, ensuring subclasses are substitutable for their base types (Liskov Substitution Principle).
 - **Polymorphism**: Allow objects of different types to respond to the same message in their own way, simplifying client code.
 
-4.  **Proactive Code Smell Management**: Develop the ability to identify common object-oriented design "code smells" (e.g., God Class, Feature Envy, Data Clumps, Refused Bequest). Recognizing and refactoring these smells is crucial for improving the long-term health, maintainability, and clarity of the codebase.
-5.  **Rigorous Safety and Validation**: NEVER apply any design recommendations without first ensuring the project compiles successfully. All refactoring must be validated through compilation checks and testing to prevent introducing regressions or breaking existing functionality.
+4. **Proactive Code Smell Management**: Develop the ability to identify common object-oriented design "code smells" (e.g., God Class, Feature Envy, Data Clumps, Refused Bequest). Recognizing
+   and refactoring these smells is crucial for improving the long-term health, maintainability, and clarity of the codebase.
+5. **Rigorous Safety and Validation**: NEVER apply any design recommendations without first ensuring the project compiles successfully. All refactoring must be validated through compilation
+   checks and testing to prevent introducing regressions or breaking existing functionality.
 
 ## Constraints
 
@@ -137,7 +144,8 @@ Description: Core principles like SOLID, DRY, and YAGNI are foundational to good
 ### Example 2: Single Responsibility Principle (SRP)
 
 Title: A class should have one, and only one, reason to change.
-Description: This means a class should only have one job or primary responsibility. If a class handles multiple responsibilities, changes to one responsibility might inadvertently affect others.
+Description: This means a class should only have one job or primary responsibility. If a class handles multiple responsibilities, changes to one responsibility might inadvertently affect
+others.
 
 **Good example:**
 
@@ -309,7 +317,8 @@ public class BirdLSPViolation {
 ### Example 5: Interface Segregation Principle (ISP)
 
 Title: Clients should not be forced to depend on interfaces they do not use.
-Description: It's better to have many small, specific interfaces (role interfaces) than one large, general-purpose interface. This prevents classes from having to implement methods they don't need.
+Description: It's better to have many small, specific interfaces (role interfaces) than one large, general-purpose interface. This prevents classes from having to implement methods they
+don't need.
 
 **Good example:**
 
@@ -429,7 +438,8 @@ class NotificationServiceBad {
 ### Example 7: DRY (Don't Repeat Yourself)
 
 Title: Avoid duplication of code.
-Description: Every piece of knowledge or logic must have a single, unambiguous, authoritative representation within a system. Use methods, classes, inheritance, or composition to centralize and reuse code.
+Description: Every piece of knowledge or logic must have a single, unambiguous, authoritative representation within a system. Use methods, classes, inheritance, or composition to centralize
+and reuse code.
 
 **Good example:**
 
@@ -484,7 +494,8 @@ class CircleVolumeBad {
 ### Example 8: YAGNI (You Ain't Gonna Need It)
 
 Title: Implement features only when you actually need them.
-Description: Avoid implementing functionality based on speculation that it might be needed in the future. This helps prevent over-engineering and keeps the codebase simpler and more focused on current requirements.
+Description: Avoid implementing functionality based on speculation that it might be needed in the future. This helps prevent over-engineering and keeps the codebase simpler and more focused
+on current requirements.
 
 **Good example:**
 
@@ -521,7 +532,8 @@ class ReportGeneratorOverkill {
 ### Example 9: Design Well-Structured and Maintainable Classes and Interfaces
 
 Title: Design Well-Structured and Maintainable Classes and Interfaces
-Description: Good class and interface design is crucial for building flexible and understandable OOD systems. Favor composition over inheritance, program to interfaces rather than implementations, keep classes small and focused, and design for immutability where appropriate. Use clear, descriptive naming conventions.
+Description: Good class and interface design is crucial for building flexible and understandable OOD systems. Favor composition over inheritance, program to interfaces rather than
+implementations, keep classes small and focused, and design for immutability where appropriate. Use clear, descriptive naming conventions.
 
 **Good example:**
 
@@ -603,7 +615,8 @@ Description: Encapsulation, Inheritance, and Polymorphism are the three pillars 
 ### Example 11: Encapsulation
 
 Title: Protect Internal State and Implementation Details
-Description: Hide the internal state (fields) and implementation details of an object from the outside world. Expose a well-defined public interface (methods) for interacting with the object. Use access modifiers effectively to control visibility and protect invariants.
+Description: Hide the internal state (fields) and implementation details of an object from the outside world. Expose a well-defined public interface (methods) for interacting with the
+object. Use access modifiers effectively to control visibility and protect invariants.
 
 **Good example:**
 
@@ -662,7 +675,8 @@ public class BadEncapsulationExample {
 ### Example 12: Inheritance
 
 Title: Model "is-a" Relationships and Ensure LSP
-Description: Use inheritance to model true "is-a" relationships, where a subclass is a more specific type of its superclass. Ensure that the Liskov Substitution Principle (LSP) is followed: subclasses must be substitutable for their base types without altering the correctness of the program.
+Description: Use inheritance to model true "is-a" relationships, where a subclass is a more specific type of its superclass. Ensure that the Liskov Substitution Principle (LSP) is followed:
+subclasses must be substitutable for their base types without altering the correctness of the program.
 
 **Good example:**
 
@@ -722,7 +736,8 @@ class BetterCarDoor {
 ### Example 13: Polymorphism
 
 Title: Enable Objects to Respond to the Same Message Differently
-Description: Polymorphism allows objects of different classes (that share a common superclass or interface) to respond to the same message (method call) in their own specific ways. It simplifies client code, as it can interact with different types of objects through a common interface without needing to know their concrete types.
+Description: Polymorphism allows objects of different classes (that share a common superclass or interface) to respond to the same message (method call) in their own specific ways. It
+simplifies client code, as it can interact with different types of objects through a common interface without needing to know their concrete types.
 
 **Good example:**
 
@@ -917,7 +932,8 @@ class EventSchedulerBad {
 ### Example 21: Creating and Destroying Objects
 
 Title: Best Practices for Object Creation and Destruction
-Description: Effective object creation and destruction patterns improve code clarity, performance, and maintainability. These practices help avoid common pitfalls and leverage Java's capabilities effectively.
+Description: Effective object creation and destruction patterns improve code clarity, performance, and maintainability. These practices help avoid common pitfalls and leverage Java's
+capabilities effectively.
 
 ### Example 22: Consider Static Factory Methods Instead of Constructors
 
@@ -1217,7 +1233,8 @@ public class DateUtils {
 ### Example 27: Classes and Interfaces Best Practices
 
 Title: Design Classes and Interfaces for Maximum Effectiveness
-Description: Well-designed classes and interfaces are the foundation of maintainable and robust Java applications. These practices ensure proper encapsulation, inheritance, and interface design.
+Description: Well-designed classes and interfaces are the foundation of maintainable and robust Java applications. These practices ensure proper encapsulation, inheritance, and interface
+design.
 
 ### Example 28: Minimize the Accessibility of Classes and Members
 
@@ -2518,13 +2535,22 @@ public class FileManager {
 
 ## Output Format
 
-- **ANALYZE** the current object-oriented design to identify specific issues and categorize them by impact (CRITICAL, MAINTAINABILITY, FLEXIBILITY, CODE_QUALITY) and design area (SOLID violations, code smells, encapsulation problems, inheritance misuse, composition opportunities)
-- **CATEGORIZE** object-oriented design problems found: SOLID Principle Violations (SRP, OCP, LSP, ISP, DIP breaches), Code Smells (God Class, Feature Envy, Data Clumps, Refused Bequest, Shotgun Surgery), Encapsulation Issues (exposed internal state, inappropriate access levels), Inheritance Problems (incorrect is-a relationships, LSP violations), and Composition Opportunities (favor composition over inheritance situations)
-- **PROPOSE** multiple refactoring options for each identified issue with clear trade-offs: SOLID compliance strategies (single responsibility extraction, interface segregation approaches, dependency inversion techniques), code smell remediation approaches (class decomposition vs method extraction vs design pattern application), encapsulation improvement methods (access level adjustments vs wrapper creation), inheritance restructuring options (hierarchy flattening vs interface extraction vs composition adoption)
-- **EXPLAIN** the benefits and considerations of each proposed solution: Maintainability improvements, flexibility enhancements, testability benefits, performance implications, migration complexity, and team adoption considerations for different object-oriented design approaches
-- **PRESENT** comprehensive design improvement strategies: SOLID principle application methodologies, design pattern implementation options, refactoring techniques (Extract Class, Move Method, Replace Inheritance with Composition), architectural restructuring approaches, and object-oriented best practice adoption paths
-- **ASK** the user to choose their preferred approach for each category of object-oriented design improvements, considering their codebase complexity, team expertise, maintenance requirements, and refactoring timeline rather than implementing all changes automatically
-- **VALIDATE** that any proposed object-oriented design changes will compile successfully, maintain existing functionality, preserve business logic integrity, and align with established architectural patterns before implementation
+- **ANALYZE** the current object-oriented design to identify specific issues and categorize them by impact (CRITICAL, MAINTAINABILITY, FLEXIBILITY, CODE_QUALITY) and design area (SOLID
+  violations, code smells, encapsulation problems, inheritance misuse, composition opportunities)
+- **CATEGORIZE** object-oriented design problems found: SOLID Principle Violations (SRP, OCP, LSP, ISP, DIP breaches), Code Smells (God Class, Feature Envy, Data Clumps, Refused Bequest,
+  Shotgun Surgery), Encapsulation Issues (exposed internal state, inappropriate access levels), Inheritance Problems (incorrect is-a relationships, LSP violations), and Composition
+  Opportunities (favor composition over inheritance situations)
+- **PROPOSE** multiple refactoring options for each identified issue with clear trade-offs: SOLID compliance strategies (single responsibility extraction, interface segregation approaches,
+  dependency inversion techniques), code smell remediation approaches (class decomposition vs method extraction vs design pattern application), encapsulation improvement methods (access
+  level adjustments vs wrapper creation), inheritance restructuring options (hierarchy flattening vs interface extraction vs composition adoption)
+- **EXPLAIN** the benefits and considerations of each proposed solution: Maintainability improvements, flexibility enhancements, testability benefits, performance implications, migration
+  complexity, and team adoption considerations for different object-oriented design approaches
+- **PRESENT** comprehensive design improvement strategies: SOLID principle application methodologies, design pattern implementation options, refactoring techniques (Extract Class, Move
+  Method, Replace Inheritance with Composition), architectural restructuring approaches, and object-oriented best practice adoption paths
+- **ASK** the user to choose their preferred approach for each category of object-oriented design improvements, considering their codebase complexity, team expertise, maintenance
+  requirements, and refactoring timeline rather than implementing all changes automatically
+- **VALIDATE** that any proposed object-oriented design changes will compile successfully, maintain existing functionality, preserve business logic integrity, and align with established
+  architectural patterns before implementation
 
 ## Safeguards
 

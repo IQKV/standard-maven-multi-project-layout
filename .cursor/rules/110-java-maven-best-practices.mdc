@@ -6,7 +6,9 @@ You are a Senior software engineer with extensive experience in Java software de
 
 ## Goal
 
-Effective Maven usage involves robust dependency management via `<dependencyManagement>` and BOMs, adherence to the standard directory layout, and centralized plugin management. Build profiles should be used for environment-specific configurations. POMs must be kept readable and maintainable with logical structure and properties for versions. Custom repositories should be declared explicitly and their use minimized, preferably managed via a central repository manager.
+Effective Maven usage involves robust dependency management via `<dependencyManagement>` and BOMs, adherence to the standard directory layout, and centralized plugin management. Build
+profiles should be used for environment-specific configurations. POMs must be kept readable and maintainable with logical structure and properties for versions. Custom repositories should be
+declared explicitly and their use minimized, preferably managed via a central repository manager.
 
 ### Consultative Interaction Technique
 
@@ -52,18 +54,26 @@ Focus on being consultative rather than prescriptive - analyze, propose, ask, th
 
 Maven is built on several foundational principles that guide its design and usage:
 
-**1. Convention Over Configuration**: Maven follows the principle that sensible defaults should be provided so developers don't need to specify everything explicitly. The standard directory layout (`src/main/java`, `src/test/java`) exemplifies this - Maven knows where to find source code without explicit configuration.
-**2. Declarative Project Model**: Projects are described through a declarative Project Object Model (POM) rather than imperative build scripts. You declare what you want (dependencies, plugins, goals) rather than how to achieve it.
-**3. Dependency Management and Transitive Dependencies**: Maven automatically resolves and downloads dependencies and their transitive dependencies, creating a complete classpath. The dependency management system prevents version conflicts through nearest-wins and dependency mediation strategies.
-**4. Build Lifecycle and Phases**: Maven follows a well-defined build lifecycle with standard phases (validate, compile, test, package, install, deploy). This provides predictability and consistency across all Maven projects.
-**5. Plugin-Based Architecture**: All Maven functionality is provided through plugins. Core operations like compilation, testing, and packaging are all plugin-based, making Maven extensible and modular.
-**6. Repository-Centric**: Maven uses repositories (local, central, remote) as the primary mechanism for sharing and reusing artifacts. This enables easy sharing of libraries and promotes reuse across the Java ecosystem.
+**1. Convention Over Configuration**: Maven follows the principle that sensible defaults should be provided so developers don't need to specify everything explicitly. The standard directory
+layout (`src/main/java`, `src/test/java`) exemplifies this - Maven knows where to find source code without explicit configuration.
+**2. Declarative Project Model**: Projects are described through a declarative Project Object Model (POM) rather than imperative build scripts. You declare what you want (dependencies,
+plugins, goals) rather than how to achieve it.
+**3. Dependency Management and Transitive Dependencies**: Maven automatically resolves and downloads dependencies and their transitive dependencies, creating a complete classpath. The
+dependency management system prevents version conflicts through nearest-wins and dependency mediation strategies.
+**4. Build Lifecycle and Phases**: Maven follows a well-defined build lifecycle with standard phases (validate, compile, test, package, install, deploy). This provides predictability and
+consistency across all Maven projects.
+**5. Plugin-Based Architecture**: All Maven functionality is provided through plugins. Core operations like compilation, testing, and packaging are all plugin-based, making Maven extensible
+and modular.
+**6. Repository-Centric**: Maven uses repositories (local, central, remote) as the primary mechanism for sharing and reusing artifacts. This enables easy sharing of libraries and promotes
+reuse across the Java ecosystem.
 **7. Coordinate System**: Every artifact is uniquely identified by coordinates (groupId, artifactId, version), enabling precise dependency specification and avoiding JAR hell.
-**8. Inheritance and Aggregation**: Projects can inherit from parent POMs (inheritance) and contain multiple modules (aggregation), enabling both shared configuration and multi-module builds.
+**8. Inheritance and Aggregation**: Projects can inherit from parent POMs (inheritance) and contain multiple modules (aggregation), enabling both shared configuration and multi-module
+builds.
 
 ## Constraints
 
-Before applying Maven best practices recommendations, ensure the project is in a valid state by running Maven validation. This helps identify any existing configuration issues that need to be resolved first.
+Before applying Maven best practices recommendations, ensure the project is in a valid state by running Maven validation. This helps identify any existing configuration issues that need to
+be resolved first.
 
 - **MANDATORY**: Run `./mvnw validate` or `mvn validate` before applying any Maven best practices recommendations
 - **VERIFY**: Ensure all validation errors are resolved before proceeding with POM modifications
@@ -85,7 +95,8 @@ Before applying Maven best practices recommendations, ensure the project is in a
 ### Example 1: Effective Dependency Management
 
 Title: Manage Dependencies Effectively using `dependencyManagement` and BOMs
-Description: Use the `<dependencyManagement>` section in parent POMs or import Bill of Materials (BOMs) to centralize and control dependency versions. This helps avoid version conflicts and ensures consistency across multi-module projects. Avoid hardcoding versions directly in `<dependencies>` when managed elsewhere.
+Description: Use the `<dependencyManagement>` section in parent POMs or import Bill of Materials (BOMs) to centralize and control dependency versions. This helps avoid version conflicts and
+ensures consistency across multi-module projects. Avoid hardcoding versions directly in `<dependencies>` when managed elsewhere.
 
 **Good example:**
 
@@ -184,7 +195,8 @@ Description: Use the `<dependencyManagement>` section in parent POMs or import B
 ### Example 2: Standard Directory Layout
 
 Title: Adhere to the Standard Directory Layout
-Description: Follow Maven's convention for directory structure (`src/main/java`, `src/main/resources`, `src/test/java`, `src/test/resources`, etc.). This makes projects easier to understand and build, as Maven relies on these defaults.
+Description: Follow Maven's convention for directory structure (`src/main/java`, `src/main/resources`, `src/test/java`, `src/test/resources`, etc.). This makes projects easier to understand
+and build, as Maven relies on these defaults.
 
 **Good example:**
 
@@ -223,7 +235,8 @@ my-app/
 ### Example 3: Plugin Management and Configuration
 
 Title: Manage Plugin Versions and Configurations Centrally
-Description: Use `<pluginManagement>` in a parent POM to define plugin versions and common configurations. Child POMs can then use the plugins without specifying versions, ensuring consistency. Override configurations in child POMs only when necessary.
+Description: Use `<pluginManagement>` in a parent POM to define plugin versions and common configurations. Child POMs can then use the plugins without specifying versions, ensuring
+consistency. Override configurations in child POMs only when necessary.
 
 **Good example:**
 
@@ -290,7 +303,8 @@ Description: Use `<pluginManagement>` in a parent POM to define plugin versions 
 ### Example 4: Use Build Profiles for Environment-Specific Configurations
 
 Title: Employ Build Profiles for Environment-Specific Settings
-Description: Use Maven profiles to customize build settings for different environments (e.g., dev, test, prod) or other conditional scenarios. This can include different dependencies, plugin configurations, or properties. Activate profiles via command line, OS, JDK, or file presence.
+Description: Use Maven profiles to customize build settings for different environments (e.g., dev, test, prod) or other conditional scenarios. This can include different dependencies, plugin
+configurations, or properties. Activate profiles via command line, OS, JDK, or file presence.
 
 **Good example:**
 
@@ -357,7 +371,8 @@ Description: Use Maven profiles to customize build settings for different enviro
 ### Example 5: Keep POMs Readable and Maintainable
 
 Title: Structure POMs Logically for Readability
-Description: Organize your `pom.xml` sections in a consistent order (e.g., project coordinates, parent, properties, dependencyManagement, dependencies, build, profiles, repositories). Use properties for recurring versions or values. Add comments for complex configurations.
+Description: Organize your `pom.xml` sections in a consistent order (e.g., project coordinates, parent, properties, dependencyManagement, dependencies, build, profiles, repositories). Use
+properties for recurring versions or values. Add comments for complex configurations.
 
 **Good example:**
 
@@ -443,7 +458,8 @@ Description: Organize your `pom.xml` sections in a consistent order (e.g., proje
 ### Example 6: Manage Repositories Explicitly
 
 Title: Declare Custom Repositories Explicitly and Minimize Their Use
-Description: Prefer dependencies from Maven Central. If custom repositories are necessary, declare them in the `<repositories>` section and `<pluginRepositories>` for plugins. It's often better to manage these in a company-wide Nexus/Artifactory instance configured in `settings.xml` rather than per-project POMs. Avoid relying on transitive repositories.
+Description: Prefer dependencies from Maven Central. If custom repositories are necessary, declare them in the `<repositories>` section and `<pluginRepositories>` for plugins. It's often
+better to manage these in a company-wide Nexus/Artifactory instance configured in `settings.xml` rather than per-project POMs. Avoid relying on transitive repositories.
 
 **Good example:**
 
@@ -490,7 +506,9 @@ Description: Prefer dependencies from Maven Central. If custom repositories are 
 ### Example 7: Centralize Version Management with Properties
 
 Title: Use Properties to Manage Dependency and Plugin Versions
-Description: Define all dependency and plugin versions in the `<properties>` section rather than hardcoding them throughout the POM. This centralizes version management, makes updates easier, reduces duplication, and helps maintain consistency across related dependencies. Use consistent property naming conventions: `maven-plugin-[name].version` for Maven plugins, simple names like `[library].version` for dependencies, and descriptive names for quality thresholds like `coverage.level`.
+Description: Define all dependency and plugin versions in the `<properties>` section rather than hardcoding them throughout the POM. This centralizes version management, makes updates
+easier, reduces duplication, and helps maintain consistency across related dependencies. Use consistent property naming conventions: `maven-plugin-[name].version` for Maven plugins, simple
+names like `[library].version` for dependencies, and descriptive names for quality thresholds like `coverage.level`.
 
 **Good example:**
 
@@ -644,13 +662,23 @@ Description: Define all dependency and plugin versions in the `<properties>` sec
 
 ## Output Format
 
-- **ANALYZE** Maven POM files to identify specific best practices violations and categorize them by impact (CRITICAL, MAINTENANCE, PERFORMANCE, STRUCTURE) and area (dependency management, plugin configuration, project structure, repository management, version control)
-- **CATEGORIZE** Maven configuration issues found: Dependency Management Problems (missing dependencyManagement, hardcoded versions, version conflicts, unused dependencies), Plugin Configuration Issues (outdated versions, missing configurations, suboptimal settings), Project Structure Violations (non-standard layouts, poor POM organization, missing properties), and Repository Management Concerns (insecure repositories, missing declarations, transitive dependencies)
-- **PROPOSE** multiple Maven improvement options for each identified issue with clear trade-offs: Dependency management strategies (BOM adoption vs parent POM vs properties centralization), plugin modernization approaches (version updates vs configuration improvements vs new plugin additions), project structure optimization methods (POM reorganization vs module separation vs profile utilization)
-- **EXPLAIN** the benefits and considerations of each proposed Maven solution: Build reliability improvements, dependency resolution benefits, maintenance complexity reductions, performance optimizations, security enhancements, and team productivity impacts for different Maven configuration approaches
-- **PRESENT** comprehensive Maven optimization strategies: Dependency management best practices (BOM usage, version property centralization, scope optimization), plugin configuration improvements (version standardization, goal binding optimization, profile utilization), and project structure enhancement methods (POM organization, module architecture, repository management)
-- **ASK** the user to choose their preferred approach for each category of Maven improvements, considering their project complexity, team expertise, build requirements, and migration timeline rather than implementing all changes automatically
-- **VALIDATE** that any proposed Maven changes will compile successfully, maintain existing build behavior, preserve dependency compatibility, and align with established project conventions before implementation
+- **ANALYZE** Maven POM files to identify specific best practices violations and categorize them by impact (CRITICAL, MAINTENANCE, PERFORMANCE, STRUCTURE) and area (dependency management,
+  plugin configuration, project structure, repository management, version control)
+- **CATEGORIZE** Maven configuration issues found: Dependency Management Problems (missing dependencyManagement, hardcoded versions, version conflicts, unused dependencies), Plugin
+  Configuration Issues (outdated versions, missing configurations, suboptimal settings), Project Structure Violations (non-standard layouts, poor POM organization, missing properties), and
+  Repository Management Concerns (insecure repositories, missing declarations, transitive dependencies)
+- **PROPOSE** multiple Maven improvement options for each identified issue with clear trade-offs: Dependency management strategies (BOM adoption vs parent POM vs properties centralization),
+  plugin modernization approaches (version updates vs configuration improvements vs new plugin additions), project structure optimization methods (POM reorganization vs module separation vs
+  profile utilization)
+- **EXPLAIN** the benefits and considerations of each proposed Maven solution: Build reliability improvements, dependency resolution benefits, maintenance complexity reductions, performance
+  optimizations, security enhancements, and team productivity impacts for different Maven configuration approaches
+- **PRESENT** comprehensive Maven optimization strategies: Dependency management best practices (BOM usage, version property centralization, scope optimization), plugin configuration
+  improvements (version standardization, goal binding optimization, profile utilization), and project structure enhancement methods (POM organization, module architecture, repository
+  management)
+- **ASK** the user to choose their preferred approach for each category of Maven improvements, considering their project complexity, team expertise, build requirements, and migration
+  timeline rather than implementing all changes automatically
+- **VALIDATE** that any proposed Maven changes will compile successfully, maintain existing build behavior, preserve dependency compatibility, and align with established project conventions
+  before implementation
 
 ## Safeguards
 

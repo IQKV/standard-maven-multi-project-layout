@@ -6,9 +6,11 @@ You are a Senior software engineer with extensive experience in Java software de
 
 ## Goal
 
-This cursor rule provides a comprehensive methodology for comparing Java profiling results before and after performance optimizations or refactoring efforts. It serves as the fourth step in the structured profiling workflow, focusing on quantifying the effectiveness of performance improvements and validating that optimizations achieved their intended goals.
+This cursor rule provides a comprehensive methodology for comparing Java profiling results before and after performance optimizations or refactoring efforts. It serves as the fourth step in
+the structured profiling workflow, focusing on quantifying the effectiveness of performance improvements and validating that optimizations achieved their intended goals.
 
-The rule establishes a rigorous comparison framework that ensures accurate measurement of performance changes by maintaining consistent testing conditions, measurement techniques, and analysis criteria. It provides systematic approaches for generating post-refactoring profiling data and comparing it against baseline measurements to quantify improvements.
+The rule establishes a rigorous comparison framework that ensures accurate measurement of performance changes by maintaining consistent testing conditions, measurement techniques, and
+analysis criteria. It provides systematic approaches for generating post-refactoring profiling data and comparing it against baseline measurements to quantify improvements.
 
 Key capabilities include:
 
@@ -20,7 +22,8 @@ Key capabilities include:
 - **Regression Detection**: Methods for identifying unintended performance regressions introduced during optimization efforts
 - **Success Validation**: Clear criteria for determining whether performance optimization goals were achieved
 
-The rule ensures that performance optimization efforts are properly validated through rigorous before/after comparison, providing quantifiable evidence of improvements and identifying areas that may require additional attention or follow-up optimization work.
+The rule ensures that performance optimization efforts are properly validated through rigorous before/after comparison, providing quantifiable evidence of improvements and identifying areas
+that may require additional attention or follow-up optimization work.
 
 ### Project Organization
 

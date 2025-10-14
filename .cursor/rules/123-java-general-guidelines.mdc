@@ -6,7 +6,9 @@ You are a Senior software engineer with extensive experience in Java software de
 
 ## Goal
 
-This document outlines general Java coding guidelines covering fundamental aspects such as naming conventions for packages, classes, methods, variables, and constants; code formatting rules including indentation, line length, brace style, and whitespace usage; standards for organizing import statements; best practices for Javadoc documentation; and comprehensive error and exception handling with a strong focus on security, including avoiding sensitive information exposure, catching specific exceptions, and secure resource management.
+This document outlines general Java coding guidelines covering fundamental aspects such as naming conventions for packages, classes, methods, variables, and constants; code formatting rules
+including indentation, line length, brace style, and whitespace usage; standards for organizing import statements; best practices for Javadoc documentation; and comprehensive error and
+exception handling with a strong focus on security, including avoiding sensitive information exposure, catching specific exceptions, and secure resource management.
 
 ### Consultative Interaction Technique
 
@@ -52,11 +54,17 @@ Focus on being consultative rather than prescriptive - analyze, propose, ask, th
 
 These guidelines are built upon the following core principles:
 
-1. **Clarity and Consistency in Naming**: Adhere to standard Java naming conventions for all code elements (packages, classes, methods, variables, constants). This promotes code that is intuitive, predictable, and easier for developers to understand and navigate.
-2. **Readability through Formatting**: Consistently apply formatting rules for indentation, line length, brace style, and whitespace. Well-formatted code is significantly easier to read, debug, and maintain.
-3. **Organized Import Statements**: Structure import statements logically by grouping related packages and alphabetizing within those groups. Avoid wildcard imports to ensure clarity about class origins and prevent namespace conflicts.
-4. **Effective Documentation**: Strive for self-documenting code. For public APIs, complex algorithms, non-obvious business logic, or any part of the code that isn't immediately clear, provide comprehensive Javadoc. Good documentation aids understanding, usage, and maintenance.
-5. **Robust and Secure Error Handling**: Implement thorough error and exception handling with a strong focus on security. This includes using specific exceptions, managing resources diligently (preferably with try-with-resources), preventing the leakage of sensitive information in logs or error messages, and never "swallowing" exceptions without proper handling or justification. Resilient and secure applications depend on robust error management.
+1. **Clarity and Consistency in Naming**: Adhere to standard Java naming conventions for all code elements (packages, classes, methods, variables, constants). This promotes code that is
+   intuitive, predictable, and easier for developers to understand and navigate.
+2. **Readability through Formatting**: Consistently apply formatting rules for indentation, line length, brace style, and whitespace. Well-formatted code is significantly easier to read,
+   debug, and maintain.
+3. **Organized Import Statements**: Structure import statements logically by grouping related packages and alphabetizing within those groups. Avoid wildcard imports to ensure clarity about
+   class origins and prevent namespace conflicts.
+4. **Effective Documentation**: Strive for self-documenting code. For public APIs, complex algorithms, non-obvious business logic, or any part of the code that isn't immediately clear,
+   provide comprehensive Javadoc. Good documentation aids understanding, usage, and maintenance.
+5. **Robust and Secure Error Handling**: Implement thorough error and exception handling with a strong focus on security. This includes using specific exceptions, managing resources
+   diligently (preferably with try-with-resources), preventing the leakage of sensitive information in logs or error messages, and never "swallowing" exceptions without proper handling or
+   justification. Resilient and secure applications depend on robust error management.
 
 ## Constraints
 
@@ -232,7 +240,8 @@ public class UserService {
 ### Example 4: Documentation Standards
 
 Title: Maintain Clear Documentation
-Description: Write self-documenting code and provide comprehensive Javadoc for public APIs, complex algorithms, and non-obvious business logic with required elements like @param, @return, @throws.
+Description: Write self-documenting code and provide comprehensive Javadoc for public APIs, complex algorithms, and non-obvious business logic with required elements like @param, @return,
+@throws.
 
 **Good example:**
 
@@ -376,13 +385,22 @@ public class UnsafeFileProcessor {
 
 ## Output Format
 
-- **ANALYZE** the current codebase to identify specific coding standard violations and categorize them by impact (CRITICAL, MAINTAINABILITY, READABILITY, CONSISTENCY) and area (naming conventions, formatting, imports, documentation, error handling)
-- **CATEGORIZE** coding standard issues found: Naming Convention Violations (inconsistent package/class/method/variable naming), Formatting Inconsistencies (indentation, brace style, spacing), Import Organization Problems (wildcard imports, poor grouping), Documentation Gaps (missing Javadoc, incomplete API documentation), and Error Handling Weaknesses (generic exceptions, poor resource management, information leakage)
-- **PROPOSE** multiple improvement options for each identified issue with clear trade-offs: Naming standardization approaches (automated vs manual), formatting strategies (IDE configuration vs code formatter tools), import organization methods (IDE-based vs manual restructuring), documentation enhancement techniques (comprehensive vs minimal approaches), and error handling improvement patterns (specific exception hierarchies vs generic handling)
-- **EXPLAIN** the benefits and considerations of each proposed solution: Readability improvements, maintainability enhancements, team consistency benefits, tooling integration options, and implementation complexity for different coding standard approaches
-- **PRESENT** comprehensive coding standard improvement strategies: Team coding style guide adoption, automated formatting tool integration, documentation standard implementations, error handling pattern establishment, and code quality measurement approaches
-- **ASK** the user to choose their preferred approach for each category of coding standard improvements, considering their team preferences, existing conventions, and tooling constraints rather than applying all changes automatically
-- **VALIDATE** that any proposed coding standard changes will compile successfully, maintain existing functionality, align with team conventions, and improve overall code quality before implementation
+- **ANALYZE** the current codebase to identify specific coding standard violations and categorize them by impact (CRITICAL, MAINTAINABILITY, READABILITY, CONSISTENCY) and area (naming
+  conventions, formatting, imports, documentation, error handling)
+- **CATEGORIZE** coding standard issues found: Naming Convention Violations (inconsistent package/class/method/variable naming), Formatting Inconsistencies (indentation, brace style,
+  spacing), Import Organization Problems (wildcard imports, poor grouping), Documentation Gaps (missing Javadoc, incomplete API documentation), and Error Handling Weaknesses (generic
+  exceptions, poor resource management, information leakage)
+- **PROPOSE** multiple improvement options for each identified issue with clear trade-offs: Naming standardization approaches (automated vs manual), formatting strategies (IDE configuration
+  vs code formatter tools), import organization methods (IDE-based vs manual restructuring), documentation enhancement techniques (comprehensive vs minimal approaches), and error handling
+  improvement patterns (specific exception hierarchies vs generic handling)
+- **EXPLAIN** the benefits and considerations of each proposed solution: Readability improvements, maintainability enhancements, team consistency benefits, tooling integration options, and
+  implementation complexity for different coding standard approaches
+- **PRESENT** comprehensive coding standard improvement strategies: Team coding style guide adoption, automated formatting tool integration, documentation standard implementations, error
+  handling pattern establishment, and code quality measurement approaches
+- **ASK** the user to choose their preferred approach for each category of coding standard improvements, considering their team preferences, existing conventions, and tooling constraints
+  rather than applying all changes automatically
+- **VALIDATE** that any proposed coding standard changes will compile successfully, maintain existing functionality, align with team conventions, and improve overall code quality before
+  implementation
 
 ## Safeguards
 

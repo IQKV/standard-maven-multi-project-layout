@@ -4,7 +4,8 @@ This document outlines how Spring Modulith principles are applied in this templa
 
 ## What is Spring Modulith?
 
-Spring Modulith is a framework that extends the Spring Boot ecosystem to support the development of modular monolithic applications. It enables creating well-structured, domain-aligned applications with clear boundaries between modules while maintaining the simplicity of a monolithic deployment model.
+Spring Modulith is a framework that extends the Spring Boot ecosystem to support the development of modular monolithic applications. It enables creating well-structured, domain-aligned
+applications with clear boundaries between modules while maintaining the simplicity of a monolithic deployment model.
 
 Spring Modulith helps with:
 

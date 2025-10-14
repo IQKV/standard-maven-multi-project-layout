@@ -24,7 +24,8 @@ Before applying documentation generation, ensure the project is in a valid state
 
 ### Step 1: Documentation & Diagrams Preferences Assessment
 
-**IMPORTANT**: Ask these questions to understand the documentation requirements before generating any documentation. Based on the answers, you will conditionally execute only relevant subsequent steps.
+**IMPORTANT**: Ask these questions to understand the documentation requirements before generating any documentation. Based on the answers, you will conditionally execute only relevant
+subsequent steps.
 
 ```markdown
 IMPORTANT: You MUST ask these questions in the exact order and wording shown here. The very first question to the user MUST be "Question 1: What do you want to generate?". Do not ask any other questions prior to it.
@@ -196,7 +197,8 @@ Options:
 
 **Dependencies**: Only execute if user selected README.md generation in Step 1. Requires completion of Step 1.
 
-**CONDITIONAL EXECUTION**: Only execute this step if user selected "README.md", "Both README.md and package-info.java files", or "All options: README.md, package-info.java & Javadoc files" in Step 1.
+**CONDITIONAL EXECUTION**: Only execute this step if user selected "README.md", "Both README.md and package-info.java files", or "All options: README.md, package-info.java & Javadoc files"
+in Step 1.
 
 ## Implementation Strategy
 
@@ -400,18 +402,18 @@ package [package.name];
 
 1. **Analyze the src/main/java directory** using codebase_search to understand:
 
-   - Main application classes and entry points
-   - Package structure and organization
-   - Key business logic and functionality
-   - Framework usage (Spring, etc.)
-   - Dependencies and integrations
+    - Main application classes and entry points
+    - Package structure and organization
+    - Key business logic and functionality
+    - Framework usage (Spring, etc.)
+    - Dependencies and integrations
 
 2. **Generate comprehensive README.md** in project root with:
-   - **Software Description section**: Detailed analysis of the codebase functionality
-   - **Getting Started section**: Build and run instructions
-   - **Configuration section**: If config files detected
-   - **API Documentation section**: If REST controllers found
-   - **Additional sections**: Based on user preferences from Step 1
+    - **Software Description section**: Detailed analysis of the codebase functionality
+    - **Getting Started section**: Build and run instructions
+    - **Configuration section**: If config files detected
+    - **API Documentation section**: If REST controllers found
+    - **Additional sections**: Based on user preferences from Step 1
 
 ## Multi-Module Project Implementation
 
@@ -419,16 +421,16 @@ package [package.name];
 
 1. **Generate root README.md** with:
 
-   - High-level project overview
-   - Module descriptions and links
-   - Common build instructions
-   - Project-wide configuration
+    - High-level project overview
+    - Module descriptions and links
+    - Common build instructions
+    - Project-wide configuration
 
 2. **Generate module-specific README.md files** for each module:
-   - Module-specific software description
-   - Module's role in the larger project
-   - Module-specific build and usage instructions
-   - Dependencies specific to that module
+    - Module-specific software description
+    - Module's role in the larger project
+    - Module-specific build and usage instructions
+    - Dependencies specific to that module
 
 ## File Handling Strategy
 
@@ -474,7 +476,8 @@ After generating README.md files, verify they contain:
 
 **Dependencies**: Only execute if user selected package-info.java generation in Step 1. Requires completion of Step 1.
 
-**CONDITIONAL EXECUTION**: Only execute this step if user selected "package-info.java files", "Both README.md and package-info.java files", or "All options: README.md, package-info.java & Javadoc files" in Step 1.
+**CONDITIONAL EXECUTION**: Only execute this step if user selected "package-info.java files", "Both README.md and package-info.java files", or "All options: README.md, package-info.java &
+Javadoc files" in Step 1.
 
 ## Implementation Strategy
 
@@ -489,20 +492,20 @@ After generating README.md files, verify they contain:
 
 1. **Scan package contents** using codebase_search:
 
-   - Identify all classes in the package
-   - Understand class responsibilities and relationships
-   - Detect design patterns and architectural roles
-   - Identify main public APIs and entry points
+    - Identify all classes in the package
+    - Understand class responsibilities and relationships
+    - Detect design patterns and architectural roles
+    - Identify main public APIs and entry points
 
 2. **Categorize package purpose**:
 
-   - Application entry points
-   - Business logic/domain models
-   - Data access/repositories
-   - Web controllers/REST APIs
-   - Utilities/helpers
-   - Configuration classes
-   - External integrations
+    - Application entry points
+    - Business logic/domain models
+    - Data access/repositories
+    - Web controllers/REST APIs
+    - Utilities/helpers
+    - Configuration classes
+    - External integrations
 
 3. **Generate documentation level** based on user preference:
 
