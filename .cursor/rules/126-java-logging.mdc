@@ -63,7 +63,7 @@ These guidelines are built upon the following core principles:
    allows for effective filtering, monitoring, and targeted issue diagnosis.
 3. **Adherence to Core Logging Practices**: Follow fundamental best practices such as using parameterized logging (avoiding string concatenation for performance and clarity), always logging
    exceptions with their stack traces, never logging sensitive data directly (PII, credentials).
-4. **Thoughtful and Flexible Configuration**: Manage logging configuration externally (e.g., `logback.xml`, `log4j2.xml`). Tailor configurations for different environments (dev, test, prod)
+4. **Thoughtful and Flexible Configuration**: Manage logging configuration externally (e.g., `logback.xml`, `log4j2.xml`). Tailor configurations for different environments (dev, test, staging, production)
    with appropriate log levels for various packages, clear and informative output formats (including timestamps, levels, logger names, thread info), and robust log rotation and retention
    policies.
 5. **Security-Conscious Logging**: Prioritize security in all logging activities. Actively mask or filter sensitive information, control access to log files and log management systems, use

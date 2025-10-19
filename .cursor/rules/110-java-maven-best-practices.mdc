@@ -303,7 +303,7 @@ consistency. Override configurations in child POMs only when necessary.
 ### Example 4: Use Build Profiles for Environment-Specific Configurations
 
 Title: Employ Build Profiles for Environment-Specific Settings
-Description: Use Maven profiles to customize build settings for different environments (e.g., dev, test, prod) or other conditional scenarios. This can include different dependencies, plugin
+Description: Use Maven profiles to customize build settings for different environments (e.g., dev, test, staging, production) or other conditional scenarios. This can include different dependencies, plugin
 configurations, or properties. Activate profiles via command line, OS, JDK, or file presence.
 
 **Good example:**
