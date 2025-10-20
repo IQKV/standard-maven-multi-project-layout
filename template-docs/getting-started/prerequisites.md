@@ -46,7 +46,7 @@ Before you begin working with this Spring Boot Multi-Module Project Template, en
 Run the following commands to verify your setup:
 
 ```bash
-java -version    # Should show Java 25 or later
+java -version    # Should show Java 21 or later
 mvn -version     # Should show Maven 3.8.0 or later
 git --version    # Should show your Git version
 docker --version # Should show your Docker version

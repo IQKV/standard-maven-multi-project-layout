@@ -13,7 +13,7 @@ This section provides all the information you need to get started with the Sprin
 This template is designed to help you quickly set up a multi-module Spring Boot project with best practices already implemented. It includes:
 
 - Standard Maven multi-module project structure
-- Spring Boot configuration with Java 25
+- Spring Boot configuration with Java 21
 - GitHub workflow templates and issue management
 - Docker and Docker Compose integration
 - Comprehensive testing setup with Spring Modulith

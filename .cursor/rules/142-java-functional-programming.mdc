@@ -562,7 +562,7 @@ public String getDayTypeLegacy(String day) {
 ### Example 11: Leverage Sealed Classes and Interfaces for Controlled Hierarchies
 
 Title: Use Sealed Types for Domain Modeling
-Description: Use Sealed Classes and Interfaces (JEP 409, Java 25) to define class/interface hierarchies where all direct subtypes are known, finite, and explicitly listed. This enables more
+Description: Use Sealed Classes and Interfaces (JEP 409, Java 21) to define class/interface hierarchies where all direct subtypes are known, finite, and explicitly listed. This enables more
 robust domain modeling and allows the compiler to perform exhaustive checks in pattern matching (e.g., with `switch` expressions), eliminating the need for a default case in many scenarios.
 Particularly useful for creating sum types (algebraic data types) which are common in functional programming.
 

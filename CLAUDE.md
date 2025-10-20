@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document outlines modern Spring Boot 3 best practices for enterprise-grade applications using Java 25+, incorporating cutting-edge JVM features and cloud-native patterns.
+This document outlines modern Spring Boot 3 best practices for enterprise-grade applications using Java 21+, incorporating cutting-edge JVM features and cloud-native patterns.
 
 ## 🏗️ Project Structure & Architecture
 
@@ -25,7 +25,7 @@ multimoduleservice/
 - Leverage `@ModuleTest` for isolated module testing
 - Document module interactions with Spring Modulith documentation
 
-## ☕ Modern Java 25+ Features
+## ☕ Modern Java 21+ Features
 
 ### Virtual Threads (Project Loom)
 
@@ -541,7 +541,7 @@ public class DatabaseHealthIndicator implements HealthIndicator {
 
 ```xml
 <properties>
-    <!-- Use Java 25 LTS -->
+    <!-- Use Java 21 LTS -->
     <java.version>25</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -674,4 +674,4 @@ public class TestConfig {
 7. **Performance Focus**: Optimize database queries, implement caching, and monitor metrics
 8. **Modular Architecture**: Use Spring Modulith for clear module boundaries and better maintainability
 
-This guide provides a foundation for building robust, scalable Spring Boot 3 applications with modern Java 25+ features and enterprise-grade practices.
+This guide provides a foundation for building robust, scalable Spring Boot 3 applications with modern Java 21+ features and enterprise-grade practices.
