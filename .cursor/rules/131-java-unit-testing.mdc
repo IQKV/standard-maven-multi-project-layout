@@ -869,7 +869,7 @@ public class UserValidationPoorTest {
   improvements, and mocking strategies
 - **EXPLAIN** the benefits and considerations of each proposed solution: JUnit 5 migration paths, AssertJ adoption strategies, Given-When-Then implementation options, parameterized test
   approaches, and mocking framework choices
-- **PRESENT** comprehensive testing methodology options: RIGHT-BICEP boundary testing approaches, A-TRIP test characteristics implementation, CORRECT validation strategies, and JSpecify null
+- **PRESENT** testing methodology options: RIGHT-BICEP boundary testing approaches, A-TRIP test characteristics implementation, CORRECT validation strategies, and JSpecify null
   safety integration choices
 - **ASK** the user to choose their preferred approach for each category of improvements rather than implementing all changes automatically
 - **VALIDATE** that any proposed changes will compile and maintain existing functionality before implementation
