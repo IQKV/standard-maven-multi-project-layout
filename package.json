@@ -4,7 +4,6 @@
   "private": true,
   "description": "Provide an optional Git commit hooks.",
   "license": "Apache-2.0",
-  "author": "Dima Denisenko",
   "scripts": {
     "lint": "pnpm lint:stylelint && pnpm prettier:check",
     "lint:stylelint": "stylelint \"**/*.css\" --aei",
