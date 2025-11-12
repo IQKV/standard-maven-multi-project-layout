@@ -370,7 +370,7 @@ public class FunctionalParadigms {
 
         Function<Integer, Integer> expensiveOperation = x -> {
             System.out.println("Computing for " + x);
-            try { Thread.sleep(1000); } catch (InterruptedException e) {}
+            try { Thread.sleep(1000); } catch (final InterruptedException e) {}
             return x * x;
         };
 

@@ -196,7 +196,7 @@ public class BadUserService {
             User user = new User(username, email, age);
             user.save(); // Might fail with cryptic database error
             return user;
-        } catch (Exception e) {
+        } catch (final Exception e) {
             throw new RuntimeException("Failed to create user", e); // Lost context
         }
     }
@@ -241,15 +241,15 @@ public class ResourceManager {
             return reader.lines()
                 .collect(Collectors.joining(System.lineSeparator()));
 
-        } catch (NoSuchFileException e) {
+        } catch (final NoSuchFileException e) {
             logger.warn("File not found: {}", filePath);
             throw new FileProcessingException("File not found: " + filePath.getFileName(), e);
 
-        } catch (AccessDeniedException e) {
+        } catch (final AccessDeniedException e) {
             logger.error("Access denied reading file: {}", filePath);
             throw new FileProcessingException("Access denied to file", e);
 
-        } catch (IOException e) {
+        } catch (final IOException e) {
             logger.error("IO error reading file: {}", filePath, e);
             throw new FileProcessingException("Failed to read file", e);
         }
@@ -302,7 +302,7 @@ public class ResourceManager {
 
             properties.store(buffered, "Generated configuration");
 
-        } catch (IOException e) {
+        } catch (final IOException e) {
             logger.error("Failed to write properties to: {}", filePath, e);
             throw new ConfigurationException("Failed to write configuration", e);
         }
@@ -332,21 +332,21 @@ public class BadResourceManager {
             }
             return content.toString();
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             throw new Exception("File read failed", e);
         } finally {
             // BAD: Resource cleanup can fail silently
             if (reader != null) {
                 try {
                     reader.close();
-                } catch (IOException e) {
+                } catch (final IOException e) {
                     // Swallowed exception - bad practice
                 }
             }
             if (fis != null) {
                 try {
                     fis.close();
-                } catch (IOException e) {
+                } catch (final IOException e) {
                     // Another swallowed exception
                 }
             }
@@ -414,14 +414,14 @@ public class SecureService {
             logger.info("Successful authentication for user: {}", username);
             return new AuthResult(user, generateToken(user));
 
-        } catch (DatabaseException e) {
+        } catch (final DatabaseException e) {
             // Log technical details for developers
             logger.error("Database error during authentication for user: {}", username, e);
 
             // Don't expose database details to user
             throw new AuthenticationException("Authentication service temporarily unavailable");
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // Log unexpected errors with full context
             logger.error("Unexpected error during authentication for user: {}", username, e);
 
@@ -444,7 +444,7 @@ public class SecureService {
 
             return performProcessing(data);
 
-        } catch (UnauthorizedException e) {
+        } catch (final UnauthorizedException e) {
             // Log security event with context
             logger.warn("Unauthorized access attempt to data: {} by user: {}",
                        dataId, getCurrentUser(), e);
@@ -538,7 +538,7 @@ public class InsecureService {
         try {
             // Processing logic...
             return performProcessing(dataId);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // TERRIBLE: Full stack trace in response
             StringWriter sw = new StringWriter();
             PrintWriter pw = new PrintWriter(sw);
@@ -552,7 +552,7 @@ public class InsecureService {
     public void processPayment(PaymentRequest request) throws Exception {
         try {
             // Process payment...
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // TERRIBLE: Logging sensitive payment information
             System.out.println("Payment failed for card: " + request.getCardNumber() +
                              ", CVV: " + request.getCvv() +
@@ -658,15 +658,15 @@ public class LayeredService {
 
             return buildUserProfile(user);
 
-        } catch (DataAccessException e) {
+        } catch (final DataAccessException e) {
             // Chain data access errors with business context
             throw new BusinessLogicException("Unable to retrieve user profile for ID: " + userId, e);
 
-        } catch (IllegalArgumentException e) {
+        } catch (final IllegalArgumentException e) {
             // Chain validation errors
             throw new BusinessLogicException("Invalid user ID provided: " + userId, e);
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // Chain unexpected errors
             logger.error("Unexpected error retrieving user profile: {}", userId, e);
             throw new BusinessLogicException("Unexpected error occurred while retrieving user profile", e);
@@ -718,11 +718,11 @@ public class LayeredService {
             // Add context while preserving original exception
             throw new ProcessingException("User data validation failed for user: " + user.getId(), e);
 
-        } catch (TransformationException e) {
+        } catch (final TransformationException e) {
             // Chain transformation errors
             throw new ProcessingException("Failed to transform user data: " + user.getId(), e);
 
-        } catch (PersistenceException e) {
+        } catch (final PersistenceException e) {
             // Chain persistence errors
             throw new ProcessingException("Failed to save user data: " + user.getId(), e);
         }
@@ -751,7 +751,7 @@ public class BadLayeredService {
         try {
             User user = findUserById(userId);
             return buildUserProfile(user);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // BAD: All specific error context is lost
             throw new Exception("Failed to get user profile");
         }
@@ -762,7 +762,7 @@ public class BadLayeredService {
         try {
             User user = findUserById(userId);
             return buildUserProfile(user);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // TERRIBLE: Exception completely swallowed
             e.printStackTrace(); // Poor logging
             return null; // Hiding the error
@@ -778,7 +778,7 @@ public class BadLayeredService {
         } catch (ValidationException e) {
             // BAD: Original exception information is lost
             throw new ProcessingException("Validation failed");
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // BAD: Generic handling without context
             throw new ProcessingException("Processing failed");
         }
@@ -791,7 +791,7 @@ public class BadLayeredService {
         } catch (BusinessException e) {
             // BAD: Catching just to rethrow without adding context
             throw e;
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // BAD: Unnecessary wrapping without semantic value
             throw new ServiceException(e.getMessage());
         }
@@ -807,7 +807,7 @@ public class BadLayeredService {
 
                 try {
                     return executeOperation(validated);
-                } catch (ExecutionException e) {
+                } catch (final ExecutionException e) {
                     // BAD: Nested try-catch losing context
                     return Result.failure("Execution failed");
                 }
@@ -815,7 +815,7 @@ public class BadLayeredService {
                 // BAD: Each level loses more context
                 return Result.failure("Validation failed");
             }
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // BAD: Original error completely lost
             return Result.failure("Operation failed");
         }
@@ -868,7 +868,7 @@ public class ConcurrentProcessor {
                     Result result = future.get(30, TimeUnit.SECONDS);
                     results.add(result);
 
-                } catch (InterruptedException e) {
+                } catch (final InterruptedException e) {
                     // Restore interrupted status immediately
                     Thread.currentThread().interrupt();
 
@@ -878,12 +878,12 @@ public class ConcurrentProcessor {
                     logger.info("Task processing interrupted");
                     throw e; // Re-throw to caller
 
-                } catch (TimeoutException e) {
+                } catch (final TimeoutException e) {
                     logger.warn("Task processing timed out, cancelling task");
                     future.cancel(true); // Interrupt if necessary
                     throw new ProcessingException("Task processing timed out", e);
 
-                } catch (ExecutionException e) {
+                } catch (final ExecutionException e) {
                     Throwable cause = e.getCause();
                     logger.error("Task execution failed", cause);
                     throw new ProcessingException("Task execution failed", cause);
@@ -926,14 +926,14 @@ public class ConcurrentProcessor {
             // Step 3: Generate result
             return new Result(task.getId(), "Processed successfully");
 
-        } catch (InterruptedException e) {
+        } catch (final InterruptedException e) {
             // Restore interrupted status
             Thread.currentThread().interrupt();
 
             logger.info("Task processing interrupted: {}", task.getId());
             throw new ProcessingException("Task processing was interrupted", e);
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             logger.error("Unexpected error processing task: {}", task.getId(), e);
             throw new ProcessingException("Failed to process task: " + task.getId(), e);
         }
@@ -959,14 +959,14 @@ public class ConcurrentProcessor {
             // Critical section - process data
             performCriticalProcessing(data);
 
-        } catch (InterruptedException e) {
+        } catch (final InterruptedException e) {
             // Restore interrupted status
             Thread.currentThread().interrupt();
 
             logger.info("Lock acquisition interrupted");
             throw new ProcessingException("Processing interrupted while waiting for lock", e);
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             logger.error("Error during locked processing", e);
             throw new ProcessingException("Processing failed", e);
 
@@ -995,7 +995,7 @@ public class ConcurrentProcessor {
                 }
             }
 
-        } catch (InterruptedException e) {
+        } catch (final InterruptedException e) {
             // Restore interrupted status
             Thread.currentThread().interrupt();
 
@@ -1047,11 +1047,11 @@ public class BadConcurrentProcessor {
         for (Future<Result> future : futures) {
             try {
                 results.add(future.get());
-            } catch (InterruptedException e) {
+            } catch (final InterruptedException e) {
                 // BAD: Ignoring interruption
                 System.out.println("Interrupted, but continuing anyway");
                 // NOT restoring interrupted status
-            } catch (Exception e) {
+            } catch (final Exception e) {
                 // BAD: Generic exception handling
                 throw new Exception("Something failed");
             }
@@ -1072,7 +1072,7 @@ public class BadConcurrentProcessor {
 
             return new Result(task.getId(), "Processed");
 
-        } catch (InterruptedException e) {
+        } catch (final InterruptedException e) {
             // BAD: Swallowing InterruptedException
             return new Result(task.getId(), "Failed");
         }
@@ -1085,7 +1085,7 @@ public class BadConcurrentProcessor {
 
             // Process data
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // BAD: Generic exception handling doesn't distinguish lock issues
             e.printStackTrace();
         } finally {
@@ -1100,7 +1100,7 @@ public class BadConcurrentProcessor {
 
         try {
             executor.awaitTermination(1, TimeUnit.SECONDS);
-        } catch (InterruptedException e) {
+        } catch (final InterruptedException e) {
             // BAD: Not handling interruption during shutdown
         }
 
@@ -1116,7 +1116,7 @@ public class BadConcurrentProcessor {
 
             // Some processing...
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // BAD: Exception handling has race condition
             if (processing) { // Could be changed by another thread
                 processing = false;
@@ -1130,7 +1130,7 @@ public class BadConcurrentProcessor {
         while (!conditionMet()) {
             try {
                 Thread.sleep(100);
-            } catch (InterruptedException e) {
+            } catch (final InterruptedException e) {
                 // BAD: Not restoring interrupted status
                 break; // Exits but doesn't signal interruption to caller
             }
@@ -1299,15 +1299,15 @@ public class UserService {
 
             return userRepository.save(user);
 
-        } catch (PermissionCheckException e) {
+        } catch (final PermissionCheckException e) {
             throw new UserPermissionException("CREATE_USER", getCurrentUserRole(createdBy));
 
-        } catch (DatabaseException e) {
+        } catch (final DatabaseException e) {
             logger.error("Database error creating user for request: {}", userRequest.getEmail(), e);
             throw new UserManagementException("Failed to create user due to system error",
                                            ErrorCode.SYSTEM_ERROR, userRequest.getEmail(), e);
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             logger.error("Unexpected error creating user: {}", userRequest.getEmail(), e);
             throw new UserManagementException("Unexpected error during user creation",
                                            ErrorCode.SYSTEM_ERROR, userRequest.getEmail(), e);
@@ -1349,16 +1349,16 @@ public class UserService {
 
             return user;
 
-        } catch (UserNotFoundException | UserPermissionException e) {
+        } catch (final UserNotFoundException | UserPermissionException e) {
             // Re-throw business exceptions as-is
             throw e;
 
-        } catch (DatabaseException e) {
+        } catch (final DatabaseException e) {
             logger.error("Database error retrieving user: {}", userId, e);
             throw new UserManagementException("Failed to retrieve user due to system error",
                                            ErrorCode.SYSTEM_ERROR, userId, e);
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             logger.error("Unexpected error retrieving user: {}", userId, e);
             throw new UserManagementException("Unexpected error during user retrieval",
                                            ErrorCode.SYSTEM_ERROR, userId, e);
@@ -1460,7 +1460,7 @@ public class BadUserService {
 
         try {
             return userRepository.save(new User(request));
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // BAD: Catching and rethrowing generic exception
             throw new Exception("Failed");
         }
@@ -1512,7 +1512,7 @@ public class BadUserService {
 
             return users;
 
-        } catch (DatabaseException e) {
+        } catch (final DatabaseException e) {
             // BAD: Converting specific exception to generic
             throw new Exception("Database problem");
         }
@@ -1526,7 +1526,7 @@ public class BadUserService {
             User user = userRepository.findById(userId);
             user.setEmail(newEmail);
             userRepository.save(user);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // BAD: All errors become the same generic exception
             throw new Exception("Update failed: " + e.getMessage());
         }
@@ -1601,7 +1601,7 @@ public class NumberProcessor {
             while (true) {  // Using exception for loop termination
                 process(numbers[i++]);
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (final ArrayIndexOutOfBoundsException e) {
             // Using exception for normal control flow - bad!
         }
     }
@@ -1636,7 +1636,7 @@ public class FileProcessor {
         try {
             List<String> lines = Files.readAllLines(Paths.get(filename));
             lines.forEach(this::processLine);
-        } catch (IOException e) {
+        } catch (final IOException e) {
             // Wrap in domain-specific checked exception - caller can retry
             throw new FileProcessingException("Failed to process file: " + filename, e);
         }
@@ -1689,7 +1689,7 @@ public class FileProcessor {
     public void processFile(String filename) {
         try {
             Files.readAllLines(Paths.get(filename));
-        } catch (IOException e) {
+        } catch (final IOException e) {
             // Should be checked exception so caller can handle
             throw new RuntimeException("File processing failed", e);
         }
@@ -1893,7 +1893,7 @@ public class FileManager {
 
         try {
             return Optional.of(Files.readString(Paths.get(filename)));
-        } catch (IOException e) {
+        } catch (final IOException e) {
             // Log the exception with context
             logger.warn("Failed to read file: {}", filename, e);
             return Optional.empty();  // Return meaningful result
@@ -1907,7 +1907,7 @@ public class FileManager {
         try {
             Files.writeString(Paths.get(filename), content);
             logger.info("Successfully saved content to file: {}", filename);
-        } catch (IOException e) {
+        } catch (final IOException e) {
             // Re-throw as domain-specific exception with context
             throw new FileOperationException("Failed to save content to file: " + filename, e);
         }
@@ -1917,7 +1917,7 @@ public class FileManager {
         for (String tempFile : tempFiles) {
             try {
                 Files.deleteIfExists(Paths.get(tempFile));
-            } catch (IOException e) {
+            } catch (final IOException e) {
                 // Log but continue with other files
                 logger.warn("Failed to delete temporary file: {}", tempFile, e);
             }
@@ -1941,7 +1941,7 @@ public class FileManager {
     public String readFileContent(String filename) {
         try {
             return Files.readString(Paths.get(filename));
-        } catch (IOException e) {
+        } catch (final IOException e) {
             // Silently ignoring exception - very bad!
         }
         return null;  // Caller has no idea what went wrong
@@ -1950,7 +1950,7 @@ public class FileManager {
     public void saveToFile(String filename, String content) {
         try {
             Files.writeString(Paths.get(filename), content);
-        } catch (IOException e) {
+        } catch (final IOException e) {
             // Empty catch block - hiding the problem
         }
     }
@@ -1959,7 +1959,7 @@ public class FileManager {
         for (String file : files) {
             try {
                 processFile(file);
-            } catch (Exception e) {
+            } catch (final Exception e) {
                 // Ignoring all exceptions - could hide critical issues
                 e.printStackTrace(); // Poor logging
             }
@@ -2089,7 +2089,7 @@ class CalculatorTestBad {
         try {
             calculator.divide(10, 0);
             fail("Should have thrown exception"); // JUnit 4 style
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // Too generic - doesn't verify exception type or message
             assertTrue(e.getMessage().contains("zero"));
         }

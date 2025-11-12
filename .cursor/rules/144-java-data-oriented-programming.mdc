@@ -128,7 +128,7 @@ class SeparateCodeDataExample {
         try {
             UserData user2 = new UserData("Bob", -5);
             UserActions.validateAge(user2); // This will throw
-        } catch (IllegalArgumentException e) {
+        } catch (final IllegalArgumentException e) {
             System.err.println(e.getMessage());
         }
     }
@@ -214,7 +214,7 @@ class ImmutabilityExample {
 
         try {
             config1.features().add("FeatureC"); // Should throw UnsupportedOperationException
-        } catch (UnsupportedOperationException e) {
+        } catch (final UnsupportedOperationException e) {
             System.out.println("Attempt to modify config1.features(): " + e.getMessage());
         }
 
@@ -560,7 +560,7 @@ class GenericDataExample {
             GenericData backToGeneric = UserProfileConverter.fromUserProfile(specificProfile);
             System.out.println("Converted back to generic: " + backToGeneric.attributes());
 
-        } catch (IllegalArgumentException e) {
+        } catch (final IllegalArgumentException e) {
             System.err.println("Conversion error: " + e.getMessage());
         }
     }
@@ -697,7 +697,7 @@ record UserWithEmbeddedValidation(String email, int age) {
         try {
             UserWithEmbeddedValidation user = new UserWithEmbeddedValidation("test", -1);
             user.validate();
-        } catch (IllegalArgumentException | IllegalStateException e) {
+        } catch (final IllegalArgumentException | IllegalStateException e) {
             System.err.println("Validation failed: " + e.getMessage());
             // Using exceptions for validation flow control is generally an anti-pattern.
         }

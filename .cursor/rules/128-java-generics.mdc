@@ -667,7 +667,7 @@ public class TypeErasureWorkarounds {
         public T createInstance() {
             try {
                 return type.getDeclaredConstructor().newInstance();
-            } catch (Exception e) {
+            } catch (final Exception e) {
                 throw new RuntimeException("Cannot create instance of " + type, e);
             }
         }

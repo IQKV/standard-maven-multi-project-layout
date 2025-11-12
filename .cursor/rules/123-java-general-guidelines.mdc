@@ -156,7 +156,7 @@ public class FormattingExample {
             try {
                 performOperation(input);
                 break;
-            } catch (TemporaryException e) {
+            } catch (final TemporaryException e) {
                 logger.debug("Retry attempt {}: {}", i + 1, e.getMessage());
             }
         }
@@ -338,13 +338,13 @@ public class SecureFileProcessor {
             while ((line = reader.readLine()) != null) {
                 content.append(line).append(System.lineSeparator());
             }
-        } catch (NoSuchFileException e) {
+        } catch (final NoSuchFileException e) {
             logger.warn("File not found: {}", filePath.getFileName());
             throw new FileProcessingException("Requested file not found", e);
-        } catch (AccessDeniedException e) {
+        } catch (final AccessDeniedException e) {
             logger.error("Access denied reading file: {}", filePath.getFileName());
             throw new FileProcessingException("Access denied", e);
-        } catch (IOException e) {
+        } catch (final IOException e) {
             logger.error("IO error reading file: {}", filePath.getFileName(), e);
             throw new FileProcessingException("Failed to read file", e);
         }
@@ -365,7 +365,7 @@ public class UnsafeFileProcessor {
         try {
             reader = new BufferedReader(new FileReader(filePath));
             // ... reading logic
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // Swallowing exception - bad practice!
             e.printStackTrace(); // Not using proper logging
             return ""; // Hiding the problem
@@ -373,7 +373,7 @@ public class UnsafeFileProcessor {
             if (reader != null) {
                 try {
                     reader.close();
-                } catch (IOException e) {
+                } catch (final IOException e) {
                     // Another swallowed exception
                 }
             }

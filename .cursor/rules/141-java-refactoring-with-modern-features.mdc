@@ -371,7 +371,7 @@ public class DateTimeApiExample {
 
         // Duration between two points in time
         Instant start = Instant.now();
-        try { Thread.sleep(100); } catch (InterruptedException e) { /* ignore */ }
+        try { Thread.sleep(100); } catch (final InterruptedException e) { /* ignore */ }
         Instant end = Instant.now();
         Duration duration = Duration.between(start, end);
         System.out.println("Duration of operation: " + duration.toMillis() + " ms");
@@ -596,7 +596,7 @@ public class CollectionFactoryExample {
         System.out.println("Unmodifiable List: " + unmodifiableList);
         try {
             unmodifiableList.add("delta"); // Throws UnsupportedOperationException
-        } catch (UnsupportedOperationException e) {
+        } catch (final UnsupportedOperationException e) {
             System.out.println("Error adding to unmodifiableList: " + e.getMessage());
         }
 
@@ -637,7 +637,7 @@ public class CollectionFactoryAntiPattern {
         try {
             List<String> listWithNull = List.of("apple", null, "banana");
             System.out.println(listWithNull);
-        } catch (NullPointerException e) {
+        } catch (final NullPointerException e) {
             System.err.println("Error: List.of() does not accept null elements. " + e.getMessage());
         }
 
@@ -645,7 +645,7 @@ public class CollectionFactoryAntiPattern {
         try {
             Map<String, Integer> mapWithDuplicateKeys = Map.of("a", 1, "b", 2, "a", 3);
             System.out.println(mapWithDuplicateKeys);
-        } catch (IllegalArgumentException e) {
+        } catch (final IllegalArgumentException e) {
             System.err.println("Error: Map.of() does not accept duplicate keys. " + e.getMessage());
         }
 
@@ -681,7 +681,7 @@ public class CompletableFutureExample {
     // Simulate fetching data asynchronously
     private static String fetchData(String query) {
         System.out.println("" + Thread.currentThread().getName() + " Fetching data for: " + query);
-        try { Thread.sleep(1000); } catch (InterruptedException e) { Thread.currentThread().interrupt(); return "ERROR_FETCH";}
+        try { Thread.sleep(1000); } catch (final InterruptedException e) { Thread.currentThread().interrupt(); return "ERROR_FETCH";}
         if (query.equals("fail_fetch")) throw new RuntimeException("Simulated fetch failure");
         return "Data_for_" + query;
     }
@@ -689,7 +689,7 @@ public class CompletableFutureExample {
     // Simulate processing data
     private static String processData(String rawData) {
         System.out.println("" + Thread.currentThread().getName() + " Processing data: " + rawData);
-        try { Thread.sleep(500); } catch (InterruptedException e) { Thread.currentThread().interrupt(); return "ERROR_PROCESS";}
+        try { Thread.sleep(500); } catch (final InterruptedException e) { Thread.currentThread().interrupt(); return "ERROR_PROCESS";}
         if (rawData.contains("fail_process")) throw new RuntimeException("Simulated process failure");
         return "Processed_" + rawData;
     }
@@ -697,7 +697,7 @@ public class CompletableFutureExample {
     // Simulate saving data
     private static void saveData(String processedData) {
         System.out.println("" + Thread.currentThread().getName() + " Saving data: " + processedData);
-        try { Thread.sleep(200); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+        try { Thread.sleep(200); } catch (final InterruptedException e) { Thread.currentThread().interrupt(); }
         System.out.println("" + Thread.currentThread().getName() + " Save complete for: " + processedData);
     }
 
@@ -733,7 +733,7 @@ public class CompletableFutureExample {
             if (!customExecutor.awaitTermination(5, TimeUnit.SECONDS)) {
                 customExecutor.shutdownNow();
             }
-        } catch (InterruptedException e) {
+        } catch (final InterruptedException e) {
             customExecutor.shutdownNow();
         }
         System.out.println("All operations finished.");
@@ -752,7 +752,7 @@ public class CompletableFutureAntiPattern {
         // Bad: Blocking directly on future.get() without timeout in main/request threads
         // This negates the benefits of asynchronous programming if not handled carefully.
         CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
-            try { Thread.sleep(2000); } catch (InterruptedException e) {}
+            try { Thread.sleep(2000); } catch (final InterruptedException e) {}
             return "Slow result";
         });
 
@@ -761,7 +761,7 @@ public class CompletableFutureAntiPattern {
             System.out.println("Blocking to get future result...");
             result = future.get(); // Blocking call - can make application unresponsive
             System.out.println("Got result: " + result);
-        } catch (InterruptedException | ExecutionException e) {
+        } catch (final InterruptedException | ExecutionException e) {
             System.err.println("Error getting future result: " + e.getMessage());
         }
 
@@ -773,7 +773,7 @@ public class CompletableFutureAntiPattern {
 
         try {
             errorFuture.join(); // Will throw CompletionException here if not handled by .exceptionally()
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // assertThat(e.getCause()).isInstanceOf(RuntimeException.class).hasMessage("Processing failed");
             System.out.println("Error from errorFuture: " + e.getClass().getName() + ": "+ e.getCause().getMessage());
         }
@@ -878,7 +878,7 @@ import java.util.Objects;
 class ExpensiveObject {
     public ExpensiveObject() {
         System.out.println("ExpensiveObject created!");
-        try { Thread.sleep(100); } catch (InterruptedException e) {} // Simulate costly creation
+        try { Thread.sleep(100); } catch (final InterruptedException e) {} // Simulate costly creation
     }
     public void use() { System.out.println("ExpensiveObject used."); }
 }
@@ -1005,7 +1005,7 @@ class ModernFeaturesService {
 
     public CompletableFuture<String> processDataAsync(String data) {
         return CompletableFuture.supplyAsync(() -> {
-            try { Thread.sleep(100); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+            try { Thread.sleep(100); } catch (final InterruptedException e) { Thread.currentThread().interrupt(); }
             if (data.equals("fail")) throw new RuntimeException("Processing failed");
             return "PROCESSED:" + data;
         });
@@ -1051,7 +1051,7 @@ public class TestingModernCodeExample {
             String result = future.get(); // Blocking for example, use non-blocking in real tests
             // assertThat(result).isEqualTo("PROCESSED:test");
              System.out.println("testProcessDataAsync (success): " + result); // Expected: PROCESSED:test
-        } catch (Exception e) { e.printStackTrace(); }
+        } catch (final Exception e) { e.printStackTrace(); }
     }
 
     // @Test
@@ -1061,7 +1061,7 @@ public class TestingModernCodeExample {
         // assertThatThrownBy(future::join).isInstanceOf(CompletionException.class);
         try {
             future.join(); // This will throw CompletionException
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // assertThat(e.getCause()).isInstanceOf(RuntimeException.class).hasMessage("Processing failed");
             System.out.println("testProcessDataAsync (failure expected): " + e.getClass().getName() + " -> " + e.getCause().getMessage());
         }

@@ -245,7 +245,7 @@ public class UserService {
                     throw new UserNotFoundException("User not found with email: " + email);
                 }
                 return user;
-            } catch (Exception e) {
+            } catch (final Exception e) {
                 throw new RuntimeException(e); // Wrapping exceptions in async context
             }
         });
@@ -287,10 +287,10 @@ public class DocumentProcessor {
             String content = Files.readString(filePath);
             Document document = parseContent(content);
             return Either.right(document);
-        } catch (IOException e) {
+        } catch (final IOException e) {
             // I/O exceptions are truly exceptional - system level issues
             throw new DocumentProcessingException("System error reading file: " + filePath, e);
-        } catch (OutOfMemoryError e) {
+        } catch (final OutOfMemoryError e) {
             // System errors should remain as exceptions
             throw new DocumentProcessingException("Insufficient memory to process file: " + filePath, e);
         }
@@ -383,7 +383,7 @@ public class DocumentProcessor {
             }
 
             return parseContent(content);
-        } catch (IOException e) {
+        } catch (final IOException e) {
             throw new DocumentProcessingException("Failed to process document", e);
         }
     }
@@ -918,7 +918,7 @@ public class FileProcessor {
     private Optional<String> readFileContent(Path filePath) {
         try {
             return Optional.of(Files.readString(filePath));
-        } catch (IOException e) {
+        } catch (final IOException e) {
             logger.warn("Could not read file: {}", filePath, e);
             return Optional.empty();
         }
@@ -928,13 +928,13 @@ public class FileProcessor {
         try {
             String content = Files.readString(filePath);
             return Either.right(content);
-        } catch (NoSuchFileException e) {
+        } catch (final NoSuchFileException e) {
             return Either.left(new ProcessingError("FILE_NOT_FOUND",
                 "File does not exist: " + filePath));
-        } catch (AccessDeniedException e) {
+        } catch (final AccessDeniedException e) {
             return Either.left(new ProcessingError("ACCESS_DENIED",
                 "Cannot read file: " + filePath));
-        } catch (IOException e) {
+        } catch (final IOException e) {
             // Only system-level I/O errors remain as exceptions
             throw new SystemException("SYSTEM_IO_ERROR", "System I/O error", e);
         }
@@ -972,15 +972,15 @@ public class FileProcessor {
             ParsedContent parsed = parseContent(content);
             validateContent(parsed);
             return createDocument(parsed);
-        } catch (FileNotFoundException e) {
+        } catch (final FileNotFoundException e) {
             throw new ProcessingException("File not found", e);
-        } catch (AccessDeniedException e) {
+        } catch (final AccessDeniedException e) {
             throw new ProcessingException("Access denied", e);
-        } catch (ParseException e) {
+        } catch (final ParseException e) {
             throw new ProcessingException("Parse error", e);
         } catch (ValidationException e) {
             throw new ProcessingException("Validation error", e);
-        } catch (Exception e) { // Broad catching masks other issues
+        } catch (final Exception e) { // Broad catching masks other issues
             throw new ProcessingException("Unknown error", e);
         }
     }
@@ -993,7 +993,7 @@ public class FileProcessor {
                 String content = readFileContent(filePath);
                 ParsedContent parsed = parseContent(content);
                 return createDocument(parsed);
-            } catch (Exception e) {
+            } catch (final Exception e) {
                 throw new RuntimeException(e); // Wrapping all exceptions
             }
         });
@@ -1015,7 +1015,7 @@ public class FileProcessor {
         try {
             return DriverManager.getConnection(
                 config.getUrl(), config.getUsername(), config.getPassword());
-        } catch (Throwable t) { // Catches everything including system errors
+        } catch (final Throwable t) { // Catches everything including system errors
             throw new DatabaseException("Database connection failed", t);
         }
     }
@@ -1060,11 +1060,11 @@ public class UserService {
             logger.info("Successfully created user with ID: {}", savedUser.getId());
             return savedUser;
 
-        } catch (InvalidEmailFormatException e) {
+        } catch (final InvalidEmailFormatException e) {
             logger.warn("User creation failed - invalid email format: {}", request.getEmail(), e);
             throw new UserCreationException("Invalid email format", e);
 
-        } catch (DatabaseException e) {
+        } catch (final DatabaseException e) {
             logger.error("User creation failed - database error for email: {}", request.getEmail(), e);
             throw new UserCreationException("Failed to save user to database", e);
 
@@ -1090,15 +1090,15 @@ public class UserService {
 
             logger.info("Successfully deleted user with ID: {}", userId);
 
-        } catch (UserNotFoundException e) {
+        } catch (final UserNotFoundException e) {
             logger.warn("User deletion failed - user not found: {}", userId, e);
             throw new UserDeletionException("User not found", e);
 
-        } catch (DataDeletionException e) {
+        } catch (final DataDeletionException e) {
             logger.error("User deletion failed - could not delete user data: {}", userId, e);
             throw new UserDeletionException("Failed to delete user data", e);
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             logger.error("Unexpected error during user deletion: {}", userId, e);
             throw new UserDeletionException("Unexpected error occurred", e);
         }
@@ -1126,18 +1126,18 @@ public class UserService {
             User user = new User(request.getEmail(), request.getName());
             return userRepository.save(user);
 
-        } catch (InvalidEmailFormatException e) {
+        } catch (final InvalidEmailFormatException e) {
             // No chaining - original cause is lost
             logger.error("Error creating user");
             throw new UserCreationException("Bad email");
 
-        } catch (DatabaseException e) {
+        } catch (final DatabaseException e) {
             // Logging without context
             logger.error("Database error", e);
             // Creating new exception without original cause
             throw new UserCreationException("Database failed");
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // Generic logging without useful information
             logger.error("Something went wrong");
             // No chaining and no useful message
@@ -1155,7 +1155,7 @@ public class UserService {
 
             userRepository.delete(user);
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // Swallowing all exceptions with generic handling
             e.printStackTrace(); // Don't use printStackTrace in production
             throw new UserDeletionException("Failed");
@@ -1380,7 +1380,7 @@ public class FileProcessor {
             try {
                 processFile(file);
                 processedFiles.add(file.toString());
-            } catch (Exception e) {
+            } catch (final Exception e) {
                 errorFiles.add(file.toString() + " (" + e.getMessage() + ")");
             }
         }
@@ -1429,10 +1429,10 @@ public class FileProcessor {
         for (Path file : files) {
             try {
                 processFile(file);
-            } catch (FileNotFoundException e) {
+            } catch (final FileNotFoundException e) {
                 // Using exception handling for expected condition
                 throw new ProcessingException("File not found: " + file);
-            } catch (AccessDeniedException e) {
+            } catch (final AccessDeniedException e) {
                 // Using exception handling for common access issues
                 throw new ProcessingException("Cannot read file: " + file);
             }
@@ -1443,7 +1443,7 @@ public class FileProcessor {
     public String getArrayElement(String[] array, int index) {
         try {
             return array[index];
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (final ArrayIndexOutOfBoundsException e) {
             return "default"; // Using exception for normal bounds checking
         }
     }

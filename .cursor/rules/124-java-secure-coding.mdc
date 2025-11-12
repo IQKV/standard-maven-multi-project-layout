@@ -119,7 +119,7 @@ public class SecureInputValidator {
             if (age < MIN_AGE || age > MAX_AGE) {
                 throw new IllegalArgumentException("Age must be between " + MIN_AGE + " and " + MAX_AGE);
             }
-        } catch (NumberFormatException e) {
+        } catch (final NumberFormatException e) {
             throw new IllegalArgumentException("Invalid age format. Must be a valid integer.", e);
         }
 
@@ -261,7 +261,7 @@ public class VulnerableDataAccess {
         String command = "ls " + userCommand; // User could inject "; rm -rf /"
         try {
             Runtime.getRuntime().exec(command);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // Handle exception
         }
     }
@@ -575,20 +575,20 @@ public class SecureExceptionHandler {
             validateUser(userId);
             processData(sensitiveData);
 
-        } catch (UserNotFoundException e) {
+        } catch (final UserNotFoundException e) {
             // Log detailed error for debugging
             logger.error("User not found during sensitive operation: userId={}", userId, e);
             // Return generic error to client
             throw new ServiceException("Operation failed", ErrorCode.INVALID_REQUEST);
 
-        } catch (DataProcessingException e) {
+        } catch (final DataProcessingException e) {
             // Log technical details
             logger.error("Data processing failed: userId={}, dataLength={}",
                         userId, sensitiveData.length(), e);
             // Don't expose internal details
             throw new ServiceException("Processing error occurred", ErrorCode.INTERNAL_ERROR);
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // Catch unexpected errors
             logger.error("Unexpected error in sensitive operation: userId={}", userId, e);
             throw new ServiceException("System error", ErrorCode.INTERNAL_ERROR);
@@ -644,7 +644,7 @@ public class InsecureExceptionHandler {
         try {
             validateUser(userId);
             processData(sensitiveData);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // BAD: Exposing full exception details to caller
             throw new Exception("Database connection failed: " + e.getMessage() +
                               " at host: db.internal.company.com:5432", e);
@@ -668,7 +668,7 @@ public class InsecureExceptionHandler {
     public void processPayment(String cardNumber, String cvv) {
         try {
             // Process payment...
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // TERRIBLE: Logging sensitive data
             System.out.println("Payment failed for card: " + cardNumber + ", CVV: " + cvv);
             e.printStackTrace(); // Exposing stack trace in logs

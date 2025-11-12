@@ -127,7 +127,7 @@ public class UserService {
         try {
             processInput(input);
             logger.debug("Action completed successfully for input: {}", input);
-        } catch (ProcessingException e) {
+        } catch (final ProcessingException e) {
             logger.error("Failed to process input: {}", input, e);
             throw e;
         }
@@ -142,7 +142,7 @@ public class UserService {
             performInternalSteps(operation);
 
             logger.info("Operation completed successfully");
-        } catch (Exception e) {
+        } catch (final Exception e) {
             logger.error("Operation failed", e);
             throw e;
         }
@@ -189,7 +189,7 @@ public class BadLoggingService {
         try {
             processInput(input);
             System.out.println("Action completed for: " + input);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // BAD: Just printing stack trace to stderr
             e.printStackTrace();
             // No structured logging, no log levels, no context
@@ -262,18 +262,18 @@ public class OrderProcessor {
             // INFO: Successful completion of important business operation
             logger.info("Order {} processed successfully for customer {}", orderId, customerId);
 
-        } catch (InventoryException e) {
+        } catch (final InventoryException e) {
             // WARN: Expected business exception that can be handled
             logger.warn("Insufficient inventory for order {}. Will backorder.", orderId, e);
             handleBackorder(orderId);
 
-        } catch (PaymentException e) {
+        } catch (final PaymentException e) {
             // ERROR: Critical failure requiring immediate attention
             logger.error("Payment processing failed for order {}. Customer: {}",
                         orderId, customerId, e);
             throw new OrderProcessingException("Payment failed", e);
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // ERROR: Unexpected critical error
             logger.error("Unexpected error processing order {} for customer {}",
                         orderId, customerId, e);
@@ -355,7 +355,7 @@ public class BadLevelUsage {
             // BAD: Using ERROR for successful operations
             logger.error("Successfully processed user: " + userId + " with result: " + result);
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // BAD: Using INFO for critical errors
             logger.info("An error occurred: " + e.getMessage());
             // Should be ERROR or WARN depending on severity
@@ -437,13 +437,13 @@ public class SecureTransactionService {
                        userId, e.getValidationError(), correlationId, e);
             throw e;
 
-        } catch (PaymentProcessingException e) {
+        } catch (final PaymentProcessingException e) {
             // GOOD: Log critical error with full context
             logger.error("Payment processing failed for user: {}, amount: {}, correlation: {}",
                         userId, amount, correlationId, e);
             throw e;
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // GOOD: Catch unexpected exceptions and log with context
             logger.error("Unexpected error during payment processing for user: {}, correlation: {}",
                         userId, correlationId, e);
@@ -469,7 +469,7 @@ public class SecureTransactionService {
                     logger.debug("Processed {} of {} items", i, dataItems.size());
                 }
 
-            } catch (Exception e) {
+            } catch (final Exception e) {
                 // GOOD: Log error but continue processing
                 logger.warn("Failed to process item at index {}: {}", i, item, e);
             }
@@ -570,7 +570,7 @@ public class PoorLoggingPractices {
 
             processPaymentTransaction(userId, amount, cardNumber);
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // BAD: Swallowing exception without proper logging
             logger.info("Payment failed: " + e.getMessage());
             // Lost the stack trace and context!
@@ -597,7 +597,7 @@ public class PoorLoggingPractices {
             authenticateUser(username, password);
             // BAD: Inconsistent logging format
             logger.info("User " + username + " logged in successfully");
-        } catch (AuthenticationException e) {
+        } catch (final AuthenticationException e) {
             // BAD: Using wrong log level and exposing sensitive info
             logger.error("Login failed for " + username + " with password " + password);
         }
@@ -709,10 +709,10 @@ public class ConfiguredLoggerExample {
 
             appLogger.info("Business operation completed successfully");
 
-        } catch (InterruptedException e) {
+        } catch (final InterruptedException e) {
             appLogger.warn("Operation interrupted", e);
             Thread.currentThread().interrupt();
-        } catch (Exception e) {
+        } catch (final Exception e) {
             appLogger.error("Business operation failed", e);
             throw new RuntimeException("Operation failed", e);
         } finally {
@@ -821,7 +821,7 @@ public class SecureLoggingService {
                         sanitizeForLogging(username), e.getViolationType());
             // Don't log the actual violation details that might help attackers
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // GOOD: Generic error logging without sensitive context
             logger.error("User registration failed for user: {} due to system error",
                         sanitizedUsername, e);
@@ -850,13 +850,13 @@ public class SecureLoggingService {
             logger.info("METRICS: Payment processed - amount: {}, merchant: {}, timestamp: {}",
                        request.getAmount(), request.getMerchantId(), System.currentTimeMillis());
 
-        } catch (FraudDetectedException e) {
+        } catch (final FraudDetectedException e) {
             // GOOD: Security event with controlled information
             logger.error("SECURITY_ALERT: Fraud detected - correlation: {}, risk_score: {}, user: {}",
                         correlationId, e.getRiskScore(), userId);
             // Don't log fraud detection details that could help bypass detection
 
-        } catch (PaymentException e) {
+        } catch (final PaymentException e) {
             // GOOD: Business error with safe context
             logger.error("Payment failed - correlation: {}, error_type: {}",
                         correlationId, e.getErrorType(), e);
@@ -1045,14 +1045,14 @@ public class InsecureLoggingService {
 
             processTransaction(cardNumber, cvv, amount);
 
-        } catch (FraudException e) {
+        } catch (final FraudException e) {
             // BAD: Exposing fraud detection algorithms and thresholds
             logger.error("Fraud detected for card {}: algorithm={}, threshold={}, " +
                         "risk_factors={}, detection_rules={}",
                         cardNumber, e.getAlgorithm(), e.getThreshold(),
                         e.getRiskFactors(), e.getDetectionRules());
 
-        } catch (PaymentException e) {
+        } catch (final PaymentException e) {
             // BAD: Including full stack trace with sensitive system information
             logger.error("Payment failed for card {} with full system details", cardNumber, e);
         }
@@ -1095,7 +1095,7 @@ public class InsecureLoggingService {
                            getLastSuccessfulLogin(username), isAccountLocked(username),
                            getFailureReasons(username));
             }
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // BAD: Logging authentication errors with sensitive context
             logger.error("Authentication system error for user {} with credentials: " +
                         "password={}, token={}", username, password, loginToken, e);
@@ -1206,7 +1206,7 @@ public class MonitoredService {
             // Structured logging for metrics and monitoring
             logger.info("METRICS: endpoint={}, duration={}, status=success", endpoint, System.currentTimeMillis() % 1000);
 
-        } catch (RuntimeException e) {
+        } catch (final RuntimeException e) {
             // This ERROR log (especially with stack trace) would be a key candidate for alerting.
             logger.error("ALERT: Unhandled exception during API request processing", e);
             // Could trigger immediate alert in monitoring system
@@ -1223,7 +1223,7 @@ public class MonitoredService {
 
             logger.info("HEALTH_CHECK: All systems operational");
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             logger.error("HEALTH_CHECK: System health check failed", e);
             // This would trigger alerts for operational teams
         }
@@ -1283,7 +1283,7 @@ public class UnmonitoredService {
                 throw new Exception("Something went wrong randomly!");
             }
             logger.info("Work finished.");
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // Logs an error, but if logs are only on local disk and not monitored,
             // this critical issue might go unnoticed for a long time.
             logger.error("Error during work", e);
@@ -1345,7 +1345,7 @@ public class LoggingTestExample {
         try {
             service.processImportantData(null);
             // Should not reach here
-        } catch (IllegalArgumentException e) {
+        } catch (final IllegalArgumentException e) {
             // In real test, would capture logs and assert:
             // - ERROR level log contains "Data ID is null"
             // - Only one ERROR log entry
