@@ -476,7 +476,7 @@ public class NonGenericMethods {
     // Separate methods needed for each type
     public static List<String> createStringList(String... elements) {
         List<String> list = new ArrayList<>();
-        for (String element : elements) {
+        for (final String element : elements) {
             list.add(element);
         }
         return list;
@@ -1000,7 +1000,7 @@ public class BadGenericInheritance {
     public static void processStrings(List<String> strings) {
         // Can only accept exactly List<String>
         // Won't accept List<? extends String> or more flexible types
-        for (String s : strings) {
+        for (final String s : strings) {
             System.out.println(s);
         }
     }

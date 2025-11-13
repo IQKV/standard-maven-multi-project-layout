@@ -582,7 +582,7 @@ public class PoorLoggingPractices {
 
     public void processLargeDataSet(List<String> items) {
         // BAD: Logging every single item in large dataset
-        for (String item : items) {
+        for (final String item : items) {
             logger.debug("Processing item: " + item); // Will flood logs
             processItem(item);
             logger.debug("Completed item: " + item); // Even more noise

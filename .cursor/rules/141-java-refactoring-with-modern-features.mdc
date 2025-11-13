@@ -227,7 +227,7 @@ public class StreamAntiPattern {
         data.stream().forEach(s -> result.add(s.toUpperCase())); // Modifying external list - side effect!
 
         // Better (imperative but clear for this simple case, or use map().collect()):
-        for (String s : data) {
+        for (final String s : data) {
             result.add(s.toUpperCase());
         }
         System.out.println("Uppercase (imperative): " + result);
@@ -479,7 +479,7 @@ interface BadInterface {
         // Too much logic for a default method
         StringBuilder result = new StringBuilder();
         String[] parts = input.split(",");
-        for (String part : parts) {
+        for (final String part : parts) {
             if (part.trim().length() > 0) {
                 result.append(part.trim().toUpperCase());
                 if (!part.equals(parts[parts.length - 1])) {

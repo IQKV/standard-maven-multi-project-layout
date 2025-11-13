@@ -726,7 +726,7 @@ public class BadAsyncService {
         List<String> results = new ArrayList<>();
 
         // BAD: Sequential processing instead of parallel
-        for (String input : inputs) {
+        for (final String input : inputs) {
             CompletableFuture<String> future = CompletableFuture.supplyAsync(() ->
                 processInput(input));
 
@@ -1637,7 +1637,7 @@ class ScopedValueExample {
     public void processWithNestedScope(String userId, List<String> tasks) {
         ScopedValue.where(USER_ID, userId)
             .run(() -> {
-                for (String task : tasks) {
+                for (final String task : tasks) {
                     ScopedValue.where(REQUEST_ID, "task-" + task)
                         .run(() -> processTask(task));
                 }

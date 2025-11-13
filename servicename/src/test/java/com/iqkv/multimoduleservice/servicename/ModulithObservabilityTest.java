@@ -62,7 +62,7 @@ class ModulithObservabilityTest {
     // Check for any management-related beans that indicate actuator is working
     String[] beanNames = applicationContext.getBeanDefinitionNames();
     boolean hasManagementBeans = false;
-    for (String beanName : beanNames) {
+    for (final String beanName : beanNames) {
       if (beanName.contains("management") || beanName.contains("actuator") || beanName.contains("endpoint")) {
         hasManagementBeans = true;
         break;
