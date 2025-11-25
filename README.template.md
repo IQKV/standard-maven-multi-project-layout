@@ -66,7 +66,37 @@ Add a detailed introduction about the project here, everything you want the read
 
 ## 🧩 Boilerplate Architecture
 
-- **Project Structure**: Standard Maven multi-module layout
+- **Project Structure**: Maven multi-module layout with Tactical DDD
 - **GitHub Integration**: Issue templates, labels, and workflows
 - **Quality Tools**: Code formatting, linting, and testing setup
 - **Documentation**: Community guidelines and contribution process
+
+### Tactical Domain-Driven Design (DDD)
+
+This project follows Tactical DDD principles to organize code around business domains:
+
+**Layered Architecture per Bounded Context:**
+
+- **Domain Layer**: Core business logic, entities, value objects, aggregates, and domain services
+- **Application Layer**: Use cases, application services, DTOs, and port interfaces
+- **Adapter Layer**: Implementation of ports (REST controllers, repository implementations)
+  - **Inbound Adapters**: REST controllers, message consumers
+  - **Outbound Adapters**: Database repositories, external API clients
+
+**Multi-Module Organization:**
+
+Bounded contexts can be organized as:
+
+- **Separate Maven modules** for large, independent contexts
+- **Packages within a module** for smaller, related contexts
+- **Hybrid approach** combining both strategies
+
+**Benefits:**
+
+- Clear separation of concerns
+- Independent deployment of bounded contexts (when using separate modules)
+- Easier testing and maintenance
+- Better team collaboration with clear boundaries
+- Flexibility to evolve architecture as domain understanding grows
+
+See [AGENTS.md](AGENTS.md) for detailed structure and development guidelines.
