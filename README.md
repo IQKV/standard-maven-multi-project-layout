@@ -173,14 +173,6 @@ This project is licensed under the Apache License. See the [LICENSE](LICENSE) fi
 - **Stylelint**: CSS/SCSS linting
 - **ESLint**: JavaScript linting
 - **EditorConfig**: Consistent coding styles
-- **Cursor Rules**: Predefined code quality rules for Java development covering:
-  - Maven best practices
-  - Object-oriented design
-  - Spring framework
-  - Security guidelines
-  - Performance optimization
-  - Functional programming
-  - Testing standards
 
 #### Git Workflow & Versioning
 
