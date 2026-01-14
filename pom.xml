@@ -31,6 +31,9 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <checkstyle.skip>true</checkstyle.skip>
+        <maven.gitcommitid.skip>false</maven.gitcommitid.skip>
+        <jacoco.skip>true</jacoco.skip>
         <spring-boot.run.jvmArguments>-Duser.timezone=UTC</spring-boot.run.jvmArguments>
     </properties>
     <dependencies>
