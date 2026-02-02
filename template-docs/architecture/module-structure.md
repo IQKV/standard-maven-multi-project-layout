@@ -26,7 +26,7 @@ module-name/
 │   │   └── resources/
 │   │       ├── application.yml               # Application configuration
 │   │       ├── application-dev.yml           # Development profile
-│   │       ├── application-prod.yml          # Production profile
+│   │       ├── application-production.yml          # Production profile
 │   │       └── logback-spring.xml            # Logging configuration
 │   └── test/
 │       ├── java/
