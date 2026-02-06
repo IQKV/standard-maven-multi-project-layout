@@ -193,7 +193,7 @@ pnpm prettier:check      # Check code formatting
 pnpm prettier:write      # Format code
 
 # Project Management
-pnpm node_modules:clear  # Clean node modules
+pnpm node_modules:cleanup  # Clean node modules
 pnpm release            # Create automated release
 pnpm prepare            # Set up husky hooks
 
