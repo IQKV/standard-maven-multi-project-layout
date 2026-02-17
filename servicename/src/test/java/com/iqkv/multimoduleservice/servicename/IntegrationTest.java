@@ -21,7 +21,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.iqkv.boot.mvc.rest.JacksonConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
@@ -29,7 +28,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@SpringBootTest(classes = {ServicenameApplication.class, JacksonConfiguration.class})
+@SpringBootTest(classes = {ServicenameApplication.class})
 public @interface IntegrationTest {
 
 }
