@@ -23,10 +23,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.iqkv</groupId>
-            <artifactId>boot-starter-mvc-rest</artifactId>
-        </dependency>
 
 
         <dependency>
