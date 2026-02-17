@@ -37,10 +37,6 @@
         <spring-boot.run.jvmArguments>-Duser.timezone=UTC</spring-boot.run.jvmArguments>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>com.iqkv</groupId>
-            <artifactId>boot-starter-mvc-rest</artifactId>
-        </dependency>
 
 
         <dependency>
