@@ -18,6 +18,7 @@ package com.iqkv.multimoduleservice.servicename;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.modulith.core.ApplicationModules;
+import org.springframework.modulith.core.DependencyDepth;
 import org.springframework.modulith.docs.Documenter;
 
 /**
@@ -56,7 +57,7 @@ class ModulithTest {
       System.out.println("Module: " + module.getDisplayName());
       System.out.println("  Display Name: " + module.getDisplayName());
       System.out.println("  Base Package: " + module.getBasePackage());
-      System.out.println("  Dependencies: " + module.getDependencies(modules));
+      System.out.println("  Dependencies: " + module.getDependencies(modules, DependencyDepth.ALL));
       System.out.println("  Spring Beans: " + module.getSpringBeans().size());
       System.out.println("---");
     });
