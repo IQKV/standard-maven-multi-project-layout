@@ -53,7 +53,7 @@ class ModulithTest {
   void printModuleInformation() {
     System.out.println("=== Application Modules ===");
     modules.forEach(module -> {
-      System.out.println("Module: " + module.getName());
+      System.out.println("Module: " + module.getDisplayName());
       System.out.println("  Display Name: " + module.getDisplayName());
       System.out.println("  Base Package: " + module.getBasePackage());
       System.out.println("  Dependencies: " + module.getDependencies(modules));
