@@ -189,8 +189,8 @@ This project is licensed under the Apache License. See the [LICENSE](LICENSE) fi
 # Code Quality
 pnpm lint                # Run stylelint
 pnpm lint:stylelint      # Run CSS/SCSS linting
-pnpm prettier:check      # Check code formatting
-pnpm prettier:write      # Format code
+pnpm formatter:check      # Check code formatting
+pnpm formatter:write      # Format code
 
 # Project Management
 pnpm node_modules:cleanup  # Clean node modules
