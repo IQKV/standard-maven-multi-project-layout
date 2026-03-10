@@ -80,8 +80,8 @@ This project follows Tactical DDD principles to organize code around business do
 - **Domain Layer**: Core business logic, entities, value objects, aggregates, and domain services
 - **Application Layer**: Use cases, application services, DTOs, and port interfaces
 - **Adapter Layer**: Implementation of ports (REST controllers, repository implementations)
-  - **Inbound Adapters**: REST controllers, message consumers
-  - **Outbound Adapters**: Database repositories, external API clients
+    - **Inbound Adapters**: REST controllers, message consumers
+    - **Outbound Adapters**: Database repositories, external API clients
 
 **Multi-Module Organization:**
 

@@ -37,20 +37,20 @@ When adding dependencies to your project:
 
 1. Check if the dependency is already managed by the parent POM
 2. If managed, add it without version:
-   ```xml
-   <dependency>
-       <groupId>org.example</groupId>
-       <artifactId>example-library</artifactId>
-   </dependency>
-   ```
+    ```xml
+    <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>example-library</artifactId>
+    </dependency>
+    ```
 3. If not managed, specify the version:
-   ```xml
-   <dependency>
-       <groupId>org.example</groupId>
-       <artifactId>example-library</artifactId>
-       <version>1.0.0</version>
-   </dependency>
-   ```
+    ```xml
+    <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>example-library</artifactId>
+        <version>1.0.0</version>
+    </dependency>
+    ```
 
 ## Dependency Management Best Practices
 

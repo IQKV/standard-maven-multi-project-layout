@@ -25,21 +25,21 @@ docker compose -f compose.yaml up -d
 ## 3. Customize the Project
 
 1. Update the project information in the root `pom.xml`:
-   - Change `groupId`, `artifactId`, and `name` to match your project
-   - Update the `description` field
+    - Change `groupId`, `artifactId`, and `name` to match your project
+    - Update the `description` field
 
 2. Rename the `servicename` module to match your service name:
 
-   ```bash
-   mv servicename your-service-name
-   ```
+    ```bash
+    mv servicename your-service-name
+    ```
 
 3. Update the module reference in the root `pom.xml`:
-   ```xml
-   <modules>
-       <module>your-service-name</module>
-   </modules>
-   ```
+    ```xml
+    <modules>
+        <module>your-service-name</module>
+    </modules>
+    ```
 
 ## 4. Build and Run
 

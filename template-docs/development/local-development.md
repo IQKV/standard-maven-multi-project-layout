@@ -6,41 +6,41 @@ This guide covers the local development workflow for this Spring Boot Multi-Modu
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/IQKV/your-repo-name.git
-   cd your-repo-name
-   ```
+    ```bash
+    git clone https://github.com/IQKV/your-repo-name.git
+    cd your-repo-name
+    ```
 
 2. Install Git hooks:
 
-   ```bash
-   pnpm install
-   ```
+    ```bash
+    pnpm install
+    ```
 
 3. Start local dependencies:
-   ```bash
-   docker compose -f compose.yaml up -d
-   ```
+    ```bash
+    docker compose -f compose.yaml up -d
+    ```
 
 ## Development Workflow
 
 1. **Build the project**:
 
-   ```bash
-   ./mvnw clean install
-   ```
+    ```bash
+    ./mvnw clean install
+    ```
 
 2. **Run the application**:
 
-   ```bash
-   cd servicename
-   ../mvnw spring-boot:run
-   ```
+    ```bash
+    cd servicename
+    ../mvnw spring-boot:run
+    ```
 
 3. **Run with specific profile**:
-   ```bash
-   ../mvnw spring-boot:run -Dspring-boot.run.profiles=dev
-   ```
+    ```bash
+    ../mvnw spring-boot:run -Dspring-boot.run.profiles=dev
+    ```
 
 ## Hot Reload
 
@@ -53,8 +53,8 @@ The project is configured with Spring Boot DevTools for hot reloading:
 
 1. Run with debug mode:
 
-   ```bash
-   ../mvnw spring-boot:run -Dspring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
-   ```
+    ```bash
+    ../mvnw spring-boot:run -Dspring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
+    ```
 
 2. Connect your IDE debugger to port 5005
