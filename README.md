@@ -167,7 +167,7 @@ This project is licensed under the Apache License. See the [LICENSE](LICENSE) fi
 
 #### Code Quality & Formatting
 
-- **Prettier**: Code formatting
+- **oxfmt**: Code formatting
     - Java plugin
     - Package.json plugin
 - **Stylelint**: CSS/SCSS linting
