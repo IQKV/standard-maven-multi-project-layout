@@ -171,7 +171,7 @@ This project is licensed under the Apache License. See the [LICENSE](LICENSE) fi
     - Java plugin
     - Package.json plugin
 - **Stylelint**: CSS/SCSS linting
-- **ESLint**: JavaScript linting
+- **oxlint**: JavaScript linting
 - **EditorConfig**: Consistent coding styles
 
 #### Git Workflow & Versioning
