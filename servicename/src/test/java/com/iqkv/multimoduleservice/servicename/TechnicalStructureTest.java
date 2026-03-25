@@ -18,7 +18,7 @@ package com.iqkv.multimoduleservice.servicename;
 
 import static com.tngtech.archunit.base.DescribedPredicate.alwaysTrue;
 import static com.tngtech.archunit.core.domain.JavaClass.Predicates.belongToAnyOf;
-import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
+import static com.tngtech.archunit.library.Architectures.onionArchitecture;
 
 import com.tngtech.archunit.core.importer.ImportOption.DoNotIncludeTests;
 import com.tngtech.archunit.junit.AnalyzeClasses;
@@ -30,21 +30,16 @@ class TechnicalStructureTest {
 
   // prettier-ignore
   @ArchTest
-  static final ArchRule respectsTechnicalArchitectureLayers = layeredArchitecture()
-      .consideringAllDependencies()
-      .optionalLayer("Config").definedBy("..config..")
-      .optionalLayer("Web").definedBy("..web..")
-      .optionalLayer("Service").definedBy("..service..")
-      .optionalLayer("Security").definedBy("..security..")
-      .optionalLayer("Persistence").definedBy("..repository..")
-      .optionalLayer("Domain").definedBy("..domain..")
-
-      .whereLayer("Config").mayNotBeAccessedByAnyLayer()
-      .whereLayer("Web").mayOnlyBeAccessedByLayers("Config")
-      .whereLayer("Service").mayOnlyBeAccessedByLayers("Web", "Config")
-      .whereLayer("Security").mayOnlyBeAccessedByLayers("Config", "Service", "Web")
-      .whereLayer("Persistence").mayOnlyBeAccessedByLayers("Service", "Security", "Web", "Config")
-      .whereLayer("Domain").mayOnlyBeAccessedByLayers("Persistence", "Service", "Security", "Web", "Config")
+  static final ArchRule respectsTechnicalArchitectureLayers = onionArchitecture()
+      .withOptionalLayers(true)
+      .domainModels("..domain.model..", "..domain.event..")
+      .domainServices("..domain.service..")
+      .applicationServices("..application.service..", "..application.port..")
+      .adapter("rest",        "..adapter.in.rest..")
+      .adapter("persistence", "..adapter.out.persistence..")
+      .adapter("messaging",   "..adapter.out.messaging..")
+      .adapter("config",      "..infrastructure.config..")
+      .adapter("security",    "..infrastructure.security..")
 
       .ignoreDependency(belongToAnyOf(ServicenameApplication.class), alwaysTrue());
 }
