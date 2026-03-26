@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.iqkv.multimoduleservice.servicename;
+package com.iqscaffold.multimoduleservice.servicename;
 
 import static com.tngtech.archunit.base.DescribedPredicate.alwaysTrue;
 import static com.tngtech.archunit.core.domain.JavaClass.Predicates.belongToAnyOf;

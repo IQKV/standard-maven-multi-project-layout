@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.iqkv.multimoduleservice.servicename;
+package com.iqscaffold.multimoduleservice.servicename;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.iqkv.multimoduleservice.servicename;
+package com.iqscaffold.multimoduleservice.servicename;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.modulith.core.ApplicationModules;

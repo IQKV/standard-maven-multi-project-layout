@@ -16,7 +16,7 @@ project-root/
 ├── shared/                           # Shared kernel module (optional)
 │   ├── pom.xml
 │   └── src/
-│       └── main/java/com/iqkv/project/shared/
+│       └── main/java/com/iqscaffold/project/shared/
 │           ├── domain/               # Shared domain primitives
 │           ├── exception/            # Common exceptions
 │           └── util/                 # Utility classes
@@ -24,7 +24,7 @@ project-root/
 ├── infrastructure/                   # Infrastructure module (optional)
 │   ├── pom.xml
 │   └── src/
-│       └── main/java/com/iqkv/project/infrastructure/
+│       └── main/java/com/iqscaffold/project/infrastructure/
 │           ├── config/               # Spring configuration
 │           ├── security/             # Security implementation
 │           └── persistence/          # Common persistence utilities
@@ -33,7 +33,7 @@ project-root/
     ├── pom.xml
     └── src/
         ├── main/
-        │   ├── java/com/iqkv/project/[module]/
+        │   ├── java/com/iqscaffold/project/[module]/
         │   │   ├── [bounded-context]/        # e.g. user, order, payment
         │   │   │   ├── domain/               # Domain layer — core business logic
         │   │   │   │   ├── model/            # Aggregates, entities, value objects
@@ -55,7 +55,7 @@ project-root/
         │       ├── logback-spring.xml        # Structured JSON logging
         │       └── db/changelog/             # Database migrations (Liquibase)
         └── test/
-            └── java/com/iqkv/project/[module]/
+            └── java/com/iqscaffold/project/[module]/
                 ├── [bounded-context]/
                 │   ├── domain/               # Domain model tests
                 │   ├── application/          # Application service tests

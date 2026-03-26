@@ -19,7 +19,7 @@
         <sonar.exclusions>**/*Application.java</sonar.exclusions>
         <checkstyle.skip>false</checkstyle.skip>
         <maven.gitcommitid.skip>false</maven.gitcommitid.skip>
-        <start-class>com.iqkv.multimoduleservice.servicename.ServicenameApplication</start-class>
+        <start-class>com.iqscaffold.multimoduleservice.servicename.ServicenameApplication</start-class>
     </properties>
 
     <dependencies>

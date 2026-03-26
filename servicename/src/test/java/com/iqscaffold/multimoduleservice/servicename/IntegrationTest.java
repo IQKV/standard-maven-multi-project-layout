@@ -14,16 +14,21 @@
  * limitations under the License.
  */
 
-package com.iqkv.multimoduleservice.servicename;
+package com.iqscaffold.multimoduleservice.servicename;
 
-import org.junit.jupiter.api.Test;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class ServicenameApplicationTests {
-
-  @Test
-  void contextLoads() {
-  }
+/**
+ * Base composite annotation for integration tests.
+ */
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@SpringBootTest(classes = {ServicenameApplication.class})
+public @interface IntegrationTest {
 
 }

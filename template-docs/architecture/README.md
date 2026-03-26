@@ -27,7 +27,7 @@ Each service module follows the Tactical DDD package layout:
 ├── pom.xml
 └── src/
     ├── main/
-    │   ├── java/com/iqkv/project/[module]/
+    │   ├── java/com/iqscaffold/project/[module]/
     │   │   ├── [bounded-context]/
     │   │   │   ├── domain/        # Aggregates, entities, value objects, domain services
     │   │   │   ├── application/   # Use cases, DTOs, port interfaces
@@ -37,7 +37,7 @@ Each service module follows the Tactical DDD package layout:
     │   │   └── ModuleNameApplication.java
     │   └── resources/             # application.yml, logback-spring.xml, db/changelog/
     └── test/
-        └── java/com/iqkv/project/[module]/
+        └── java/com/iqscaffold/project/[module]/
             ├── [bounded-context]/  # domain / application / adapter tests
             └── architecture/       # ArchUnit tests
 ```

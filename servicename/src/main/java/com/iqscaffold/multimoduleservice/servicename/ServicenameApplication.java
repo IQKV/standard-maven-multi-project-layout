@@ -14,21 +14,19 @@
  * limitations under the License.
  */
 
-package com.iqkv.multimoduleservice.servicename;
+package com.iqscaffold.multimoduleservice.servicename;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.util.TimeZone;
 
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/**
- * Base composite annotation for integration tests.
- */
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@SpringBootTest(classes = {ServicenameApplication.class})
-public @interface IntegrationTest {
+@SpringBootApplication
+public class ServicenameApplication {
+
+  public static void main(String[] args) {
+    TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+    SpringApplication.run(ServicenameApplication.class, args);
+  }
 
 }
