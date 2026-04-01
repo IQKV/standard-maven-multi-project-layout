@@ -22,13 +22,7 @@
         <start-class>com.iqscaffold.multimoduleservice.servicename.ServicenameApplication</start-class>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-suite</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+
 
     <profiles>
         <profile>
@@ -52,23 +46,6 @@
                 </dependency>
             </dependencies>
         </profile>
-        <profile>
-            <id>modulith-test</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <includes>
-                                <include>**/*ModulithTest*.java</include>
-                                <include>**/ModulithTestSuite.java</include>
-                            </includes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
     </profiles>
 
     <build>
@@ -79,12 +56,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>${start-class}</mainClass>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
+
                 </configuration>
             </plugin>
             <plugin>
