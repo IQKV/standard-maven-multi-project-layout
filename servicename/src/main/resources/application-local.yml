@@ -1,6 +1,6 @@
 # ===================================================================
-# Spring Boot configuration for the "dev" profile (K8s / dev cluster).
-# Overrides base: enables debug logging, exposes all actuator endpoints.
+# Spring Boot configuration for the "local" profile.
+# Overrides base: relaxes actuator, enables debug logging.
 # ===================================================================
 
 management:

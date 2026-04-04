@@ -1,7 +1,5 @@
 # ===================================================================
-# Spring Boot configuration.
-#
-# This configuration is used for unit/integration tests.
+# Spring Boot configuration for tests.
 # ===================================================================
 
 spring:
@@ -12,6 +10,10 @@ spring:
       externalization:
         enabled: false
     republish-outstanding-events-on-restart: false
+
+logging:
+  level:
+    com.iqscaffold: DEBUG
 
 git:
   build_time: '@git.build.time@'
