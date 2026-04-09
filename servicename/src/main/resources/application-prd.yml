@@ -1,5 +1,5 @@
 # ===================================================================
-# Spring Boot configuration for the "production" profile.
+# Spring Boot configuration for the "prd" profile.
 # Overrides base: hardens actuator/swagger, enables graceful shutdown.
 # ===================================================================
 
