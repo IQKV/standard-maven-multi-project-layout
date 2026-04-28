@@ -81,7 +81,7 @@ docker compose -f compose.yaml up -d
 
 #  Run the servicename instance in dev mode
 cd servicename
-mvn spring-boot:run -Dspring-boot.run.profiles=local -P dev
+mvn spring-boot:run -Dspring-boot.run.profiles=local -P local
 
 ```
 
