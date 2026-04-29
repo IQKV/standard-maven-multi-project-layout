@@ -8,7 +8,7 @@ services:
     image: iqscaffold/servicename:dev
     container_name: servicename-dev
     environment:
-      SPRING_PROFILES_ACTIVE: dev
+      SPRING_PROFILES_ACTIVE: local
       SPRING_APPLICATION_NAME: servicename
     ports:
       - "8080:8080"
