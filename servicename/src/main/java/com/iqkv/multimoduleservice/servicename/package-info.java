@@ -18,4 +18,4 @@
  * Application root.
  */
 
-package com.iqscaffold.multimoduleservice.servicename;
+package com.iqkv.multimoduleservice.servicename;

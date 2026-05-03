@@ -11,4 +11,4 @@ management:
 
 logging:
   level:
-    com.iqscaffold: DEBUG
+    com.iqkv: DEBUG

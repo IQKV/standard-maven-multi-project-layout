@@ -13,7 +13,7 @@ spring:
 
 logging:
   level:
-    com.iqscaffold: DEBUG
+    com.iqkv: DEBUG
 
 git:
   build_time: '@git.build.time@'

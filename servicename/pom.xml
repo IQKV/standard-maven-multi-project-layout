@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>multimoduleservice</artifactId>
-        <groupId>com.iqscaffold</groupId>
+        <groupId>com.iqkv</groupId>
         <version>0.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -17,7 +17,7 @@
         <sonar.exclusions>**/*Application.java</sonar.exclusions>
         <checkstyle.skip>false</checkstyle.skip>
         <maven.gitcommitid.skip>false</maven.gitcommitid.skip>
-        <start-class>com.iqscaffold.multimoduleservice.servicename.ServicenameApplication</start-class>
+        <start-class>com.iqkv.multimoduleservice.servicename.ServicenameApplication</start-class>
     </properties>
 
 

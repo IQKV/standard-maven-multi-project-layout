@@ -14,16 +14,19 @@
  * limitations under the License.
  */
 
-package com.iqscaffold.multimoduleservice.servicename;
+package com.iqkv.multimoduleservice.servicename;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import java.util.TimeZone;
 
-@SpringBootTest
-class ServicenameApplicationTests {
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-  @Test
-  void contextLoads() {
+@SpringBootApplication
+public class ServicenameApplication {
+
+  public static void main(String[] args) {
+    TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+    SpringApplication.run(ServicenameApplication.class, args);
   }
 
 }
