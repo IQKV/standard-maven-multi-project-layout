@@ -72,10 +72,11 @@ Format: `type(scope): subject`
 - Types: `feat`, `fix`, `improvement`, `refactor`, `docs`, `test`, `chore`, `ci`, `perf`, `revert`
 - Scope: affected module or area (e.g., `servicename`, `root`, `docker`, `deps`, `checkstyle`)
 - For `fix`: symptom + trigger, not the code change
-  - ✅ `fix(servicename): context fails to load when Postgres is unreachable at startup`
-  - ❌ `fix(servicename): add datasource health check`
+    - ✅ `fix(servicename): context fails to load when Postgres is unreachable at startup`
+    - ❌ `fix(servicename): add datasource health check`
 
 Examples:
+
 - `feat(servicename): add Spring Security with JWT filter chain`
 - `chore(root): enable Checkstyle and JaCoCo for all modules`
 - `refactor(servicename): rename package to match actual service name`
