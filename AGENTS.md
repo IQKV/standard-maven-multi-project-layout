@@ -139,14 +139,14 @@ A task is evaluated as done only when all of the following hold:
 
 ### Required gates by change type
 
-| Change type | Required gates |
-| --- | --- |
-| Any change | `./mvnw verify` from the repository root — multi-module builds do not run from a module directory |
-| Domain / application / service logic | Unit tests (JUnit 5 + Mockito, AAA); a new non-trivial branch, loop or parser needs a test |
-| Module boundary or package move | ArchUnit `TechnicalStructureTest` in the affected module, then `./mvnw verify` from root |
-| Activating a stub module | Root `<modules>` updated, then `./mvnw verify` from root |
-| Dependency or build config | `./mvnw verify` from root |
-| Docs, README or `AGENTS.md` only | `pnpm formatter:check`; no code gate — state that none applies |
+| Change type                          | Required gates                                                                                    |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------- |
+| Any change                           | `./mvnw verify` from the repository root — multi-module builds do not run from a module directory |
+| Domain / application / service logic | Unit tests (JUnit 5 + Mockito, AAA); a new non-trivial branch, loop or parser needs a test        |
+| Module boundary or package move      | ArchUnit `TechnicalStructureTest` in the affected module, then `./mvnw verify` from root          |
+| Activating a stub module             | Root `<modules>` updated, then `./mvnw verify` from root                                          |
+| Dependency or build config           | `./mvnw verify` from root                                                                         |
+| Docs, README or `AGENTS.md` only     | `pnpm formatter:check`; no code gate — state that none applies                                    |
 
 ### Ordering
 
